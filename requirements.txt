@@ -1,0 +1,8 @@
+collections
+matplotlib
+nltk
+numpy
+re
+sklearn
+time
+ujson

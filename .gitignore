@@ -1,0 +1,5 @@
+*.swp
+*.swp
+*.ipynb_checkpoints/
+2015/*
+RC_2015-05.json
