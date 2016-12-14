@@ -11841,11 +11841,12 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h2><ul>
+<h1 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h1><ul>
 <li><a href="#Data-Source:-Reddit-Comments-from-May-2015-in-JSON-format">Data Source</a></li>
 <li><a href="#Preprocess-the-data">Preprocess</a></li>
-<li><a href="#Supervised-Learning:-Identify-the-Subreddit-Section">Supervised Learning</a></li>
-<li><a href="#Topic-Modeling:-Unsupervised-Learning">Unsupervised Learning</a></li>
+<li><a href="#Comment-Classification:-Supervised-Learning">Supervised Learning</a></li>
+<li><a href="#Comment-Similarity-and-Clustering:-Unsupervised-Learning">Unsupervised Learning</a></li>
+<li><a href="#Topic-Modeling:-Dimensionality-Reduction">Dimensionality Reduction</a></li>
 </ul>
 <hr>
 
@@ -11857,7 +11858,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>Text Analysis is used for summarizing or extracting useful information from large amounts of  unstructured text. Text analysis encompases a large array of tasks:</p>
+<h1 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h1><p>Text Analysis is used for summarizing or extracting useful information from large amounts of  unstructured text. Text analysis encompases a large array of tasks:</p>
 <p><img src="figs/nlp_tasks.png"></p>
 <p>&lt;!--
 Text Analysis can help with the following tasks:</p>
@@ -11898,20 +11899,59 @@ Text Analysis can help with the following tasks:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Why-is-Language-Analysis-Hard?">Why is Language Analysis Hard?<a class="anchor-link" href="#Why-is-Language-Analysis-Hard?">&#182;</a></h2><ul>
+<li>Ambiguity of Language</li>
+<li>Commonsense knowledge is typically omitted from social communications</li>
+<li>Abduction</li>
+<li>Language is dynamic </li>
+<li>Symbol grounding</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="How-do-we-represent-a-word?">How do we represent a word?<a class="anchor-link" href="#How-do-we-represent-a-word?">&#182;</a></h2><h3 id="One-hot-Encoding">One-hot Encoding<a class="anchor-link" href="#One-hot-Encoding">&#182;</a></h3><p><code>[0,0,0,...,0,1,0,...,0]</code></p>
+<h3 id="Distributed-Representation">Distributed Representation<a class="anchor-link" href="#Distributed-Representation">&#182;</a></h3><p><code>[0.34, 0.51,...,0.49, 0.56, 0.72]</code></p>
+<!-- LSA, word embeddings, vector space embedding --> 
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="How-do-we-represent-a-document?">How do we represent a document?<a class="anchor-link" href="#How-do-we-represent-a-document?">&#182;</a></h2><h3 id="Bag-of-words">Bag-of-words<a class="anchor-link" href="#Bag-of-words">&#182;</a></h3><p>A bag of words is created by summing the one-hot encodings for all words in a document.</p>
+<p><img src="figs/scrabble-2133.jpg" style="width: 50%; height: 50%"/></p>
+<h3 id="Document-Embedding">Document Embedding<a class="anchor-link" href="#Document-Embedding">&#182;</a></h3><p>Document embeddings can be created by averaging over word embeddings. This assumes that words and document are 'occupying' the same semantic vector space.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Glossary-of-Terms">Glossary of Terms<a class="anchor-link" href="#Glossary-of-Terms">&#182;</a></h2><ul>
-<li><p><strong>Tokenize</strong>: Tokenization is the process by which text is sepearated into meaningful terms or phrases. For instance, separating sentences using punctuation.</p>
-</li>
-<li><p><strong>Stemming</strong>: Stemming is a type of text normalization where words that have different forms but their essential meaning are normalized to the original dictionary form of a word. For example "go," "went," and "goes" all stem from the lemma "go."</p>
-</li>
-<li><p><strong>TFIDF</strong>: TFIDF (Term frequency-inverse document frequency) is an example of feature enginnering where the most important words are extracted by taking account their frequency in documents and the entire corpus of documents as a whole.</p>
-</li>
-<li><p><strong>Topic Modeling</strong>: Topic modeling is an unsupervised learning method where groups of co-occuring words are clustered into topics. Typically, the words in a a cluster should be related and make sense (e.g, boat, ship, captain). Individual documents will then fall into multiple topics.</p>
+<li><p><strong>Document Classification</strong>: Predicting which class label belongs to a document (in this tutorial comments are documents).</p>
 </li>
 <li><p><strong>LDA</strong>: LDA (latent Dirichlet allocation) is a type of probabilistic model commonly used for topic modelling.</p>
 </li>
+<li><p><strong>Stemming</strong>: Stemming is a type of text normalization where words that have different forms but their essential meaning are normalized to the original dictionary form of a word. For example "go," "went," and "goes" all stem from the lemma "go."</p>
+</li>
 <li><p><strong>Stop Words</strong>: Stop words are words that have little semantic meaning like prepositions, articles and common nouns. They can often be ingnored.</p>
 </li>
-<li><p><strong>Document Classification</strong>: Predicting which class label belongs to a document.</p>
+<li><p><strong>TFIDF</strong>: TFIDF (Term frequency-inverse document frequency) is an example of feature enginnering where the most important words are extracted by taking account their frequency in documents and the entire corpus of documents as a whole.</p>
+</li>
+<li><p><strong>Tokenize</strong>: Tokenization is the process by which text is sepearated into meaningful terms or phrases. For instance, separating sentences using punctuation.</p>
+</li>
+<li><p><strong>Topic Modeling</strong>: Topic modeling is an unsupervised learning method where groups of co-occuring words are clustered into topics. Typically, the words in a a cluster should be related and make sense (e.g, boat, ship, captain). Individual documents will then fall into multiple topics.</p>
 </li>
 <li><p><strong>Word (type) vs word token</strong>: In text analysis, <em>word (type)</em> refers to a unique set of characters. A <em>word token</em> is any occurance of a <em>word (type)</em>. For example, the sentence 'Oh boy, that boy is impressive!' contains 6 <em>word tokens</em>, but only 5 <em>word (types)</em>.</p>
 <hr>
@@ -11926,10 +11966,101 @@ Text Analysis can help with the following tasks:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Import-packages-and-utility-functions">Import packages and utility functions<a class="anchor-link" href="#Import-packages-and-utility-functions">&#182;</a></h3>
+<h1 id="Text-Preprocessing">Text Preprocessing<a class="anchor-link" href="#Text-Preprocessing">&#182;</a></h1><ul>
+<li>Cleaning &amp; Tokenization</li>
+<li>Stop Word Removal</li>
+<li>Normalization: Stemming &amp; Lemmatization</li>
+<li>N-grams </li>
+</ul>
+
 </div>
 </div>
 </div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Text-Processing-Example">Text Processing Example<a class="anchor-link" href="#Text-Processing-Example">&#182;</a></h2><p><strong>Original Sentence</strong><br>
+<code>Dude! I’m dying to go surfing. Let’s shred the gnar!</code></p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Clearning and Tokenizing</strong><br>
+<code>[dude,im,dying,to,go,surfing,lets,shred,the,gnar]</code></p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Stop Word Removal</strong><br>
+<code>[dying,surfing,shred,gnar]</code></p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Stemming and Lemmatization</strong><br>
+<code>[dy,surf,shred,gnar]   [die,surf,shred,gnar]</code></p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>N-grams</strong><br>
+<code>[die,die_surf,surf,surf_shred,shred,shred_gnar,gnar]</code></p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>N-grams using POS</strong><br>
+<code>[die,surf,shred,shred_gnar,gnar]</code></p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Text-Processing-In-Scikit-Learn">Text Processing In Scikit Learn<a class="anchor-link" href="#Text-Processing-In-Scikit-Learn">&#182;</a></h1><p><img src="figs/sklearn_preprocessing.png" style="width: 75%; height: 75%"/></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Import-Packages-and-Utility-Functions">Import Packages and Utility Functions<a class="anchor-link" href="#Import-Packages-and-Utility-Functions">&#182;</a></h3>
+</div>
+</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[193]:</div>
@@ -11985,7 +12116,7 @@ Text Analysis can help with the following tasks:</p>
 </div>
 </div>
 
-</div></section><section>
+</div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
@@ -12085,13 +12216,13 @@ Text Analysis can help with the following tasks:</p>
 </div>
 </div>
 
-</div></section></section><section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Load-and-Preprocess-Data">Load and Preprocess Data<a class="anchor-link" href="#Load-and-Preprocess-Data">&#182;</a></h2><h3 id="Data-Source:-Reddit-Comments-from-May-2015-in-JSON-format">Data Source: Reddit Comments from May 2015 in JSON format<a class="anchor-link" href="#Data-Source:-Reddit-Comments-from-May-2015-in-JSON-format">&#182;</a></h3><p>For the superivised learning portion of the tutorial we will being attempting to classify whether reddit comments have come from /r/SucideWatch or /r/depression. These two subreddits are somewhat similiar so it poses a non-trivial challenge for a classifier.</p>
+<h1 id="Load-and-Preprocess-Data">Load and Preprocess Data<a class="anchor-link" href="#Load-and-Preprocess-Data">&#182;</a></h1><h3 id="Data-Source:-Reddit-Comments-from-May-2015-in-JSON-format">Data Source: Reddit Comments from May 2015 in JSON format<a class="anchor-link" href="#Data-Source:-Reddit-Comments-from-May-2015-in-JSON-format">&#182;</a></h3><p>For the superivised learning portion of the tutorial we will being attempting to classify whether reddit comments have come from /r/SucideWatch or /r/depression. These two subreddits are somewhat similiar so it poses a non-trivial challenge for a classifier.</p>
 
 </div>
 </div>
@@ -12129,7 +12260,7 @@ Text Analysis can help with the following tasks:</p>
 </div>
 </div>
 
-</div></div></section></section><section><section>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12247,7 +12378,7 @@ Comment 18096:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Supervised-Learning:-Identify-the-Subreddit-Section">Supervised Learning: Identify the Subreddit Section<a class="anchor-link" href="#Supervised-Learning:-Identify-the-Subreddit-Section">&#182;</a></h1><p>In this section we are going to train a classifier to properly tag the original subreddit the comment appeared. First we split our data into a testing and training set using the first 80% of the data as the training set and the remaining 20% as the testing set.</p>
+<h1 id="Comment-Classification:-Supervised-Learning">Comment Classification: Supervised Learning<a class="anchor-link" href="#Comment-Classification:-Supervised-Learning">&#182;</a></h1><p>In this section we are going to train a classifier to properly tag the original subreddit in which the comment appeared. First we split our data into a testing and training set using the first 80% of the data as the training set and the remaining 20% as the testing set.</p>
 
 </div>
 </div>
@@ -12257,7 +12388,7 @@ Comment 18096:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Create-Training/Test-Splits">Create Training/Test Splits<a class="anchor-link" href="#Create-Training/Test-Splits">&#182;</a></h3>
+<h2 id="Create-Training/Test-Splits">Create Training/Test Splits<a class="anchor-link" href="#Create-Training/Test-Splits">&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
@@ -12308,7 +12439,7 @@ Testing Labels Counter({&#39;depression&#39;: 5301, &#39;SuicideWatch&#39;: 2158
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Tokenize-and-stem-to-create-features">Tokenize and stem to create features<a class="anchor-link" href="#Tokenize-and-stem-to-create-features">&#182;</a></h1><p>Now that we have the data and we have done a bit of preprocessing, we want to create features. We quantify words as <strong>one-hot encodings</strong> and create document word counts by summing encodings over words in a documents. Scikit-learn as a <a href="http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html">CountVectorizer method</a> that makes this step simple.</p>
+<h2 id="Tokenize-and-stem-to-create-features">Tokenize and stem to create features<a class="anchor-link" href="#Tokenize-and-stem-to-create-features">&#182;</a></h2><p>Now that we have the data and we have done a bit of preprocessing, we want to create features. We quantify words as <strong>one-hot encodings</strong> and create document word counts by summing encodings over words in a documents. Scikit-learn as a <a href="http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html">CountVectorizer method</a> that makes this step simple.</p>
 <p>We first create a vectorizer object that stores the frequency of words in each of the documents in a <strong>document-term count matrix</strong>. We will discard very high and low frequency words. For example, the words <em>the</em> or <em>for</em> may appear often throughout a corpus but contain very little semantic information. Conversely a document may contain obscure words that do not occur anywhere in else in the corpus which could cause models to overfit. These cases are managed by setting a threshold for the Min and Max Document Frequency(DF).</p>
 
 </div>
@@ -12513,7 +12644,7 @@ Testing Labels Counter({&#39;depression&#39;: 5301, &#39;SuicideWatch&#39;: 2158
 </div>
 
 </div>
-</aside></div></section></section><section><section>
+</aside></div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12529,7 +12660,7 @@ $$ \min_{\bf w}{\frac{1}{2}||{\bf w}||_d + C \sum_{i=1}^{N}{\textrm{log}(1+e^{�
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[215]:</div>
+<div class="prompt input_prompt">In&nbsp;[223]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Fit a regularized logistic regression model  </span>
@@ -13192,7 +13323,7 @@ We&#39;re all here for you so talk to us.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Document-Similarity-and-Clustering">Document Similarity and Clustering<a class="anchor-link" href="#Document-Similarity-and-Clustering">&#182;</a></h1><p>The first step in grouping documents is to define a measure of similarity between documents. A common measure of similarity for non-text data is euclidean distance. However the euclidean distance between document-term vectors ignore the length of the document. For example, if document one consists of a single sentence and document two consists of that same sentence repeated multiple times, the euclidean distance will be nonzero. To overcome this issue documents are often compared using cosine similarity, which measures the angle between two count vectors.</p>
+<h1 id="Comment-Similarity-and-Clustering:-Unsupervised-Learning">Comment Similarity and Clustering: Unsupervised Learning<a class="anchor-link" href="#Comment-Similarity-and-Clustering:-Unsupervised-Learning">&#182;</a></h1><p>The first step in grouping documents is to define a measure of similarity between documents. A common measure of similarity for non-text data is euclidean distance. However the euclidean distance between document-term vectors ignore the length of the document. For example, if document one consists of a single sentence and document two consists of that same sentence repeated multiple times, the euclidean distance will be nonzero. To overcome this issue documents are often compared using cosine similarity, which measures the angle between two count vectors.</p>
 <h3 id="Cosine-Similarity">Cosine Similarity<a class="anchor-link" href="#Cosine-Similarity">&#182;</a></h3><p>The cosine similarity between two vectors ${\bf x}$ and ${\bf y}$ is defined as:</p>
 $$\textrm{cos}({\bf x},{\bf y}) = \frac{{\bf x} \bullet {\bf y}}{||\bf x|| \; || \bf y ||}$$<p>.</p>
 <p>The common conceptual interpretations of the cosine similarity is the angle between two vectors. In text analysis each document is represented as a point in a $V$-dimensional, where $V$ is the size of the vocabulary. Thus by normalizing we are looking at the percent of a document that each word compromises instead of the raw counts of word tokens.</p>
@@ -13437,26 +13568,40 @@ Thank you I wish all the best for you xxx
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Topic-Modeling:-Unsupervised-Learning">Topic Modeling: Unsupervised Learning<a class="anchor-link" href="#Topic-Modeling:-Unsupervised-Learning">&#182;</a></h1><p>In this portion of the tutorial we will be extracting topics in the form of commonly co-occuring words from the corpus of data.</p>
+<h1 id="Topic-Modeling:-Dimensionality-Reduction">Topic Modeling: Dimensionality Reduction<a class="anchor-link" href="#Topic-Modeling:-Dimensionality-Reduction">&#182;</a></h1><p>In this portion of the tutorial we will be extracting topics in the form of commonly co-occuring words from the corpus of data. A topic model is a generative model of document creation used for automatic summarization of text into topics, or mixtures of words. While many variants exist (e.g., supervised, unsupervised, dynamic, hierarchical, structural), this tutorial will cover the standard topic model. The standard topic model makes three assumptions:</p>
+<ul>
+<li>Bag-of-words: semantic meaning can be extracted from word co-occurance</li>
+<li>Dimensionality reduction is essential to understanding semantic information </li>
+<li>Topics (lower dimensional units) can be expressed as a probability distribution over words </li>
+</ul>
+<p><img src="figs/topic_model.png" style="width :85%; height: 85%"/></p>
 
 </div>
 </div>
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Options</span>
-<span class="n">N_TOPICS</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">N_TOP_WORDS</span> <span class="o">=</span> <span class="mi">10</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Topic-Model-IO">Topic Model IO<a class="anchor-link" href="#Topic-Model-IO">&#182;</a></h2><h3 id="Input">Input<a class="anchor-link" href="#Input">&#182;</a></h3><p>Document term count matrix</p>
+<h3 id="Output">Output<a class="anchor-link" href="#Output">&#182;</a></h3><p><strong>Topics</strong>--the probability of each word being expressed in a given topic<br>
+<strong>Document Mixtures</strong>--the probability of each topic being expressed in a document</p>
+<p><img src="figs/topic_model_io.png" style="width:85%; height:85%"/></p>
 
 </div>
 </div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example-Topics">Example Topics<a class="anchor-link" href="#Example-Topics">&#182;</a></h2><p><img src="figs/example_topics.png" style="width:85%; height:85%"/></p>
 
-</div></div></section><section>
+</div>
+</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -13495,16 +13640,7 @@ Thank you I wish all the best for you xxx
 </div>
 </div>
 
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Preprocess-the-data">Preprocess the data<a class="anchor-link" href="#Preprocess-the-data">&#182;</a></h2>
-</div>
-</div>
-</div><div class="fragment">
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[20]:</div>
@@ -13567,13 +13703,13 @@ Thank you I wish all the best for you xxx
 </div>
 </div>
 
-</div></div></section></section><section><section>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Fit-a-Topic-Model">Fit a Topic Model<a class="anchor-link" href="#Fit-a-Topic-Model">&#182;</a></h2><p>To create our topics we will use the LatentDirichletAllocation algorithm</p>
+<h2 id="Fit-a-Topic-Model">Fit a Topic Model<a class="anchor-link" href="#Fit-a-Topic-Model">&#182;</a></h2><p>To create our topics we will use Latent Dirichlet Allocation (LDA, i.e., the standard topic model). Both <a href="http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.LatentDirichletAllocation.html">scikit learn</a> and <a href="https://radimrehurek.com/gensim/">gensim</a> provide software for fitting LDA. Both methods use <a href="https://www.cs.princeton.edu/~blei/papers/HoffmanBleiBach2010b.pdf">online variational inference</a> to fit the model, but alternative methods such as <a href="https://people.cs.umass.edu/~wallach/courses/s11/cmpsci791ss/readings/steyvers06probabilistic.pdf">Gibbs sampling</a> are also popular.</p>
 
 </div>
 </div>
@@ -13583,7 +13719,11 @@ Thank you I wish all the best for you xxx
 <div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Options</span>
+<span class="n">N_TOPICS</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">N_TOP_WORDS</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="n">lda</span> <span class="o">=</span> <span class="n">LatentDirichletAllocation</span><span class="p">(</span> <span class="n">n_topics</span> <span class="o">=</span> <span class="n">N_TOPICS</span> <span class="p">)</span>
 <span class="n">doctopic</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span> <span class="n">bag_of_words_all</span> <span class="p">)</span>
 <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> 
@@ -13622,7 +13762,8 @@ Thank you I wish all the best for you xxx
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Display-the-top-ten-words-for-each-topics">Display the top ten words for each topics<a class="anchor-link" href="#Display-the-top-ten-words-for-each-topics">&#182;</a></h2>
+<h2 id="Display-the-top-ten-words-for-each-topics">Display the top ten words for each topics<a class="anchor-link" href="#Display-the-top-ten-words-for-each-topics">&#182;</a></h2><p>Qualitatively examining the topic output is the most common method for assessing fit of a topic model. Ideally, most topics will be interpretable. Topic interpretability tends to increase with the number of documents used during fitting.</p>
+
 </div>
 </div>
 </div><div class="fragment">
@@ -13713,7 +13854,8 @@ Thank you I wish all the best for you xxx
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="first-25-comments-with-the-majority-topic">first 25 comments with the majority topic<a class="anchor-link" href="#first-25-comments-with-the-majority-topic">&#182;</a></h2>
+<h2 id="Examine-Comments">Examine Comments<a class="anchor-link" href="#Examine-Comments">&#182;</a></h2><p>We will examine some of the comments and list which topic comprises the largest portion of the document.</p>
+
 </div>
 </div>
 </div><div class="fragment">
@@ -14113,7 +14255,18 @@ Your submission has been automatically removed because the title does not includ
 </div>
 </div>
 
-</div></div></section></section><section><section>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Cool-Visualizations">Cool Visualizations<a class="anchor-link" href="#Cool-Visualizations">&#182;</a></h2><p>&lt;img src = "figs/supreme_court_topics.png" style = "width:100%;height:100%"/&gt;</p>
+<p><a href="http://geebioso.github.io/Subreddit-Topic-Visualization/">Mental Health Subreddit Topics</a></p>
+
+</div>
+</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
