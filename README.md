@@ -1,14 +1,22 @@
 # Document Classification Example 
 
-## Dependencies 
+You can install the required programs using either `pip` or `anaconda`
+
+## Anaconda 
+
+This is the recommended was of installation for users newer to python, or those that have not used pip. 
+[Anaconda](https://www.continuum.io/downloads), which should have all required modules. After installing Anaconda, run 
+
+```conda update conda``` to update all modules. It may also help to specifically update scikit-learn by running
+```conda update scikit-learn```
+ 
+## Pip 
 To run this script you will need the packages listed in `requirements.txt`. To install run 
 
 ```pip install -r requirments.txt``` 
-
 in the command line. 
 
-You will also need `jupyter notebook` and `python` installed. 
-I ran this notebook with python 
+You will also need `python` installed. The notebook will run with versions 3.5 and 2.9.
 
 ## Data
 The data was filtered from this [dataset](https://www.reddit.com/r/datasets/comments/3bxlg7/i_have_every_publicly_available_reddit_comment/). 

@@ -1,5 +1,7 @@
+jupyter
 matplotlib
 nltk
 numpy
 sklearn
 ujson
+
