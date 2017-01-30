@@ -25,7 +25,8 @@ The data was filtered from this [dataset](https://www.reddit.com/r/datasets/comm
 
 To unzip the data, run ```gunzip RC_2015-05.json.gz```
 
-#If you would like data from Jan-April in addition to data from May, you can enter the following command from the cloned repository to grab data from the DSSG data mount:
+<!-- If you would like data from Jan-April in addition to data from May, you can enter the following command from the cloned repository to grab data from the DSSG data mount:
 
-#```rsync -av USERNAME@BOX.dssg.io:/mnt/data/training/nlp_training/2015 .```
+```rsync -av USERNAME@BOX.dssg.io:/mnt/data/training/nlp_training/2015 .```
+-->
 
