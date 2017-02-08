@@ -1,6 +1,4 @@
-# Document Classification Example 
-
-## Introduction
+# Introduction to Natural Language Processing  
 
 Natural language processing (NLP) refers to the methods and technologies used to allow computers to process, understand, and perform tasks using human language. 
 Common NLP tasks include sentiment analysis, part-of-speech tagging, named entity recognition, machine translation, document classification, clustering, and topic extraction.
