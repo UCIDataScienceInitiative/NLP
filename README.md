@@ -63,8 +63,8 @@ You will need to install [git](https://git-scm.com/book/en/v2/Getting-Started-In
 
 ### Python 
 
-You will need [python(https://www.python.org/downloads/) installed.  
-If you do not already have python installed, we recommend downloading [Anaconda](###Anaconda), which will include python and the modules required for this workshop. 
+You will need [python](https://www.python.org/downloads/) installed.  
+If you do not already have python installed, we recommend downloading Anaconda, which will include python and the modules required for this workshop. 
 The notebook will run with versions 3.5 and 2.9.
 
 ### Anaconda 
