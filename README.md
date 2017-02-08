@@ -57,7 +57,7 @@ This is the recommended was of installation for users newer to python, or those 
 [Anaconda](https://www.continuum.io/downloads) should have all required modules. After installing Anaconda, run 
 
 ```conda update conda```    
-to update all modules. It may also help to specifically update scikit-learn by running    
+to update all modules. If the `LatentDirchletAllocation` method will not import, it may help to update scikit-learn by running    
 ```conda update scikit-learn```
  
 ### Pip 
@@ -66,10 +66,21 @@ To run this script you will need the packages listed in `requirements.txt`. To i
 ```pip install -r requirments.txt``` 
 in the command line. 
 
-You will also need `python` installed. The notebook will run with versions 3.5 and 2.9.
+### Python 
+
+You will need `python` installed. The notebook will run with versions 3.5 and 2.9.
+
+### Git 
+
+You will need to install [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).  
+
+### Operating Systems
+
+I was able to get the notebook running using python 3.5 and 2.9 on both Mac and Windows machines. If you are having trouble installing any of the required software, please come to the workshop a few minutes early. Additoinally, we will have scheduled setup time to address any problems.  
 
 ## Data
-The data was filtered from this [dataset](https://www.reddit.com/r/datasets/comments/3bxlg7/i_have_every_publicly_available_reddit_comment/). 
+The data are comments and metadata from two mental health subreddit /r/SuicideWatch and /r/depression. 
+The data were filtered from this [dataset](https://www.reddit.com/r/datasets/comments/3bxlg7/i_have_every_publicly_available_reddit_comment/). 
 
 To unzip the data, run ```gunzip RC_2015-05.json.gz```
 
