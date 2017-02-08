@@ -63,19 +63,21 @@ You will need to install [git](https://git-scm.com/book/en/v2/Getting-Started-In
 
 ### Python 
 
-You will need [python](https://www.python.org/downloads/) installed.  
+You will need [python](https://www.python.org/downloads/) installed.
 If you do not already have python installed, we recommend downloading Anaconda, which will include python and the modules required for this workshop. 
 The notebook will run with versions 3.5 and 2.9.
 
 ### Anaconda 
 
-This is the recommended method of installation for users newer to python, or those that have not used pip.    
-
+This is the recommended method of installation for users newer to python, or those that have not used pip.
 [Anaconda](https://www.continuum.io/downloads) should have all required modules. After installing Anaconda, run 
 
-```conda update conda```    
-to update all modules. If the `LatentDirchletAllocation` method will not import, it may help to update scikit-learn by running    
-```conda update scikit-learn```
+```conda update conda```      
+
+to update all modules. If the `LatentDirchletAllocation` method will not import, it may help to update scikit-learn by running      
+
+```conda update scikit-learn```      
+
  
 ### Pip 
 
