@@ -89,10 +89,12 @@ in the command line.
 
 ### Operating Systems
 
-I was able to get the notebook running using python 3.5 and 2.9 on both Mac and Windows machines. If you are having trouble installing any of the required software, please come to the workshop a few minutes early. Additoinally, we will have scheduled setup time to address any problems.  
+I was able to get the notebook running using python 3.5 and 2.9 on both Mac and Windows machines.
+If you are having trouble installing any of the required software, please come to the workshop a few minutes early. 
+Additionally, we will have scheduled setup time to address any problems.  
 
 ## Data
-The data are comments and metadata from two mental health subreddit /r/SuicideWatch and /r/depression. 
+The data are comments and metadata from two mental health subreddits /r/SuicideWatch and /r/depression. 
 The data were filtered from this [dataset](https://www.reddit.com/r/datasets/comments/3bxlg7/i_have_every_publicly_available_reddit_comment/). 
 
 To unzip the data, run ```gunzip RC_2015-05.json.gz```
