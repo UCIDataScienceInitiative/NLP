@@ -48,11 +48,28 @@ The course will be taught using jupyter notebooks in python. NLP tools covered w
 
 ## <a name="Instructions"></a>Pre-Workshop Instructions
 
-You can install the required programs using either `pip` or `anaconda`
+You will need the following programs to run the jupyter notebook: 
+* Git
+* Python
+* Python modules (see requirements.txt)
+
+Python modules can be installed using either `anaconda` (recommended for beginners) or `pip`. 
+
+### Git 
+
+You will need to install [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).  After installing git, run the following command to clone the workshop repository: 
+
+```git clone https://github.com/geebioso/TextProcessingExample.git```
+
+### Python 
+
+You will need [python(https://www.python.org/downloads/) installed.  
+If you do not already have python installed, we recommend downloading [Anaconda](#Anaconda), which will include python and the modules required for this workshop. 
+The notebook will run with versions 3.5 and 2.9.
 
 ### Anaconda 
 
-This is the recommended was of installation for users newer to python, or those that have not used pip.    
+This is the recommended method of installation for users newer to python, or those that have not used pip.    
 
 [Anaconda](https://www.continuum.io/downloads) should have all required modules. After installing Anaconda, run 
 
@@ -61,18 +78,12 @@ to update all modules. If the `LatentDirchletAllocation` method will not import,
 ```conda update scikit-learn```
  
 ### Pip 
+
 To run this script you will need the packages listed in `requirements.txt`. To install run 
 
 ```pip install -r requirments.txt``` 
 in the command line. 
 
-### Python 
-
-You will need `python` installed. The notebook will run with versions 3.5 and 2.9.
-
-### Git 
-
-You will need to install [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).  
 
 ### Operating Systems
 
