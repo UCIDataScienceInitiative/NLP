@@ -58,7 +58,7 @@ Python modules can be installed using either `anaconda` (recommended for beginne
 
 You will need to install [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).  After installing git, run the following command to clone the workshop repository: 
 
-```git clone https://github.com/geebioso/TextProcessingExample.git```
+```git clone https://github.com/UCIDataScienceInitiative/NLP.git```
 
 ### Python 
 
