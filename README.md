@@ -108,4 +108,4 @@ or
 
 ```python3 -m http.server```
 
-than open the url ```http://localhost:8000/IntroNLP.slides.html#/``` in your browser 
+then open the url ```http://localhost:8000/IntroNLP.slides.html#/``` in your browser 
