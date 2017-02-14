@@ -98,3 +98,14 @@ The data were filtered from this [dataset](https://www.reddit.com/r/datasets/com
 
 To unzip the data, run ```gunzip RC_2015-05.json.gz```
 
+## Slides 
+
+If you would like to see the presentation in slide form, rather than an ipython notebook, you can run the following commands: 
+
+```python -m SimpleHTTPServer```
+
+or 
+
+```python3 -m http.server```
+
+than open the url ```http://localhost:8000/IntroNLP.slides.html#/``` in your browser 

@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-<title>Text_Analysis_Reddit slides</title>
+<title>IntroNLP slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -11830,7 +11830,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Introduction-to-Text-Analysis">Introduction to Text Analysis<a class="anchor-link" href="#Introduction-to-Text-Analysis">&#182;</a></h1><p><strong>Garren Gaut with contributions from Avishek Kumar</strong></p>
+<h1 id="Introduction-to-Natural-Language-Processing">Introduction to Natural Language Processing<a class="anchor-link" href="#Introduction-to-Natural-Language-Processing">&#182;</a></h1><p><strong>Garren Gaut with contributions from Avishek Kumar</strong></p>
 <hr>
 
 </div>
@@ -12057,13 +12057,14 @@ Text Analysis can help with the following tasks:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Import-Packages-and-Utility-Functions">Import Packages and Utility Functions<a class="anchor-link" href="#Import-Packages-and-Utility-Functions">&#182;</a></h3>
+<h2 id="Sci-kit-Learn-and-Nltk">Sci-kit Learn and Nltk<a class="anchor-link" href="#Sci-kit-Learn-and-Nltk">&#182;</a></h2><p>We are going to use sci-kit learn and nltk to process a dataset of comments from reddit. We will train machine learning classifiers to predict which subreddit a comment came from, and will cluster comments. First, we process comment text.</p>
+
 </div>
 </div>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[193]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">pylab</span> inline 
@@ -12104,7 +12105,7 @@ Text Analysis can help with the following tasks:</p>
 </div>
 </div>
 
-<div class="output_area"><div class="prompt output_prompt">Out[193]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12119,7 +12120,7 @@ Text Analysis can help with the following tasks:</p>
 </div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">load_reddit</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">ls_subreddits</span><span class="o">=</span><span class="p">[],</span> <span class="n">MIN_CHAR</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
@@ -12175,7 +12176,7 @@ Text Analysis can help with the following tasks:</p>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">plot_roc</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_score</span><span class="p">):</span>
@@ -12223,13 +12224,14 @@ Text Analysis can help with the following tasks:</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Load-and-Preprocess-Data">Load and Preprocess Data<a class="anchor-link" href="#Load-and-Preprocess-Data">&#182;</a></h1><h3 id="Data-Source:-Reddit-Comments-from-May-2015-in-JSON-format">Data Source: Reddit Comments from May 2015 in JSON format<a class="anchor-link" href="#Data-Source:-Reddit-Comments-from-May-2015-in-JSON-format">&#182;</a></h3><p>For the superivised learning portion of the tutorial we will being attempting to classify whether reddit comments have come from /r/SucideWatch or /r/depression. These two subreddits are somewhat similiar so it poses a non-trivial challenge for a classifier.</p>
+<p>Return to <a href="#Table-of-Contents">TOC</a></p>
 
 </div>
 </div>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># grab data from the following subreddits</span>
@@ -12248,7 +12250,7 @@ Text Analysis can help with the following tasks:</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12266,14 +12268,14 @@ Text Analysis can help with the following tasks:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Preprocess-the-data">Preprocess the data<a class="anchor-link" href="#Preprocess-the-data">&#182;</a></h2><p>In order to quantify our text, we will have to remove characters that aren't parts of words.</p>
+<h2 id="Preprocess-the-data">Preprocess the data<a class="anchor-link" href="#Preprocess-the-data">&#182;</a></h2><p>In order to quantify our text, we will have to remove characters that we don't consider parts of words.</p>
 
 </div>
 </div>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create an expression to remove from data </span>
@@ -12305,7 +12307,7 @@ Text Analysis can help with the following tasks:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Activity-1:">Activity 1:<a class="anchor-link" href="#Activity-1:">&#182;</a></h3><p><strong>10 mins</strong></p>
+<h3 id="Activity-1:-Internet-Stoic">Activity 1: Internet Stoic<a class="anchor-link" href="#Activity-1:-Internet-Stoic">&#182;</a></h3><p><strong>10 mins</strong></p>
 <p>Write your own preprocessing routine that removes <strong>only happy and sad emojis</strong> from each comment in the corpus. Write a loop that prints comments <code>[1788, 2360, 9679, 18096]</code> to check that your choice of regular expression preprocess the text as you intended. <a href="https://docs.python.org/2/library/re.html">Python regular expression documentation</a> will be helpful.</p>
 
 </div>
@@ -12313,7 +12315,7 @@ Text Analysis can help with the following tasks:</p>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ANSWER</span>
@@ -12379,6 +12381,7 @@ Comment 18096:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Comment-Classification:-Supervised-Learning">Comment Classification: Supervised Learning<a class="anchor-link" href="#Comment-Classification:-Supervised-Learning">&#182;</a></h1><p>In this section we are going to train a classifier to properly tag the original subreddit in which the comment appeared. First we split our data into a testing and training set using the first 80% of the data as the training set and the remaining 20% as the testing set.</p>
+<p>Return to <a href="#Table-of-Contents">TOC</a></p>
 
 </div>
 </div>
@@ -12394,7 +12397,7 @@ Comment 18096:
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[221]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#split the data into training and testing sets. </span>
@@ -12447,7 +12450,7 @@ Testing Labels Counter({&#39;depression&#39;: 5301, &#39;SuicideWatch&#39;: 2158
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># parameters for vectorizer </span>
@@ -12478,14 +12481,466 @@ Testing Labels Counter({&#39;depression&#39;: 5301, &#39;SuicideWatch&#39;: 2158
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>TFIDF (Term Frequency Inverse Document Frequency)</strong> transforms a count matrix--what we created above--into a TFIDF represenation. This is done by reweighting words that occur throughout the entire corpus to a lower weight due to empirically being found to be less discriminative.</p>
+<p><strong>TFIDF (Term Frequency Inverse Document Frequency)</strong> transforms a count matrix--what we created above--into a TFIDF represenation. This is done by reweighting words that occur throughout the entire corpus to a lower weight due to empirically being found to be less discriminative. Intuitively, TFIDF counts the number of times each term occurs in each document and weights each term frequency by how rare that term is in the corpus. Rare words receive higher weight to quantify that rare words are more discriminative.</p>
+<p>Term frequency (TF) for a word $t$ and document $d$ is computed as:</p>
+$$
+\textrm{tf} (t,d)= \frac{n_{t,d}}{\sum\limits_{t^\prime \in \mathbb{T}} { n_{t^\prime,d}}}
+$$<p>where $n_{t,d}$ is the number of times term $t$ occurs in document $d$ and $\mathbb{T}$ is the set of all terms in the corpus. The inverse document frequency (IDF) for a term and a set of documents $D$ is computed as:</p>
+\begin{align}
+ \mathrm{idf}(t, D) &=  \log \frac{|D|}{1 + df(D,t)} \\ 
+ df(D,t) &= |\{d \in D: t \in d\}| 
+\end{align}<p>where $|\{d \in D: t \in d\}|$ is the number of documents where term $t$ appears. The 1 added in the demoninator prevents division-by-zero. Then TFIDF is just the weighting of each term frequency by the inverse document frequency:</p>
+$$ 
+{\displaystyle \mathrm {tfidf} (t,d,D)=\mathrm {tf} (t,d)\cdot \mathrm {idf} (t,D)}
+$$<p></p>
+<p><a href="http://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction">TFIDF in sci-kit learn</a> differs from the textbook definition.</p>
 
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Plot different IDF options</span>
+<span class="n">document_freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">n_d</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">default</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="n">n_d</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">document_freq</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">textbook</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span> <span class="n">n_d</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">document_freq</span><span class="p">))</span>
+<span class="n">smooth_idf_false</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span> <span class="n">n_d</span><span class="o">/</span><span class="n">document_freq</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">lw</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">document_freq</span><span class="p">,</span> <span class="n">default</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>
+     <span class="n">lw</span><span class="o">=</span><span class="n">lw</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">document_freq</span><span class="p">,</span> <span class="n">textbook</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>
+     <span class="n">lw</span><span class="o">=</span><span class="n">lw</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;textbook&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">document_freq</span><span class="p">,</span> <span class="n">smooth_idf_false</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span>
+     <span class="n">lw</span><span class="o">=</span><span class="n">lw</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;smooth_idf_false&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;document frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;inverse document frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;IDF&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/ipykernel/__main__.py:8: RuntimeWarning: divide by zero encountered in true_divide
+</pre>
+</div>
+</div>
+
+<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">NORM</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1">#turn on normalization flag</span>
@@ -12503,7 +12958,7 @@ Testing Labels Counter({&#39;depression&#39;: 5301, &#39;SuicideWatch&#39;: 2158
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#get the bag-of-words from the vectorizer and</span>
@@ -12529,7 +12984,7 @@ Testing Labels Counter({&#39;depression&#39;: 5301, &#39;SuicideWatch&#39;: 2158
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Time Elapsed: 13.95s
+<pre>Time Elapsed: 11.73s
 </pre>
 </div>
 </div>
@@ -12543,7 +12998,7 @@ Testing Labels Counter({&#39;depression&#39;: 5301, &#39;SuicideWatch&#39;: 2158
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Activity-2:">Activity 2:<a class="anchor-link" href="#Activity-2:">&#182;</a></h3><p><strong>20 mins</strong></p>
+<h3 id="Activity-2:-Words-are-Just-Too-Long">Activity 2: Words are <em>Just Too Long</em><a class="anchor-link" href="#Activity-2:-Words-are-Just-Too-Long">&#182;</a></h3><p><strong>20 mins</strong></p>
 <p>In text analysis, words are frequently <strong>stemmed</strong> or <strong>lemmatized</strong> in order to reduce the size of the vocubalary and treat words with similar semantic meaning as the same word. Stemming consists of removing parts of words to create a stem. For example, the word tokens <code>eat, eating, eatery, eaten, eater</code> would all be stemmed to the word <code>eat</code>. The CountVectorizer provides an easy way incorporate stemming into preprocessing via the <em>tokenizer</em> parameter which takes a function handle as an argument. For this activity, create a function to pass to the <a href="http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html">CountVectorizer</a> that will stem all words in your corpora. Use the CountVectorizer with this function as an argument to preprocess the corpus (this may take some time). Store the result in a variable called <code>stemmed_corpus</code>. Below is an example of a stemmer from the nltk toolkit that will be helpful.</p>
 
 </div>
@@ -12551,7 +13006,7 @@ Testing Labels Counter({&#39;depression&#39;: 5301, &#39;SuicideWatch&#39;: 2158
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[200]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">nltk</span> <span class="k">import</span> <span class="n">SnowballStemmer</span>
@@ -12568,11 +13023,13 @@ Testing Labels Counter({&#39;depression&#39;: 5301, &#39;SuicideWatch&#39;: 2158
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Time Elapsed: 16.50s
-</pre>
+<div class="output_area"><div class="prompt output_prompt">Out[25]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;eat&#39;</pre>
 </div>
+
 </div>
 
 </div>
@@ -12581,7 +13038,7 @@ Testing Labels Counter({&#39;depression&#39;: 5301, &#39;SuicideWatch&#39;: 2158
 </div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ANSWER </span>
@@ -12626,14 +13083,29 @@ Testing Labels Counter({&#39;depression&#39;: 5301, &#39;SuicideWatch&#39;: 2158
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Time Elapsed: 11.84s
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div><aside class="notes">
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#relabel our labels as a 0 or 1</span>
+<span class="c1"># depression corresponds to a 1 </span>
 <span class="n">le</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">LabelEncoder</span><span class="p">()</span> 
 <span class="n">le</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">subreddit_id</span><span class="p">)</span>
 <span class="n">subreddit_id_binary</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">subreddit_id</span><span class="p">)</span>
@@ -12660,7 +13132,7 @@ $$ \min_{\bf w}{\frac{1}{2}||{\bf w}||_d + C \sum_{i=1}^{N}{\textrm{log}(1+e^{âˆ
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[223]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Fit a regularized logistic regression model  </span>
@@ -12680,15 +13152,14 @@ $$ \min_{\bf w}{\frac{1}{2}||{\bf w}||_d + C \sum_{i=1}^{N}{\textrm{log}(1+e^{âˆ
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong> Evaluate</strong> 
-To evalute how our classifer performed we find the Area Under the Curve (AUC) of a Receiver Operating Characteristic (ROC) curve. The ROC curve plots the true positive rate versus the false positive rate for each threshold.</p>
+<h3 id="Evaluate">Evaluate<a class="anchor-link" href="#Evaluate">&#182;</a></h3><p>To evalute how our classifer performed we plot the Receiver Operating Characteristic (ROC) curve. The ROC curve is a way of lookin at overall classifier performance. For each test comment, the classifier produces a score indicating how confident the classifier is that the comment was posted in the depression subreddit. In order to produce classifications from these scores, we need to set a threshold above which a score is converted into a positive classificaiton. The ROC curve plots the false positive and true positive rate for every possible threshold we could set. We find the Area Under the Curve (AUC) which ranges from 0.5 (chance) to 1 (perfect prediction). The dashed line plots chance ROC.</p>
 
 </div>
 </div>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[216]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot_roc</span><span class="p">(</span><span class="n">subreddit_id_binary</span><span class="p">[</span><span class="n">test_idx</span><span class="p">],</span> <span class="n">y_score</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
@@ -13016,7 +13487,7 @@ jyxBGGOM8cgShDHGGI8sQRhjjPHo/wFcAYlqi5UvjQAAAABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Feature-Importance">Feature Importance<a class="anchor-link" href="#Feature-Importance">&#182;</a></h2><h3 id="Activity-3">Activity 3<a class="anchor-link" href="#Activity-3">&#182;</a></h3><p><strong>20mins</strong></p>
+<h2 id="Feature-Importance">Feature Importance<a class="anchor-link" href="#Feature-Importance">&#182;</a></h2><h3 id="Activity-3:">Activity 3:<a class="anchor-link" href="#Activity-3:">&#182;</a></h3><p><strong>20mins</strong></p>
 <p>To understand what the model is doing, we want to see which features make the model more likely to classify a comment as a certain class. The CountVectorizer provides a list of features (using the <code>get_feature_names()</code> method) and model coefficients can be found in using the <code>coef_</code> method. For this activity, make a sorted list or dictionary of features and their importances (i.e., the corresponding coefficient value). Print the 5 most important features for classifying a comment as each of our class labels, SuicideWatch and depression.</p>
 
 </div>
@@ -13024,7 +13495,7 @@ jyxBGGOM8cgShDHGGI8sQRhjjPHo/wFcAYlqi5UvjQAAAABJRU5ErkJggg==
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[217]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ANSWER </span>
@@ -13040,7 +13511,7 @@ jyxBGGOM8cgShDHGGI8sQRhjjPHo/wFcAYlqi5UvjQAAAABJRU5ErkJggg==
 <span class="n">suicidewatch_features</span> <span class="o">=</span> <span class="n">ls_sorted_features</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span> <span class="c1">#SuicideWatch</span>
 <span class="n">depression_features</span> <span class="o">=</span> <span class="n">ls_sorted_features</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span> <span class="c1">#depression</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;SuicideWatch: &#39;</span><span class="p">,</span><span class="n">suicidewatch_features</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;depression: &#39;</span><span class="p">,</span> <span class="n">depression_features</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;depression: &#39;</span><span class="p">,</span> <span class="n">depression_features</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -13054,7 +13525,7 @@ jyxBGGOM8cgShDHGGI8sQRhjjPHo/wFcAYlqi5UvjQAAAABJRU5ErkJggg==
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>SuicideWatch:  [&#39;suicide&#39;, &#39;please&#39;, &#39;talked&#39;, &#39;suicidal&#39;, &#39;hospital&#39;]
-depression:  [&#39;helps&#39;, &#39;psychiatrist&#39;, &#39;depressed&#39;, &#39;effects&#39;, &#39;depression&#39;]
+depression:  [&#39;depression&#39;, &#39;effects&#39;, &#39;depressed&#39;, &#39;psychiatrist&#39;, &#39;helps&#39;]
 </pre>
 </div>
 </div>
@@ -13075,7 +13546,7 @@ depression:  [&#39;helps&#39;, &#39;psychiatrist&#39;, &#39;depressed&#39;, &#39
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[218]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># maybe do something with this crazy indexing: this is python not C!</span>
@@ -13095,7 +13566,7 @@ depression:  [&#39;helps&#39;, &#39;psychiatrist&#39;, &#39;depressed&#39;, &#39
 </div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[222]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># these are the 5 comments the model is most sure of </span>
@@ -13328,13 +13799,14 @@ We&#39;re all here for you so talk to us.
 $$\textrm{cos}({\bf x},{\bf y}) = \frac{{\bf x} \bullet {\bf y}}{||\bf x|| \; || \bf y ||}$$<p>.</p>
 <p>The common conceptual interpretations of the cosine similarity is the angle between two vectors. In text analysis each document is represented as a point in a $V$-dimensional, where $V$ is the size of the vocabulary. Thus by normalizing we are looking at the percent of a document that each word compromises instead of the raw counts of word tokens.</p>
 <p>Below is an example illustrating why we use cosine distance. The example computes the euclidean and cosine distances between repeated sentences.</p>
+<p>Return to <a href="#Table-of-Contents">TOC</a></p>
 
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[213]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sentences</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;The girl went to the store&#39;</span><span class="p">,</span> 
@@ -13385,7 +13857,7 @@ Cosine Distance
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[182]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_comments</span> <span class="o">=</span> <span class="mi">1000</span>
@@ -13399,7 +13871,7 @@ Cosine Distance
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[194]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#cluster = AgglomerativeClustering(n_clusters = 10, affinity=&quot;cosine&quot;, linkage =&quot;average&quot;)</span>
@@ -13409,8 +13881,8 @@ Cosine Distance
 <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
 <span class="c1"># calculate cosine similarity and fit clustering algorithm</span>
-<span class="n">cosine_similarity</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">bag_of_words</span><span class="p">,</span> <span class="n">Y</span><span class="o">=</span><span class="kc">None</span> <span class="p">)</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="n">spectral_clustering</span><span class="p">(</span><span class="n">affinity</span><span class="o">=</span><span class="n">cosine_distance</span><span class="p">,</span> <span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">cosine_sim</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">bag_of_words</span><span class="p">,</span> <span class="n">Y</span><span class="o">=</span><span class="kc">None</span> <span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">spectral_clustering</span><span class="p">(</span><span class="n">affinity</span><span class="o">=</span><span class="n">cosine_sim</span><span class="p">,</span> <span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Time Elapsed: </span><span class="si">{0:.2f}</span><span class="s1">s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
         <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">-</span><span class="n">start_time</span><span class="p">))</span>
@@ -13428,8 +13900,17 @@ Cosine Distance
 
 
 <div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/sklearn/manifold/spectral_embedding_.py:217: UserWarning: Graph is not fully connected, spectral embedding may not work as expected.
+  warnings.warn(&#34;Graph is not fully connected, spectral embedding&#34;
+</pre>
+</div>
+</div>
+
+<div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Time Elapsed: 6.98s
+<pre>Time Elapsed: 0.35s
+Counter({1: 542, 3: 167, 0: 147, 2: 143})
 </pre>
 </div>
 </div>
@@ -13440,11 +13921,12 @@ Cosine Distance
 </div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[198]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># examine the comments that fall in each group</span>
 <span class="c1"># what defines each group?</span>
+<span class="n">num_comments_to_view</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">label_counter</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">-------Group</span><span class="si">{}</span><span class="s2">-------</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
@@ -13470,66 +13952,11 @@ Cosine Distance
 -------Group0-------
 
 
-Comment 5: Ah. Well, sometimes just him listening can be enough. Just so long as he doesn&#39;t tell you to snap out of it or anything like that. Maybe you can also research support groups in your area. Try and find as many resources as you can.
-
-Comment 15: I&#39;m sure you&#39;re a very pretty young girl.  Please don&#39;t let the tauntings of small-minded people scar you.
-Just endure for a little while longer.  These things improve greatly in a few years.
-
-Comment 16: This is a reply to OP and also /u/strincheese13 and /u/elleundomiel.  
-
-It may seem like it, but please believe me that your future is far from ruined because of a bad year or two in school.  Sure, it may make things a bit tougher in some respects, but you are far from doomed because of it. For the vast majority of careers, especially that don&#39;t require post-graduate education/certification, no one even cares what your marks are, just that you completed it.  And that&#39;s not even getting into the many careers that are out there that don&#39;t even require degrees.
-
-Comment 27: [It&#39;s a very difficult topic to understand without first hand experience.] (http://i.huffpost.com/gen/2271298/thumbs/o-ROBOT-HUGS-570.jpg?6)
-
-Comment 29: I&#39;ve been in a sexless, loveless marriage for 12 years and I wish I could just die. I have ptsd from being raped as a teenager. I have suffered many breakdowns. Quit driving, quit working. I&#39;ve become a complete shut in. I&#39;ve just now starting driving again. I want to leave my husband, but I have no where to go. I&#39;m outta state and my parents are both deceased.
-
-
--------Group1-------
-
-
-Comment 1: Just logged back onto my alt. Thank you. That means a lot to me, I know I&#39;m late and all but ... thanks.
-
-Comment 7: We aren&#39;t friends. We don&#39;t dislike each other we just keep it professional. I could easily be replaced and life would go on so I guess i don&#39;t see why it would be a bad thing.
+Comment 2: Hey, do you know what it is that makes you feel such hatred towards these things? Does the violence make your thoughts go in an unwanted direction? And when you say these things make them bad people, do you mean you think your friends are bad people for enjoying the shows/games, or that the people who make them are bad? It sounds like it could easily be a depression thing tbh.
 
 Comment 8: As someone a bit older, I can say this with some authority - pretty much everyone is attractive to some chunk of people.  One thing that happens in school is that people are afraid to appear different, so if they have tastes that lie outside the mainstream, they may very well be afraid to express them. I knew a couple guys who were into bigger girls, but were way too insecure to express it in high school. Not everyone - I&#39;m not even sure most people - find the sort of default media-created concept of what is attractive to actually be attractive.  
 
 It sucks that you&#39;re on the wrong end of that sort of thing right now, but it will change with time.  And hell, if you&#39;re still in school, your body hasn&#39;t even finished developing.  You might look far more like how you want to look in a few years.
-
-Comment 13: Does a lot of what im going through apply to you as well?
-
-Comment 34: I can relate. Apathy is the destroyer of progress. At least that&#39;s how I see it. That&#39;s the feeling I get. It&#39;s not a feeling of sadness. It&#39;s *nothing*. The feeling of emptiness and life&#39;s borders growing beyond your grasp. I &#39;cure&#39; my feeling of inadequacy with alcohol (like right now). Is this depression? I really don&#39;t know.
-
-When it comes to motivation, I&#39;ve found that no one will give it to you, but yourself. I hate that fact, but that&#39;s what it seems like. I have little of it myself, but the little I muster up for the absolutely essential shit all comes from myself. Use it sparingly and use it wisely.
-
-(I have no idea if this is really helpful. It&#39;s my first time posting on this sub-reddit.)
-
-
--------Group2-------
-
-
-Comment 2: Hey, do you know what it is that makes you feel such hatred towards these things? Does the violence make your thoughts go in an unwanted direction? And when you say these things make them bad people, do you mean you think your friends are bad people for enjoying the shows/games, or that the people who make them are bad? It sounds like it could easily be a depression thing tbh.
-
-Comment 6: Hello friend, I struggle with the hatred as well, it seems like second nature to just scream abuse at myself in my head. I don&#39;t know for sure how to stop it from happening but maybe making a point to yourself to notice whenever you feel yourself spiralling downward and see what sort of thing sets you off could be a start? Wishing you the best of lovely times.
-
-Comment 14: Awesome! What timezone are you in (so I can contact you easier)?
-
-Comment 22: I&#39;m not as much of a perfectionist though. And I don&#39;t workout. Though I should. Are you taking any medication? 
-
-Comment 25: Hello sabishoikouen :-)
-
-It&#39;s really nice to hear from you. What is it you feel you want out from? What is the reason you feel that you&#39;re stupid or can&#39;t process things quickly?
-
-Why do you do all this translation too from the HK news? that must take quite a lot of time?
-
-
--------Group3-------
-
-
-Comment 0: Systems of living have been built around us to make us miserable.  Idk where you are but if you can.  Go shooting.   Trust me on this. Something about shooting guns helps with that feeling.  
-
-Comment 3: Right there with you. National merit scholar now failing classes. Gpa from 3.7 to 2.5. Depression is a bitch. You just have to find what works for you study wise. For me, empty classrooms help. Space and isolation. You have to be strict about setting study days. It&#39;s incredibly difficult and I&#39;m nowhere near succeeding, but it&#39;s given me some improvement.  Do it for yourself, not your family. 
-
-Comment 4: I was a generally sad child. But I don&#39;t feel like my problems stemmed from that. Years ago I decided that I wanted to join the army. It sounded like a good idea. Wrong. I&#39;m not sure what it was that first triggered my major depression episodes, but it happened. I started falling apart. I had a rough experience. The army shuns the weak, both mental and physical. I&#39;m strong but was still developing mentally at 18, still learning the world and who I was. Uncontrollable actions, such as fits of depression and anger made my life hell. The others picked up on it. I felt like they would rather leave me behind then help my up. I was right. I have one very vivid memory that I remember every day. I was laying in my bed (separated from the other beds in the middle of the room), with my two &#34;guards&#34; standing watch. Yeah, I had to have at least two people within arms reach of me at all times, even while sleeping. It got that bad. One of them decided he didn&#39;t have time for this. All I did was look at him and sigh. He took my pillow from under my head and tried to suffocate me. And I just laid there. Not moving. I didn&#39;t care. It didn&#39;t last long as the other people in the room (47 people) stepped in. After the event the drill sergeant walked in, unaware of the events that had transpired moments before. He walked up to me as I was laying in bed again. He bent over me and asked my how I was. I said that I was fine and he left. It has taken me a very long time to understand how I felt about this. Turns out I was angry at myself for failing something that I set out to do. I felt like garbage for so long. It took me 5 years to admit to myself that my self directed anger and loathing ment nothing. The past is the past. There is nothing that can be done about it. But my future, my happiness needs not be influenced by past failures. I was angry at myself, and I finally learned why. And I finally forgave myself.
 
 Comment 9: Hey there.
 
@@ -13543,6 +13970,19 @@ Reddit is unfortunately a site taken over by the opinions of about 4000 people. 
 
 Never be afraid to reply OP. I&#39;ll be expecting that orange envelope. 
 
+Comment 15: I&#39;m sure you&#39;re a very pretty young girl.  Please don&#39;t let the tauntings of small-minded people scar you.
+Just endure for a little while longer.  These things improve greatly in a few years.
+
+
+-------Group1-------
+
+
+Comment 0: Systems of living have been built around us to make us miserable.  Idk where you are but if you can.  Go shooting.   Trust me on this. Something about shooting guns helps with that feeling.  
+
+Comment 1: Just logged back onto my alt. Thank you. That means a lot to me, I know I&#39;m late and all but ... thanks.
+
+Comment 3: Right there with you. National merit scholar now failing classes. Gpa from 3.7 to 2.5. Depression is a bitch. You just have to find what works for you study wise. For me, empty classrooms help. Space and isolation. You have to be strict about setting study days. It&#39;s incredibly difficult and I&#39;m nowhere near succeeding, but it&#39;s given me some improvement.  Do it for yourself, not your family. 
+
 Comment 10: I&#39;m in the exact same boat... Everyday I wake up with such a depressive mindset. I have absolutely no drive and I have no reason to get up in the mornings. I have no friends, no job and I only attend college 3 times a week. 
 
 Sometimes I have a sudden spurdge of happiness. Usually when I&#39;m in a good mood I have my drive back, I want to do things. I want to make sure that I grasp onto my future and make a name for myself before its too late. I come up with all these plans on how I&#39;m going to do this then booom depression hits me before I execute anything then it&#39;s back to being a depressive cu*t again. 
@@ -13554,6 +13994,30 @@ I just can&#39;t handle it. My life right now is going nowhere, every day gets w
 This post has gone out of hand. This is my feelings talking. I&#39;m sorry if I&#39;ve missed the objective of this post. I just needed somewhere to throw my emotions 
 
 Thank you I wish all the best for you xxx
+
+
+-------Group2-------
+
+
+Comment 7: We aren&#39;t friends. We don&#39;t dislike each other we just keep it professional. I could easily be replaced and life would go on so I guess i don&#39;t see why it would be a bad thing.
+
+Comment 24: If you fail out of college are you saying that would cause your gf to leave?
+
+Comment 42: please read my edit i may have written this a bit hastily, but i assure you i would never try to harm anyone, with my words i know how badly they can hurt.
+
+Comment 45: What all is involved in getting the license? I&#39;ve thought about it. But I Dont think I would want to do it every day though maybe once or twice a week
+
+
+-------Group3-------
+
+
+Comment 4: I was a generally sad child. But I don&#39;t feel like my problems stemmed from that. Years ago I decided that I wanted to join the army. It sounded like a good idea. Wrong. I&#39;m not sure what it was that first triggered my major depression episodes, but it happened. I started falling apart. I had a rough experience. The army shuns the weak, both mental and physical. I&#39;m strong but was still developing mentally at 18, still learning the world and who I was. Uncontrollable actions, such as fits of depression and anger made my life hell. The others picked up on it. I felt like they would rather leave me behind then help my up. I was right. I have one very vivid memory that I remember every day. I was laying in my bed (separated from the other beds in the middle of the room), with my two &#34;guards&#34; standing watch. Yeah, I had to have at least two people within arms reach of me at all times, even while sleeping. It got that bad. One of them decided he didn&#39;t have time for this. All I did was look at him and sigh. He took my pillow from under my head and tried to suffocate me. And I just laid there. Not moving. I didn&#39;t care. It didn&#39;t last long as the other people in the room (47 people) stepped in. After the event the drill sergeant walked in, unaware of the events that had transpired moments before. He walked up to me as I was laying in bed again. He bent over me and asked my how I was. I said that I was fine and he left. It has taken me a very long time to understand how I felt about this. Turns out I was angry at myself for failing something that I set out to do. I felt like garbage for so long. It took me 5 years to admit to myself that my self directed anger and loathing ment nothing. The past is the past. There is nothing that can be done about it. But my future, my happiness needs not be influenced by past failures. I was angry at myself, and I finally learned why. And I finally forgave myself.
+
+Comment 5: Ah. Well, sometimes just him listening can be enough. Just so long as he doesn&#39;t tell you to snap out of it or anything like that. Maybe you can also research support groups in your area. Try and find as many resources as you can.
+
+Comment 6: Hello friend, I struggle with the hatred as well, it seems like second nature to just scream abuse at myself in my head. I don&#39;t know for sure how to stop it from happening but maybe making a point to yourself to notice whenever you feel yourself spiralling downward and see what sort of thing sets you off could be a start? Wishing you the best of lovely times.
+
+Comment 12: Okay so you already know that you don&#39;t want to be in this rut anymore. Seems like you are currently stuck in this vicious cycle. What if you could take small steps towards getting back out there? I&#39;m not saying completely quit smoking but what if you set little goals each day(every couple of days) and only allow yourself to smoke up after you complete the task? It&#39;s obvious that you care and that&#39;s huge! Also do you have any close friends that could help you with keeping on track...not like hovering over you but just like checking in? Sorry if this is intrusive-I&#39;m new on redditðŸ˜„
 
 </pre>
 </div>
@@ -13575,6 +14039,7 @@ Thank you I wish all the best for you xxx
 <li>Topics (lower dimensional units) can be expressed as a probability distribution over words </li>
 </ul>
 <p><img src="figs/topic_model.png" style="width :85%; height: 85%"/></p>
+<p>Return to <a href="#Table-of-Contents">TOC</a></p>
 
 </div>
 </div>
@@ -13613,7 +14078,7 @@ Thank you I wish all the best for you xxx
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
@@ -13632,7 +14097,7 @@ Thank you I wish all the best for you xxx
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Loading takes 4.794395s
+<pre>Loading takes 4.961112s
 </pre>
 </div>
 </div>
@@ -13643,7 +14108,7 @@ Thank you I wish all the best for you xxx
 </div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get rid of punctuation and set to lowercase  </span>
@@ -13668,7 +14133,7 @@ Thank you I wish all the best for you xxx
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Processing took 29.07464623451233s
+<pre>Processing took 50.990886926651s
 </pre>
 </div>
 </div>
@@ -13679,7 +14144,7 @@ Thank you I wish all the best for you xxx
 </div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">subreddit_id_all</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">subreddit_id_all</span><span class="p">))</span>
@@ -13695,7 +14160,7 @@ Thank you I wish all the best for you xxx
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Counter({&#39;depression&#39;: 12079, &#39;offmychest&#39;: 10661, &#39;stopdrinking&#39;: 6958, &#39;SuicideWatch&#39;: 6098, &#39;ADHD&#39;: 5674, &#39;GetMotivated&#39;: 4799, &#39;Anxiety&#39;: 4466, &#39;Meditation&#39;: 3608, &#39;stopsmoking&#39;: 1867, &#39;leaves&#39;: 1629, &#39;BPD&#39;: 1618, &#39;BipolarReddit&#39;: 1515, &#39;OpiatesRecovery&#39;: 1391, &#39;socialanxiety&#39;: 1221, &#39;StopGaming&#39;: 946, &#39;schizophrenia&#39;: 898, &#39;mentalhealth&#39;: 572, &#39;ptsd&#39;: 566, &#39;MMFB&#39;: 483, &#39;alcoholism&#39;: 378, &#39;rapecounseling&#39;: 283, &#39;BipolarSOs&#39;: 272, &#39;AlAnon&#39;: 267, &#39;ZenHabits&#39;: 237, &#39;alcoholicsanonymous&#39;: 219, &#39;getting_over_it&#39;: 208, &#39;EatingDisorders&#39;: 203, &#39;Anger&#39;: 165, &#39;selfhelp&#39;: 150, &#39;StopSelfHarm&#39;: 136, &#39;dpdr&#39;: 105, &#39;survivorsofabuse&#39;: 96, &#39;helpmecope&#39;: 45, &#39;AtheistTwelveSteppers&#39;: 29, &#39;problemgambling&#39;: 17, &#39;buddhistrecovery&#39;: 12, &#39;MaladaptiveDreaming&#39;: 9, &#39;psychoticreddit&#39;: 8, &#39;PanicAttack&#39;: 8, &#39;secularsobriety&#39;: 6, &#39;SMARTRecovery&#39;: 5, &#39;secondary_survivors&#39;: 5, &#39;hardshipmates&#39;: 4, &#39;PanicParty&#39;: 4, &#39;afterthesilence&#39;: 3, &#39;feelgood&#39;: 2, &#39;jessiesparents&#39;: 1, &#39;Existential_crisis&#39;: 1}) 69927
+<pre>Counter({&#39;depression&#39;: 12079, &#39;offmychest&#39;: 10661, &#39;stopdrinking&#39;: 6958, &#39;SuicideWatch&#39;: 6098, &#39;ADHD&#39;: 5674, &#39;GetMotivated&#39;: 4799, &#39;Anxiety&#39;: 4466, &#39;Meditation&#39;: 3608, &#39;stopsmoking&#39;: 1867, &#39;leaves&#39;: 1629, &#39;BPD&#39;: 1618, &#39;BipolarReddit&#39;: 1515, &#39;OpiatesRecovery&#39;: 1391, &#39;socialanxiety&#39;: 1221, &#39;StopGaming&#39;: 946, &#39;schizophrenia&#39;: 898, &#39;mentalhealth&#39;: 572, &#39;ptsd&#39;: 566, &#39;MMFB&#39;: 483, &#39;alcoholism&#39;: 378, &#39;rapecounseling&#39;: 283, &#39;BipolarSOs&#39;: 272, &#39;AlAnon&#39;: 267, &#39;ZenHabits&#39;: 237, &#39;alcoholicsanonymous&#39;: 219, &#39;getting_over_it&#39;: 208, &#39;EatingDisorders&#39;: 203, &#39;Anger&#39;: 165, &#39;selfhelp&#39;: 150, &#39;StopSelfHarm&#39;: 136, &#39;dpdr&#39;: 105, &#39;survivorsofabuse&#39;: 96, &#39;helpmecope&#39;: 45, &#39;AtheistTwelveSteppers&#39;: 29, &#39;problemgambling&#39;: 17, &#39;buddhistrecovery&#39;: 12, &#39;MaladaptiveDreaming&#39;: 9, &#39;psychoticreddit&#39;: 8, &#39;PanicAttack&#39;: 8, &#39;secularsobriety&#39;: 6, &#39;secondary_survivors&#39;: 5, &#39;SMARTRecovery&#39;: 5, &#39;PanicParty&#39;: 4, &#39;hardshipmates&#39;: 4, &#39;afterthesilence&#39;: 3, &#39;feelgood&#39;: 2, &#39;jessiesparents&#39;: 1, &#39;Existential_crisis&#39;: 1}) 69927
 </pre>
 </div>
 </div>
@@ -13716,7 +14181,7 @@ Thank you I wish all the best for you xxx
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Options</span>
@@ -13739,16 +14204,8 @@ Thank you I wish all the best for you xxx
 
 
 <div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/home/akumar/py3venv/lib/python3.4/site-packages/sklearn/decomposition/online_lda.py:508: DeprecationWarning: The default value for &#39;learning_method&#39; will be changed from &#39;online&#39; to &#39;batch&#39; in the release 0.20. This warning was introduced in 0.18.
-  DeprecationWarning)
-</pre>
-</div>
-</div>
-
-<div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Processing took 352.21460127830505s
+<pre>Processing took 259.7540240287781s
 </pre>
 </div>
 </div>
@@ -13769,7 +14226,7 @@ Thank you I wish all the best for you xxx
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ls_keywords</span> <span class="o">=</span> <span class="p">[]</span>
@@ -13791,56 +14248,56 @@ Thank you I wish all the best for you xxx
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>0 read, normal, dont, loved, scared, follow, books, skills, found, nearly
-1 brain, adhd, issues, use, attention, also, due, cause, part, several
-2 job, money, thinking, stop, hours, using, fix, spend, jobs, straight
-3 keep, body, mind, practice, simple, reasons, choose, going, helps, kept
-4 pretty, school, really, much, high, reading, get, think, lot, end
-5 family, us, book, bring, young, wait, interested, called, together, loss
-6 http, com, www, http www, reddit, message, reddit com, www reddit, comments, please
-7 good, luck, best, good luck, idea, great, recovery, addiction, another, choice
-8 less, living, stress, full, knowing, difference, horrible, gave, moved, order
-9 gt, amp, org, drugs, words, hang, wiki, research, history, amount
-10 else, alone, anyone, others, answer, perhaps, yet, question, something, big
-11 thanks, control, thank, told, feels, let, steps, appreciate, inside, feels like
-12 feel, better, little, make, left, today, right, lost, god, hope
-13 month, eat, take, exercise, food, healthy, mg, eating, asking, dose
-14 pain, call, life, would, fucking, real, hurt, issue, suicide, gone
-15 things, get, feel, thing, sometimes, feelings, bad, makes, think, one
-16 works, group, games, play, game, given, difficult, find, study, video
-17 anxiety, doctor, therapy, medication, help, therapist, depression, also, helped, treatment
-18 get, go, time, would, could, back, something, maybe, find, want
-19 years, meds, ago, months, everyone, different, literally, years ago, personally, done
-20 meditation, focus, simply, minutes, breath, state, mind, anxious, notice, fall
-21 im, non, child, level, early, comment, children, wants, respect, view
-22 automatically, please, tags, automatically please, subreddit, concerns, image, contact, action, article
-23 work, home, soon, working, house, wife, great, build, immediately, stuff
-24 want, talk, friend, really, girl, talking, know, telling, someone, meet
-25 self, honest, emotional, low, boyfriend, abuse, possibly, tool, however, required
-26 life, stay, live, happy, past, never, future, happiness, strong, decision
-27 day, days, every, time, quit, like, week, one, smoking, get
-28 thoughts, may, experience, change, mind, positive, think, thought, try, weight
-29 sleep, free, hate, pm, much, feel, goes, tired, suicidal, better
-30 though, even, night, fuck, even though, morning, hour, half, day, mood
-31 mental, health, disorder, physical, diagnosed, symptoms, mental health, illness, kid, must
-32 like, sounds, sounds like, yes, mother, needs, sorry, hear, father, fault
-33 depression, shit, helpful, kids, true, sub, motivation, related, age, posting
-34 long, often, worry, short, sex, term, may, look, rather, face
-35 understand, parents, feeling, depressed, exactly, feel, totally, worse, emotions, continue
-36 friends, new, advice, worked, give, close, writing, friend, based, best
-37 many, seems, side, effects, giving, experiences, many people, medical, side effects, people
-38 know, someone, tell, person, would, feel, want, say, way, relationship
-39 help, need, support, care, may, wanting, seek, talk, struggling, take care
-40 definitely, mom, stopped, enjoy, stupid, nice, process, reason, moment, girlfriend
-41 https, watch, learn, music, learning, com, interesting, youtube, www, https www
-42 people, like, think, things, know, one, person, something, lot, would
-43 love, man, never, worst, deserve, woman, men, ever, amazing, pass
-44 drinking, drink, sober, alcohol, aa, meeting, sobriety, meetings, clean, drunk
-45 sure, post, make, op, speak, make sure, clear, offer, please, miss
-46 world, believe, human, walk, system, power, brother, society, everyday, options
-47 step, college, time, next, one, first, write, small, common, pay
-48 like, time, got, never, felt, back, would, went, still, started
-49 year, old, anymore, heart, guess, break, hit, single, lack, years
+<pre>0 get, know, better, want, alone, never, everything, get better, ever, things
+1 love, best, sorry, wish, hate, world, hear, deserve, brother, hard
+2 amp, org, group, human, wiki, system, interesting, society, blame, choose
+3 back, go, talk, need, telling, emotions, want, meet, give, ok
+4 automatically, please, tags, automatically please, required, include, image, concerns, article, removed
+5 many, care, others, people, family, reading, came, perhaps, many people, weird
+6 great, work, home, nice, mother, wife, father, house, terms, given
+7 stay, support, book, tried, gave, decision, honest, problem, losing, successful
+8 get, go, time, done, something, like, want, things, work, going
+9 thank, feels, like, eat, much, really, op, healthy, god, personally
+10 people, think, lot, really, also, read, actually, hard, yeah, good
+11 thinking, guy, true, kids, guys, course, related, staying, action, point
+12 time, first, months, year, last, week, day, days, social, two
+13 good, feel, better, feeling, luck, good luck, depressed, bad, hope, continue
+14 gt, side, symptoms, effects, long, drug, term, hold, side effects, cause
+15 told, weight, old, girl, issue, reality, kind, age, girlfriend, truth
+16 thanks, aa, meetings, sharing, went, realized, totally, alone, days, night
+17 anxiety, therapy, helps, helped, sometimes, also, works, panic, anxious, seen
+18 mind, meditation, thoughts, practice, focus, minutes, breath, fall, moment, notice
+19 parents, living, stress, called, die, difference, constantly, horrible, leave, knowing
+20 anyone, heart, words, matter, else, choice, response, helping, nobody, hand
+21 job, new, money, saw, jobs, fault, miss, reasons, sitting, would
+22 https, watch, listen, music, experiences, medical, com, kill, interested, youtube
+23 life, shit, man, live, fucking, state, oh, three, hell, shitty
+24 people, life, things, like, one, think, person, way, change, make
+25 let, every, day, though, even, go, away, even though, every day, know
+26 fact, non, child, children, treat, respect, peace, fully, likely, understanding
+27 know, want, help, talk, tell, someone, would, say, people, right
+28 school, control, high, free, college, treatment, pm, class, high school, kid
+29 like, understand, think, advice, try, really, know, maybe, might, trying
+30 years, time, felt, got, like, really, long, never, ago, made
+31 ask, fun, lots, asking, questions, hopefully, give, looks, community, contact
+32 day, quit, today, smoking, one, days, smoke, addiction, time, weed
+33 therapist, normal, body, attention, usually, pay, process, scared, speak, beginning
+34 adhd, sleep, exercise, food, eating, energy, water, tend, add, position
+35 feel, like, feel like, night, worry, morning, sex, dose, drive, wake
+36 http, com, www, http www, reddit, message, reddit com, www reddit, please, comments
+37 struggle, degree, text, discussion, got, still, story, one, fact, never
+38 using, plan, answer, early, willing, common, really want, pressure, generally, turned
+39 mental, health, meeting, helpful, disorder, stuff, mental health, goes, illness, exactly
+40 worked, lose, lead, ideas, buy, ability, career, options, given, coming
+41 relationship, worth, would, either, women, open, consider, make, relationships, something
+42 friends, us, issues, cut, ones, pass, number, mom, unfortunately, despite
+43 drinking, drink, sober, alcohol, stop, drugs, sobriety, hang, drunk, desire
+44 depression, help, doctor, medication, seems, see, also, psychiatrist, taking, able
+45 much, pretty, pain, life, would, know, still, knew, family, gone
+46 make, get, work, try, need, best, help, time, take, keep
+47 like, sounds, something, sounds like, honestly, makes, games, play, check, spend
+48 brain, use, thought, one, used, whole, another, part, thing, mg
+49 someone, else, im, dont, someone else, mine, comment, experienced, view, mention
 </pre>
 </div>
 </div>
@@ -13861,10 +14318,10 @@ Thank you I wish all the best for you xxx
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_comments</span> <span class="o">=</span> <span class="mi">50</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_comments</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="k">for</span> <span class="n">comment_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_comments</span><span class="p">):</span>
     <span class="n">topic_id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">doctopic</span><span class="p">[</span><span class="n">comment_id</span><span class="p">])[::</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;comment_id:&#39;</span><span class="p">,</span>
@@ -13889,7 +14346,7 @@ Thank you I wish all the best for you xxx
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>comment_id: 0 offmychest topic_id: 14 keywords: pain, call, life, would, fucking, real, hurt, issue, suicide, gone
+<pre>comment_id: 0 offmychest topic_id: 21 keywords: job, new, money, saw, jobs, fault, miss, reasons, sitting, would
 ---
 It&#39;s not your fault don&#39;t think that. Hey if this helps it does then if it doesn&#39;t well. At least I can talk about it.
 
@@ -13899,7 +14356,7 @@ Well I was loading it outside and I shot it off accidentally. Right into my dog.
 
 That was my fault and you sitting on a little tiny mouse is more understandable than a man discharging a firearm into a shitzu. Don&#39;t feel to bad. 
 ===
-comment_id: 1 offmychest topic_id: 4 keywords: pretty, school, really, much, high, reading, get, think, lot, end
+comment_id: 1 offmychest topic_id: 10 keywords: people, think, lot, really, also, read, actually, hard, yeah, good
 ---
 You do have a valid point--I&#39;ve always been a bit of a behind the scenes person. While I&#39;m super bubbly and extraverted IRL, I&#39;m not too big on bringing much attention to myself. I don&#39;t even have a Facebook because I just found it so weird over the years. 
 
@@ -13907,346 +14364,17 @@ Perhaps I kinda inadvertently set a standard without realizing it, and reading t
 
 I do agree with the other commenter though as well. I think it&#39;s one thing to suggest something, as in &#34;Hey maybe we should do this small thing Saturday for my birthday&#34;, but in my experience, I&#39;ve known way too many people who, when they suggest such things, are very over the top and it just always came to me as tacky, especially (to me) if they haven&#39;t really achieved anything.
 ===
-comment_id: 2 depression topic_id: 15 keywords: things, get, feel, thing, sometimes, feelings, bad, makes, think, one
+comment_id: 2 depression topic_id: 47 keywords: like, sounds, something, sounds like, honestly, makes, games, play, check, spend
 ---
 Hey, do you know what it is that makes you feel such hatred towards these things? Does the violence make your thoughts go in an unwanted direction? And when you say these things make them bad people, do you mean you think your friends are bad people for enjoying the shows/games, or that the people who make them are bad? It sounds like it could easily be a depression thing tbh.
 ===
-comment_id: 3 depression topic_id: 16 keywords: works, group, games, play, game, given, difficult, find, study, video
+comment_id: 3 depression topic_id: 46 keywords: make, get, work, try, need, best, help, time, take, keep
 ---
 Right there with you. National merit scholar now failing classes. Gpa from 3.7 to 2.5. Depression is a bitch. You just have to find what works for you study wise. For me, empty classrooms help. Space and isolation. You have to be strict about setting study days. It&#39;s incredibly difficult and I&#39;m nowhere near succeeding, but it&#39;s given me some improvement.  Do it for yourself, not your family. 
 ===
-comment_id: 4 ADHD topic_id: 27 keywords: day, days, every, time, quit, like, week, one, smoking, get
+comment_id: 4 ADHD topic_id: 8 keywords: get, go, time, done, something, like, want, things, work, going
 ---
 I cannot put into words how much I love programming. So many avenues to go down, so many ways to innovate, and the very real possibility of changing the world just by doing it a lot. I work at a web development company and do independent game design in my off time, and rarely feel burnt out. If I could add an extra day to the week to program, I would do it twice.
-===
-comment_id: 5 offmychest topic_id: 18 keywords: get, go, time, would, could, back, something, maybe, find, want
----
-You are being treated unfairly and manipulated.  You shouldn&#39;t be put in this situation.  Honestly, I would inform him any threats to his safety, no matter how they are conveyed, will be conveyed to the police for a welfare check.  
-Please find a friend or a counselor in which to confide.  
-===
-comment_id: 6 depression topic_id: 48 keywords: like, time, got, never, felt, back, would, went, still, started
----
-I was a generally sad child. But I don&#39;t feel like my problems stemmed from that. Years ago I decided that I wanted to join the army. It sounded like a good idea. Wrong. I&#39;m not sure what it was that first triggered my major depression episodes, but it happened. I started falling apart. I had a rough experience. The army shuns the weak, both mental and physical. I&#39;m strong but was still developing mentally at 18, still learning the world and who I was. Uncontrollable actions, such as fits of depression and anger made my life hell. The others picked up on it. I felt like they would rather leave me behind then help my up. I was right. I have one very vivid memory that I remember every day. I was laying in my bed (separated from the other beds in the middle of the room), with my two &#34;guards&#34; standing watch. Yeah, I had to have at least two people within arms reach of me at all times, even while sleeping. It got that bad. One of them decided he didn&#39;t have time for this. All I did was look at him and sigh. He took my pillow from under my head and tried to suffocate me. And I just laid there. Not moving. I didn&#39;t care. It didn&#39;t last long as the other people in the room (47 people) stepped in. After the event the drill sergeant walked in, unaware of the events that had transpired moments before. He walked up to me as I was laying in bed again. He bent over me and asked my how I was. I said that I was fine and he left. It has taken me a very long time to understand how I felt about this. Turns out I was angry at myself for failing something that I set out to do. I felt like garbage for so long. It took me 5 years to admit to myself that my self directed anger and loathing ment nothing. The past is the past. There is nothing that can be done about it. But my future, my happiness needs not be influenced by past failures. I was angry at myself, and I finally learned why. And I finally forgave myself.
-===
-comment_id: 7 offmychest topic_id: 49 keywords: year, old, anymore, heart, guess, break, hit, single, lack, years
----
-When I was an awkward 15 year old I invested way too much of myself into a &#34;relationship&#34; with a catfish. My stupid ass didn&#39;t want to believe my friends who recognized one of her pictures as a porn star, or look any further into why no two pictures looked the same...I was just so willing to believe I had landed some kind of jackpot beauty queen who was actually into me that I ignored all the red flags, then later learned that she was actually a girl, but just 11 years old when we started talking. That&#39;s right, I got catfished by a child.
-
-Oh the joys of growing up in the age of the internet.
-===
-comment_id: 8 offmychest topic_id: 4 keywords: pretty, school, really, much, high, reading, get, think, lot, end
----
-This thought is the one thing that&#39;s keeping me going so thanks for the reminder. &amp;lt;3 I&#39;ve been so terribly nervous over the whole ordeal that I have to sit there and think &#34;You know, maybe I&#39;m actually pretty likable and people care about me and I&#39;m just my own worst enemy.&#34;
-===
-comment_id: 9 stopsmoking topic_id: 7 keywords: good, luck, best, good luck, idea, great, recovery, addiction, another, choice
----
-There&#39;s gonna be a voice that says in you head, &#34;Nah...I&#39;ll just have one more.&#34; or &#34;It&#39;s ok to just have one.&#34;. You gotta tell it &#34;yo voice, I don&#39;t need another one&#34;. This voice is your addiction talking and once you tell it to fuck off. You&#39;ll be in good shape. All you have to do win the argument with that voice. It&#39;s really easy because it doesn&#39;t have any idea what logic is. It&#39;s just spouting some bullshit to try and get you to smoke again. I would say good luck, but if you can out argue that voice you&#39;ll be golden.
-===
-comment_id: 10 depression topic_id: 36 keywords: friends, new, advice, worked, give, close, writing, friend, based, best
----
-Hello friend, I struggle with the hatred as well, it seems like second nature to just scream abuse at myself in my head. I don&#39;t know for sure how to stop it from happening but maybe making a point to yourself to notice whenever you feel yourself spiralling downward and see what sort of thing sets you off could be a start? Wishing you the best of lovely times.
-===
-comment_id: 11 ptsd topic_id: 24 keywords: want, talk, friend, really, girl, talking, know, telling, someone, meet
----
-Gah, I&#39;m such a baby. You list made me cry. I love dark chocolate and tea and mountains and singing (also badly) and flowers and kisses and wine and wind chimes and BBQ and hot showers and blue. Also the sounds of someone cooking on the grill. And when sunlight lights up the leaves, so their undersides are bright green. And my husband&#39;s laugh. Gah, I&#39;m just so grateful. Life is rough, but it&#39;s also really great. Chocolate, man. Lol. *sigh* I could do this all day. 
-===
-comment_id: 12 ADHD topic_id: 48 keywords: like, time, got, never, felt, back, would, went, still, started
----
-Yea, I used to be at UCSD and they had free healthcare for students, but I didn&#39;t realize I had ADHD at the time.  I flunked out so any treatment they could have provided can no longer do me any good.  It&#39;s okay though, I&#39;m working my way to transfer to another university.  
-
-When I first got kicked out I was bitter at UCSD, feeling like they could have been more understanding and all that, but I&#39;ve since gotten over those feelings. I realize that as administrators they just thought that I wasn&#39;t taking school seriously; it&#39;s not like they were out to get me for no reason.  
-
-Plus, I think it doesn&#39;t matter what university or college a person attends as long as they make the most of their experience there.  Being a 4.0 student at a lesser known university is better than being a 2.0 student at UCSD or some other prestigious university like Harvard; at least in my opinion.  Others might disagree and think that only the name of the school matters. 
-
- For my major especially I don&#39;t think it matters since I&#39;m doing computer science, and it&#39;s one of those fields where if you can prove that you know what you&#39;re doing, employers will hire you.  It&#39;s more of a fair profession in that sense.
-===
-comment_id: 13 Anxiety topic_id: 47 keywords: step, college, time, next, one, first, write, small, common, pay
----
-It&#39;s going to be okay. Right now, it feels like the world is collapsing for you but you can turn this around. You can get re-enrolled in your classes and try harder. Just pick up the pieces one at a time. 
-
-I had depression during the first portion of my college years and ended up flunking a lot of classes. I was placed on academic probation and was seeing a counselor for suicidal tendencies and self harm. This was a drastic change from high school, where I was rank #2 out of my entire class and had full ride scholarship offers. I was able to make positive changes very slowly and eventually improved my grades. I had to retake a lot of courses of course but I still graduated on time by taking summer courses. I remember feeling as if I had ruined my entire life already so why now remove myself from the equation? Please believe me when I say your life isn&#39;t ruined. You&#39;ll be able to pay these bills off. You can work things out with your school. Your parents and friends are there for you to lean on for support. Just take it one step at a time. All of these problems can be fixed. The only thing that can&#39;t be fixed is death. 
-===
-comment_id: 14 depression topic_id: 4 keywords: pretty, school, really, much, high, reading, get, think, lot, end
----
-As someone a bit older, I can say this with some authority - pretty much everyone is attractive to some chunk of people.  One thing that happens in school is that people are afraid to appear different, so if they have tastes that lie outside the mainstream, they may very well be afraid to express them. I knew a couple guys who were into bigger girls, but were way too insecure to express it in high school. Not everyone - I&#39;m not even sure most people - find the sort of default media-created concept of what is attractive to actually be attractive.  
-
-It sucks that you&#39;re on the wrong end of that sort of thing right now, but it will change with time.  And hell, if you&#39;re still in school, your body hasn&#39;t even finished developing.  You might look far more like how you want to look in a few years.
-===
-comment_id: 15 SuicideWatch topic_id: 36 keywords: friends, new, advice, worked, give, close, writing, friend, based, best
----
-Hey there.
-
-I understand a lot of what you&#39;re saying. There is some bad advice on this subreddit that could be easily solved by going to the sidebar or directly to this post: http://www.reddit.com/r/SWResources/comments/igh87/concerned_but_dont_know_what_to_say_here_are_some/ .
-
-A lot of the people coming here are well intentioned but reddit tends to favor those with loud voices and angry messages so those often rub off onto others. 
-
-While I can&#39;t really point you in a good direction for the defaults, you can find some very kind and supportive subreddits deep down in this website. One of my personal favorites at the moment is /r/TheChurchOfRogers which is based on kindness to others as if they were our neighbors (based on the show Mr. Roger&#39;s Neighborhood. Maybe browsing there can give you these better and safer feelings.
-
-Reddit is unfortunately a site taken over by the opinions of about 4000 people. If you ever look at the controversial tab of a subreddit or even scrolling far enough down, you&#39;ll find those hidden treasures of good comments. I hope you will find those same kinds of good comments under this post as well.
-
-Never be afraid to reply OP. I&#39;ll be expecting that orange envelope. 
-===
-comment_id: 16 offmychest topic_id: 32 keywords: like, sounds, sounds like, yes, mother, needs, sorry, hear, father, fault
----
-I like this perspective! Thank you.
-
-I&#39;m a giver, sometimes to a fault. I don&#39;t do things for karma or exposure or what have you, but I&#39;m just naturally super sensitive so I can&#39;t just sit around, especially when someone is down or needs a hand. It&#39;s one of those &#34;well wouldn&#39;t anyone do it because we are all human and that&#39;s what humans do?&#34; things, but apparently not. It sounds like you might be similar.
-
-It&#39;s hard to remember that, yes, some people are horrifically self-centered, but the reality is that most people are good but they just don&#39;t pick up on the little things, especially if they&#39;re not a giver by nature. 
-
-===
-comment_id: 17 BipolarReddit topic_id: 42 keywords: people, like, think, things, know, one, person, something, lot, would
----
-oh man I&#39;ve been fantasizing about throwing a chair at this asshole barista in my coffee shop for day, and I don&#39;t seem to care about the consequences. I&#39;m rapid-cycling and I&#39;m of the opinion that the excess energy from hypomania paired with mixed state of depression equals violent behavior. I swing from being jovial and the life of the party to a bitter contentious mood that catches people off guard. I&#39;ve lost almost every relationship I&#39;ve had due to this pattern in the last three years, it&#39;s fucking lonely as hell.
-
-===
-comment_id: 18 BPD topic_id: 17 keywords: anxiety, doctor, therapy, medication, help, therapist, depression, also, helped, treatment
----
-Oh awesome yea mu doctor said that I she could reduce my dose or I can take that for a little bit and see if my body adjust to the higher dose. I&#39;d rather give it a little bit my BF is aware so he&#39;s keeping and eye out
- It&#39;s just been so long since I was this  happy I just want at least enjoy it for whatever it&#39;s is 
-===
-comment_id: 19 depression topic_id: 18 keywords: get, go, time, would, could, back, something, maybe, find, want
----
-I&#39;m in the exact same boat... Everyday I wake up with such a depressive mindset. I have absolutely no drive and I have no reason to get up in the mornings. I have no friends, no job and I only attend college 3 times a week. 
-
-Sometimes I have a sudden spurdge of happiness. Usually when I&#39;m in a good mood I have my drive back, I want to do things. I want to make sure that I grasp onto my future and make a name for myself before its too late. I come up with all these plans on how I&#39;m going to do this then booom depression hits me before I execute anything then it&#39;s back to being a depressive cu*t again. 
-
-
-
-It&#39;s so hard to actually have drive when you have nothing to motivate you. I have 0 irk friends. My days consist of talking to people online who really have no real impact on my real life. 
-I just can&#39;t handle it. My life right now is going nowhere, every day gets worse and worse, my grandparents who are basically my parents. They mean they world to me and it&#39;s so sad when I see them I know the time is getting closer and closer, their health is going down hill every day and it puts tears in my eyes. I&#39;m typing this with tears running all over me. 
-This post has gone out of hand. This is my feelings talking. I&#39;m sorry if I&#39;ve missed the objective of this post. I just needed somewhere to throw my emotions 
-
-Thank you I wish all the best for you xxx
-===
-comment_id: 20 depression topic_id: 11 keywords: thanks, control, thank, told, feels, let, steps, appreciate, inside, feels like
----
-Thank you for your reply :). I really appreciate it and I&#39;m happy to hear that you&#39;ve been taking the steps to healing. I&#39;ve been too scared to tell anyone but I told a friend this morning and it feels like I&#39;m getting a little lighter. I hope this isn&#39;t a temporary phase but I&#39;m the type of person who really hides it all inside and I know it&#39;s not the way to go. You keep fighting too!
-===
-comment_id: 21 depression topic_id: 42 keywords: people, like, think, things, know, one, person, something, lot, would
----
-Okay so you already know that you don&#39;t want to be in this rut anymore. Seems like you are currently stuck in this vicious cycle. What if you could take small steps towards getting back out there? I&#39;m not saying completely quit smoking but what if you set little goals each day(every couple of days) and only allow yourself to smoke up after you complete the task? It&#39;s obvious that you care and that&#39;s huge! Also do you have any close friends that could help you with keeping on track...not like hovering over you but just like checking in? Sorry if this is intrusive-I&#39;m new on redditðŸ˜„
-===
-comment_id: 22 OpiatesRecovery topic_id: 15 keywords: things, get, feel, thing, sometimes, feelings, bad, makes, think, one
----
-Nope Grandma&#39;s bad. Real bad! 
-
-The crying thing is is part of your recovery. They will come an go. You are exhausted, depressed and emotional. It is all part of the brain trying to clear itself. Screw on that smile and do what you have to. 
-
-Good luck. You know you are tough enough to do this.  
-===
-comment_id: 23 ADHD topic_id: 6 keywords: http, com, www, http www, reddit, message, reddit com, www reddit, comments, please
----
-As per the rules in the side bar, yes or no questions such as &#34;Does anyone else&#34; or &#34;Has anyone else&#34; (or variants thereof) are not allowed in post titles.  Please repost with a more specific question, such as &#34;How do you manage this symptom?&#34; instead of &#34;Does anyone else have this symptom.&#34;  You&#39;ll get better answers and more replies.  
-
-Please see the rule explanation [here](http://www.reddit.com/r/adhd/wiki/rules#wiki_ask_a_question_that_can_be_answered_with_simply_yes_or_no).
-
-We appreciate your understanding, thank you.
-
-
-*[I am a bot](/r/AutoModerator/comments/q11pu/what_is_automoderator/), and this action was performed automatically. No humans get notified of replies to this comment.  Please [contact the moderators of this subreddit](/message/compose?to=%2Fr%2FADHD) if you have any questions or concerns.*
-===
-comment_id: 24 offmychest topic_id: 18 keywords: get, go, time, would, could, back, something, maybe, find, want
----
-THIS! Although some friends threw a small gathering, not my mom. My boyfriend&#39;s mom keeps trying to ruin our move, which is a good chunk why I&#39;ve been feeling so down. You&#39;d think she&#39;d want to have us around or something, but nah. She&#39;s just got issues. Unfortunately, she&#39;s someone you can&#39;t really cut out.
-
-Where are you going to in a few months? 
-===
-comment_id: 25 leaves topic_id: 18 keywords: get, go, time, would, could, back, something, maybe, find, want
----
-You&#39;ll get there, just keep at it. Things do improve. Just stay strong. Get a routine going. Put a blue light filter on your phone, drink some caffein free tea, have a hot bath or shower, and cut out tech two hours before bed. Slowly you&#39;ll manage to get this under control. Goodluck!
-===
-comment_id: 26 offmychest topic_id: 40 keywords: definitely, mom, stopped, enjoy, stupid, nice, process, reason, moment, girlfriend
----
-This situation is definitely perplexing. Except this, is there any other things of his behavior that confuses you?
-
-Without knowing his side, I am not sure what to think, but if does have a girlfriend at the moment he was with you, I wonder if you are better off without him...
-===
-comment_id: 27 offmychest topic_id: 18 keywords: get, go, time, would, could, back, something, maybe, find, want
----
-I was in sales in the past but I loved it..there&#39;s books you can get that basically teach you sales skills. I read them but I found that it did come naturally to me..I&#39;d chat to customers, get them to like me. Even with marketing, a lot of it involves teamwork but maybe you&#39;re someone who works better on your own?
-===
-comment_id: 28 Anxiety topic_id: 45 keywords: sure, post, make, op, speak, make sure, clear, offer, please, miss
----
-Valium is great for dentist appointments. I see it prescribed all the time. 
-
-You will still be able to complain if you feel the pain and it&#39;s not going to paralyze your muscles from being able to speak or move. Just make sure you take it 30 minutes to 1 hour before your appointment and make sure you have someone to drive you as this medication can make you dizzy and sleepy. 
-===
-comment_id: 29 leaves topic_id: 27 keywords: day, days, every, time, quit, like, week, one, smoking, get
----
-Different methods will work better for different people, and I think the mod said it best. If you are going to do it this way the most important thing is to set rules and goals to help you achieve quitting- and stick to them!
-
-Rules like no smoking alone, no smoking during the week, only smoking outside... whatever will help you to smoke less. And goals  like &#34;go 3 days without smoking, go one week without smoking, resist a craving...&#34;
-
-If you find yourself &#34;changing&#34; the rules or goals to justify getting high then it&#39;s not working.
-
-I want to suggest that by attempting to wean yourself off, you may be dragging out the withdrawl symptoms. Instead of going through a couple rough days/weeks and then feeling much better you might be making it last a lot longer, since every time you get high and feel better *temporarily* it&#39;s like starting back at day 1. You likely won&#39;t start feeling some of the benefits of quitting like a clear-head until much later. But as I said different methods work better for different people.
-
-If you feel like cold turkey isn&#39;t working for you, if you try making goals to go longer and longer without smoking, maybe you will start to see more of the benefits of quitting and be more dedicated to it. It&#39;s really hard to quit cold turkey when you still love weed, but if you notice how good you feel (after getting passed the withdrawls) and are more serious about quitting completely then cold turkey won&#39;t be so difficult.
-
-Best of luck quitting, making it entire days without smoking is a great accomplishment! If you take it one day at a time you can do it!
-===
-comment_id: 30 offmychest topic_id: 34 keywords: long, often, worry, short, sex, term, may, look, rather, face
----
-Omg!  I went to SK on my first trip overseas!  I taught at a small hakwan in Nonsan City, outside Daejon!  I spent three amazing years in SK.  If you get homesick for some U.S. stuff over there, pm me and I can point you to a few places around the country to go to a great beach, a wonderful resort, a nifty castle and where to find the Americans.  :-)
-===
-comment_id: 31 offmychest topic_id: 28 keywords: thoughts, may, experience, change, mind, positive, think, thought, try, weight
----
-Hmm.. I just made a post earlier about battling depression.. It was very upbeat and it made me question if people would judge me for it. Maybe some people might not believe that I have had it for a decade on and off and that I was diagnosed by a doctor(psychiatrist) who prescribed pills to me. I had a negative effect within days of taking those pills so I chose to go down the natural path, which takes a bit longer but I believe is longer term as well. It gives you the chance to discover things about yourself, deal with your problems in different ways and become more resilient. 
-
-I chose to try and change my negative thoughts into something positive by forcing myself to do certain activities that benefited me. Every small step felt like I had the weight of the world on my shoulders but that&#39;s how you do it, step by step. We have to start somewhere and we can&#39;t rush recovery. Overall, the change is within yourself. Some people might judge and say that I&#39;m not supposed to have this positive mind set. Like rocketshipray said, some people may seem happy on the outside but that doesn&#39;t mean that they&#39;re not struggling. It doesn&#39;t mean that they still aren&#39;t battling demons.
-
-Also, I agree with you wholly when you say that accepting something negative leads to worse outcomes. You&#39;re 100% right, people dwell on their situation because it&#39;s sort of like an addiction, an addiction to sadness. It gives a bittersweet comfort that we cannot grasp. If we force ourselves to smile, we can become happier, which is further proof of what you said.
-===
-comment_id: 32 offmychest topic_id: 48 keywords: like, time, got, never, felt, back, would, went, still, started
----
- I once had a puppy when I was 6 or 7.. We were inseparable as any young outdoorsy girl and her pu ppy would be. We always went out exploring the woods around my family&#39;s yard together. I went to go climb a tree and the limb snapped causing me to land on my sweet puppy, killing him. I carried him bloody all the way home crying... I&#39;m pretty sure I haven&#39;t climbed a tree since then and I am 21.  
-
-Accidents happened.. But at least all of his life he knew love. I am sorry for your loss.
-===
-comment_id: 33 BipolarReddit topic_id: 18 keywords: get, go, time, would, could, back, something, maybe, find, want
----
-I hope you can get your medications sorted out. I personally like Wellbutrin a lot for many reasons if you want to look into it, but of course everyone&#39;s different.
-
-Also I meant to respond to the &#34;now i&#39;ve basically fucked that all up&#34; in your OP: I don&#39;t see it that way. You can go forward living the way you want to live. You don&#39;t have to punish yourself for bad decisions made because of a real illness. It can be okay to forgive yourself and move on from there. 
-===
-comment_id: 34 offmychest topic_id: 38 keywords: know, someone, tell, person, would, feel, want, say, way, relationship
----
-I love that you are the way you are.  It speaks of your gentle soul.  
-
-And I am so sorry that these things happened to you.  It&#39;s tragic.  I really wish you had reported that guy and were tested.  
-
-Regardless, I think that you may need to hold off on being so caring and nurturing until you know more about the guy you&#39;re with.  I don&#39;t know for sure of course, but it seems like these guys get what *they* &#34;need&#34; and move on.
-
-Hopefully someone will come in here with actual advice.  Being a guy, a hetero guy, I really can&#39;t tell you anything that I would feel confident about.  
-
-I know that you should think more highly of yourself.  Of course you can have a relationship with a &#39;normal&#39; guy.  That&#39;s not out of the question.
-
-But please don&#39;t take anyone else home that you don&#39;t know.  =/
-===
-comment_id: 35 OpiatesRecovery topic_id: 10 keywords: else, alone, anyone, others, answer, perhaps, yet, question, something, big
----
-I answered the first one a few days ago, but here it is again. Sorry about the repeat. I had a friend that I had been fairly open with. I resolved to never lie to him. No matter how much I want to. 
-
-My family really wasn&#39;t in a position to help, they have their own stuff. It is one of the things that put me over the top. 
-===
-comment_id: 36 stopdrinking topic_id: 44 keywords: drinking, drink, sober, alcohol, aa, meeting, sobriety, meetings, clean, drunk
----
-I think the scariest part of my experience is having been in your position and mindset when I picked up the first drink.  It was cough syrup belonging to my girlfriend on the bedside table.  I had no intention or desire to drink.  I was 17 months sober and life was good.  All of a sudden I was chugging half a bottle of cough syrup.  I immediately had that itch for more that no amount of alcohol or drugs can satisfy.  I was back to drinking within 24 hours.
-===
-comment_id: 37 BPD topic_id: 24 keywords: want, talk, friend, really, girl, talking, know, telling, someone, meet
----
-She may very well be upset and that&#39;s ok she&#39;s allowed to be upset just as you are. I hope that she showed up tonight and if she didn&#39;t text her. And say I know your mad and that&#39;s fine but if you could please meet me somewhere I really need to talk to about something and I really need a friend I can talk to about this. 1st of she&#39;s a girl and we love soaking in a good story granted that&#39;s not what it&#39; is but grabbing her attention is 1 st then telling her what&#39;s going on and how you feel if she is a true friend she is going to want to be there for you. It&#39;s hard to put your feeling on the line but if it&#39;s killing you, you need to know. 
-===
-comment_id: 38 stopdrinking topic_id: 2 keywords: job, money, thinking, stop, hours, using, fix, spend, jobs, straight
----
-I love this sort of approach.
-
-I like to assign numbers.  Say I wanted a drink today.  I&#39;m pretty sure I could have one drink &amp;amp; everything would be fine.  I also know I&#39;m wrong about that, but I can&#39;t stop myself from thinking that way.
-
-So, OK, let&#39;s say I have one drink tonight.  If I&#39;m wrong about it not becoming a problem, using my history as a guide, I&#39;ll probably drink for at least the next year straight. That&#39;s at least $7,000 right there. I&#39;d have to start blowing tons of money on heartburn pills again. And then there&#39;s losing friends, jobs, the health impact, etc, all that stuff.  
-
-What&#39;s the chance of all of that happening?  Probably over 50%, but lets be conservative here &amp;amp; assume that it&#39;s a 1 in 6 chance.  
-
-So here&#39;s the bet:  Roll a die.  If it comes up 1, you owe me $7,000, your job, your family, and a few years off your life.  (I&#39;ll accept payment in slavery.)  If it comes up 2,3,4,5, or 6, you owe me $5, and in exchange, I&#39;ll make sure you feel just a little bit more at ease for the next couple hours.  Maybe you&#39;ll giggle a couple times.
-
-Sound like a plan?
-
-Enjoy that Regan pleasure.  
-===
-comment_id: 39 depression topic_id: 45 keywords: sure, post, make, op, speak, make sure, clear, offer, please, miss
----
-This is a reply to OP and also /u/strincheese13 and /u/elleundomiel.  
-
-It may seem like it, but please believe me that your future is far from ruined because of a bad year or two in school.  Sure, it may make things a bit tougher in some respects, but you are far from doomed because of it. For the vast majority of careers, especially that don&#39;t require post-graduate education/certification, no one even cares what your marks are, just that you completed it.  And that&#39;s not even getting into the many careers that are out there that don&#39;t even require degrees.
-===
-comment_id: 40 BPD topic_id: 17 keywords: anxiety, doctor, therapy, medication, help, therapist, depression, also, helped, treatment
----
-Yea I noticed that today that some thing that would have had me in bed crying didn&#39;t even get to me. I am very aware which is scary and now looking back I&#39;ve realized that I&#39;ve had these quite often. The depression tend to out weigh the manic episode but then again I haven&#39;t really paid attention just dealing with the BPD is enough. 
-
-===
-comment_id: 41 GetMotivated topic_id: 22 keywords: automatically, please, tags, automatically please, subreddit, concerns, image, contact, action, article
----
-Your submission has been automatically removed because the title does not include one of the required tags. The tags are [Article] [Discussion] [Image] [Meta] [Story] [Text] [Tool] [Video]. **Please add the suitable tag and resubmit.**
-
-*[I am a bot](/r/AutoModerator/comments/q11pu/what_is_automoderator/), and this action was performed automatically. Please [contact the moderators of this subreddit](/message/compose?to=%2Fr%2FGetMotivated) if you have any questions or concerns.*
-===
-comment_id: 42 offmychest topic_id: 48 keywords: like, time, got, never, felt, back, would, went, still, started
----
-It was cruel of your bullies to target your dying dad..that&#39;s low. Your feelings are perfectly understandable-you felt that you were outnumbered by all these bullies at the time and couldn&#39;t stand up for yourself so now you have revenge fantasies. I&#39;ve been bullied in the past and had revenge fantasies in my head too. 
-
-Ok, you didn&#39;t stand up for yourself back then however you can learn how to stand up for yourself now. I think that going to an assertiveness course could help you do this alongside going to a therapist.
-
-&amp;gt; On the other end of the spectrum sometimes I get hyper aggressive over even small transgressions. My deep shame over never standing up for myself has made me extremely sensitive. Sometimes a friend will jokingly tease me over something and I just can&#39;t help but explode on them.
-
-I had this. I felt like I was being constantly picked on and I&#39;d think &#34;omg enough already&#34;. I&#39;d oscillate from being too passive to being too aggressive because I had no idea how to be assertive..i.e. how to stand up for myself and how to have a sense of self-respect.
-
-&amp;gt;  Every moment of my day I feel a deep anxiety welling up in my stomach. I get bad diarrhea from it sometimes.
-
-Go to your doctor about the anxiety...he/she will be able to give you some medication for this. Doing some relaxation exercises could help e.g. breathing exercises, yoga..something soothing basically. I found mindfulness very helpful too.
-
-&amp;gt; I feel like all of my ideas are stupid 
-
-I know that you feel this but just remember that you&#39;re very educated so obviously you do have good ideas. You are a responsible person so you do have a lot to offer people..it&#39;s just that your self-confidence and self-esteem is low after all the bullying. You have a skewed perspective on who you are-that you&#39;re seeing all the negative sides of who you are but not any of the amazing qualities of who you are. 
-===
-comment_id: 43 SuicideWatch topic_id: 42 keywords: people, like, think, things, know, one, person, something, lot, would
----
-Even though you are going through all of this pain you still care for others, and that&#39;s very admirable. I am truly sorry that you went through such a tough time with your breakup and I know you don&#39;t want to hear speeches about how &#34;it gets better&#34; or &#34;you&#39;ll feel better with time&#34; because no one can guarantee that and life is hard. Sometimes I&#39;m so exhausted with the whole thing I just want to sleep for a few years and not wake up. I hear you, trust me. All I can say is that I went through a terrible breakup when I was your age, and later I actually met someone who was much MUCH better for me, so although I can&#39;t guarantee that will be the case for you, I would be willing to bet on it because time is on your side. My mom left my dad after 35 years of marriage and he&#39;s single at almost 60... Now when he says he&#39;s lonely I don&#39;t know what to say, you know? My mom was it for him. Maybe this person you lost was it for you. I hope not. I hope you stick it out a bit longer and see what happens next; I know you&#39;re hurting and you&#39;re lonely but you can survive this. Just be yourself, you are kind and intelligent... Someone even better might just come along and recognize that. In any case, I wish you the very best. You deserve better than heartbreak.
-===
-comment_id: 44 offmychest topic_id: 31 keywords: mental, health, disorder, physical, diagnosed, symptoms, mental health, illness, kid, must
----
-Definitely perplexing. In terms of this situation, the fact he didn&#39;t seem too fussed either way about being caught seems odd, but it was online, so he could have been freaking out for all I know. I doubt it, but possible.
-
-Outside of the situation, he drinks a lot and seems to feel the need to always be out of his house. He&#39;s always *kinda* been like that, but it seems to have increased lately. So I can&#39;t exactly tell if it should concern me as much as it kinda does, or if it&#39;s just him. 
-
-I have definitely taken myself out of the situation and it&#39;s just a waiting game to see if he rings me drunk again. However, I&#39;m not about to cut him out completely because if there&#39;s more going on, I want to be there for him. 
-===
-comment_id: 45 GetMotivated topic_id: 18 keywords: get, go, time, would, could, back, something, maybe, find, want
----
-I&#39;m a chronic procrastinator.  I always had good grades, but yeah, I had to fight myself for them. Here&#39;s my tips:
-
-1. Accept that you&#39;re a last minute person. You won&#39;t ever be the type of person that starts their paper three weeks before it&#39;s due, and leaves themselves a week for editing and proofreading. It&#39;s okay! A lot of people are like that, and in the working world it&#39;s actually valuable to be able to do things quickly. 
-
-2. Have a workspace. I have a desk that I use for work and projects only. If I decide to start screwing around on the internet, I leave the desk. I also have music that I only play when I&#39;m working -- this helps a lot.  I&#39;m considering getting a candle or incense that I only burn when I&#39;m working, since studies show that smell is closely tied to emotion.  
-
-3. Identify the emotion that is causing your procrastination. You may not recognize it, but there&#39;s something unpleasant you&#39;re avoiding besides just work. Trust me, procrastinators are not lazy people. Fear of failure/success? Fear of change? Boredom? Indecisiveness? I&#39;m procrastinating on a paper right now because the topic I chose turned out not to be as good as I originally thought, and I&#39;m mad at myself for choosing a bad topic, and feeling hopeless about getting a good grade on it. Believe it or not, it&#39;s a relief to know that, because then I can do some positive self-talk and get over it and move forward. 
-
-4. Do only one thing at a time.  When you&#39;re feeling really pressured it&#39;s easy to jump around from task to task -- you read the first two paragraphs of the text, do half a practice problem, review the first half of the first day&#39;s lecture notes -- but it&#39;s all very superficial. Instead, take some deep breaths, and set one reasonable goal and finish it.  I find it&#39;s better to do something that&#39;s more active than passive -- doing problems, recopying lecture notes, copying formulas over and over.  It helps with the jitters.   
-
-5. Manage distractions.  At work I use Toggl to track how much time I spend on various projects. When I get an e-mail, rather than jumping right into it, I take a second and decide whether I want to change my Toggl tracker, or keep going with my current project.  That tiny extra second means that I prioritize much better. And if I find I let myself drift into something else, I just refocus on the project at hand -- it&#39;s like meditating. Forgive yourself and move on. 
-
-Hopefully some of these will be helpful for you.  
-===
-comment_id: 46 offmychest topic_id: 29 keywords: sleep, free, hate, pm, much, feel, goes, tired, suicidal, better
----
-I  come to this subreddit a lot, but this is the first story that genuinely broke my heart. I got tears in my eyes. My heart goes out to you, it really and truly does. I&#39;m so so sorry. Don&#39;t blame yourself, unfortunately, accidents happen. Your little friend loved you so much and he would hate to see you so sad. If you need to talk, or just need a shoulder to cry on I know you have the support of everyone here, but feel free to pm me.
-===
-comment_id: 47 Anxiety topic_id: 17 keywords: anxiety, doctor, therapy, medication, help, therapist, depression, also, helped, treatment
----
-I apologize for taking so long to respond. I wanted to wait until I read the actual article or at least did a quick skim. 
-
-First of all, this is a systematic review of other studies and these things tend to be more prone to selection bias but we won&#39;t go too much into that. Anyways, in the article, it states: &#34;symptoms typically occur within a few days from drug discontinuation and last a few weeks&#34; which agrees with what I said about throwing your brain out of whack for a little while. The conclusion was that SSRIs can cause discontinuation problems which is true. That is not the same as causing depression. 
-
-I don&#39;t know if you&#39;re able to see the article since most people can&#39;t unless they have a paid subscription or work in healthcare but it states later on in the article that the discontinuation symptoms were mostly caused in patients who discontinued abruptly. This also agrees with what I mentioned earlier about tapering off the medication. Yes, it&#39;s still possible to have side effects with tapering but far less likely. Additionally, we have to look at what they consider to be a symptom of &#34;discontinuation syndrome.&#34; In the article, it states things like fatigue, headache, diarrhea, etc. This is VERY different from discontinuation of SSRIs will cause depression. 
-
-
-If you want, I can download the full article and send it to you. Let me know if there&#39;s some way I can help. Unfortunately, I know very little about CBT other than to recommend them but I have doctor friends to bug if you have any questions.
-===
-comment_id: 48 mentalhealth topic_id: 31 keywords: mental, health, disorder, physical, diagnosed, symptoms, mental health, illness, kid, must
----
-Glad to hear your opinion, Indigo. Your comment on poor coping skills is rather on point. That&#39;d be a good place to do some reflection, me-thinks. 
-
-And you&#39;re definitely right about my yearning for psychiatric labels. I&#39;d blame my curiosity on that; I can&#39;t stand to not know exactly what&#39;s going on. I know I know, I&#39;m probably out of luck on that one with the inherent difficulty of psychology. 
-
-As to what I&#39;ve been diagnosed, I&#39;ve been diagnosed with Major Depressive Disorder, SAD, GAD, OCD, ADD, and hallucinations triggered by deep seizures. That&#39;s off the top of my head, but that&#39;s the general overview of my mental health diagnosis. 
-
-One thing I do know, this whole talk is reassuring and will definitely spark discussion with my next psychiatric meeting. 
-===
-comment_id: 49 GetMotivated topic_id: 22 keywords: automatically, please, tags, automatically please, subreddit, concerns, image, contact, action, article
----
-Your submission has been automatically removed because the title does not include one of the required tags. The tags are [Article] [Discussion] [Image] [Meta] [Story] [Text] [Tool] [Video]. **Please add the suitable tag and resubmit.**
-
-*[I am a bot](/r/AutoModerator/comments/q11pu/what_is_automoderator/), and this action was performed automatically. Please [contact the moderators of this subreddit](/message/compose?to=%2Fr%2FGetMotivated) if you have any questions or concerns.*
 ===
 </pre>
 </div>
