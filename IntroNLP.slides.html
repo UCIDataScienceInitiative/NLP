@@ -12064,7 +12064,7 @@ Text Analysis can help with the following tasks:</p>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">pylab</span> inline 
@@ -12072,6 +12072,7 @@ Text Analysis can help with the following tasks:</p>
 <span class="kn">import</span> <span class="nn">ujson</span>
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
 
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="k">import</span> <span class="n">CountVectorizer</span><span class="p">,</span> <span class="n">TfidfTransformer</span>
 <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="k">import</span> <span class="n">LatentDirichletAllocation</span>
@@ -12091,36 +12092,10 @@ Text Analysis can help with the following tasks:</p>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Populating the interactive namespace from numpy and matplotlib
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /Users/Garren/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-</pre>
-</div>
-</div>
-
-<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>True</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">load_reddit</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">ls_subreddits</span><span class="o">=</span><span class="p">[],</span> <span class="n">MIN_CHAR</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
@@ -12176,7 +12151,7 @@ Text Analysis can help with the following tasks:</p>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">plot_roc</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_score</span><span class="p">):</span>
@@ -12231,7 +12206,7 @@ Text Analysis can help with the following tasks:</p>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># grab data from the following subreddits</span>
@@ -12243,22 +12218,6 @@ Text Analysis can help with the following tasks:</p>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Counter({&#39;SuicideWatch&#39;: 12609, &#39;depression&#39;: 24683})</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -12275,7 +12234,7 @@ Text Analysis can help with the following tasks:</p>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create an expression to remove from data </span>
@@ -12315,7 +12274,7 @@ Text Analysis can help with the following tasks:</p>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ANSWER</span>
@@ -12330,47 +12289,6 @@ Text Analysis can help with the following tasks:</p>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-Comment 1788:
- 
-:/ this loneliness must be so hard then...I do hope you&#39;ll think about calling a friend if these feelings get stronger.  I don&#39;t want you to be scared. 
-:/ this loneliness must be so hard then...I do hope you&#39;ll think about calling a friend if these feelings get stronger.  I don&#39;t want you to be scared. 
-
-Comment 2360:
- 
-:( You need to call someone...I had a panic attack right before I swallowed around 10 pills and saw the fucking police coming up the steps for me...I know that feeling.
-
-You can do serious damage and please don&#39;t take anymore pills. I care about you. :)
-
-~LG
-  You need to call someone...I had a panic attack right before I swallowed around 10 pills and saw the fucking police coming up the steps for me...I know that feeling.
-
-You can do serious damage and please don&#39;t take anymore pills. I care about you.  
-
-~LG
-
-Comment 9679:
- 
-:| seriously? I wanted to get into building this pc as a **hobby**, something to get myself interested in. I already go for jogs and stuff, take pills, but I often feel I&#39;m not doing anything productive with my life
-:| seriously? I wanted to get into building this pc as a **hobby**, something to get myself interested in. I already go for jogs and stuff, take pills, but I often feel I&#39;m not doing anything productive with my life
-
-Comment 18096:
- 
-:) thank you, Im working on it for sure or at least trying to
-  thank you, Im working on it for sure or at least trying to
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -12397,7 +12315,7 @@ Comment 18096:
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#split the data into training and testing sets. </span>
@@ -12421,21 +12339,6 @@ Comment 18096:
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Training Labels Counter({&#39;depression&#39;: 19382, &#39;SuicideWatch&#39;: 10451})
-Testing Labels Counter({&#39;depression&#39;: 5301, &#39;SuicideWatch&#39;: 2158})
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -12450,7 +12353,7 @@ Testing Labels Counter({&#39;depression&#39;: 5301, &#39;SuicideWatch&#39;: 2158
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># parameters for vectorizer </span>
@@ -12500,7 +12403,7 @@ $$<p></p>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Plot different IDF options</span>
@@ -12531,416 +12434,10 @@ $$<p></p>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/ipykernel/__main__.py:8: RuntimeWarning: divide by zero encountered in true_divide
-</pre>
-</div>
-</div>
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">NORM</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1">#turn on normalization flag</span>
@@ -12958,11 +12455,11 @@ cBzHcXAxcBzHcXAxcBzHcXAxcBzHcYD/B/usERvymZgrAAAAAElFTkSuQmCC
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#get the bag-of-words from the vectorizer and</span>
-<span class="c1">#then use TFIDF to limit the tokens found throughout the text </span>
+<span class="c1">#then use TFIDF to weight the tokens found throughout the text </span>
 <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="n">train_bag_of_words</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span> <span class="n">train_corpus</span> <span class="p">)</span> 
 <span class="n">test_bag_of_words</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span> <span class="n">test_processed_corpus</span> <span class="p">)</span>
@@ -12975,20 +12472,6 @@ cBzHcXAxcBzHcXAxcBzHcXAxcBzHcYD/B/usERvymZgrAAAAAElFTkSuQmCC
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Time Elapsed: 11.73s
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -13006,11 +12489,10 @@ cBzHcXAxcBzHcXAxcBzHcXAxcBzHcYD/B/usERvymZgrAAAAAElFTkSuQmCC
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">nltk</span> <span class="k">import</span> <span class="n">SnowballStemmer</span>
-<span class="n">stemmer</span> <span class="o">=</span> <span class="n">SnowballStemmer</span><span class="p">(</span><span class="s2">&quot;english&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">stemmer</span> <span class="o">=</span> <span class="n">SnowballStemmer</span><span class="p">(</span><span class="s2">&quot;english&quot;</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;eating&#39;</span>
 <span class="n">stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
@@ -13019,26 +12501,10 @@ cBzHcXAxcBzHcXAxcBzHcXAxcBzHcYD/B/usERvymZgrAAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[25]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&#39;eat&#39;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ANSWER </span>
@@ -13047,15 +12513,11 @@ cBzHcXAxcBzHcXAxcBzHcXAxcBzHcYD/B/usERvymZgrAAAAAElFTkSuQmCC
 <span class="sd">    Takes a reddit comment and stemmer as input</span>
 <span class="sd">    and returns a list of stemmed words</span>
 <span class="sd">    </span>
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    comment: str</span>
-<span class="sd">    stemmer: nltk stemmer object </span>
+<span class="sd">    params: </span>
+<span class="sd">        str comment: comment to stem </span>
+<span class="sd">        nltk.stemmer stemmer: nltk stemmer object </span>
 <span class="sd">        </span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    stemmed_comment: ls[str]</span>
-<span class="sd">        list of stemmed words</span>
+<span class="sd">    rtype: ls[str]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">stemmed_comment</span> <span class="o">=</span> <span class="p">[</span><span class="n">stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">comment</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">stemmed_comment</span>
@@ -13083,25 +12545,11 @@ cBzHcXAxcBzHcXAxcBzHcXAxcBzHcYD/B/usERvymZgrAAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Time Elapsed: 11.84s
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div><aside class="notes">
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#relabel our labels as a 0 or 1</span>
@@ -13132,7 +12580,7 @@ $$ \min_{\bf w}{\frac{1}{2}||{\bf w}||_d + C \sum_{i=1}^{N}{\textrm{log}(1+e^{âˆ
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Fit a regularized logistic regression model  </span>
@@ -13159,325 +12607,13 @@ $$ \min_{\bf w}{\frac{1}{2}||{\bf w}||_d + C \sum_{i=1}^{N}{\textrm{log}(1+e^{âˆ
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot_roc</span><span class="p">(</span><span class="n">subreddit_id_binary</span><span class="p">[</span><span class="n">test_idx</span><span class="p">],</span> <span class="n">y_score</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYgAAAEZCAYAAACNebLAAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
-AAALEgAACxIB0t1+/AAAIABJREFUeJzt3Xd4FOX2wPHvCb0lJICUQAABEVBEmgiiQUCK8MOGghVF
-ERUEBNu1wdWr4rVgQRQuiogFbKAUQdCgCCIoRTCI9F5DTGgh5fz+2CV1Q5Yku7PZnM/z5HHnnXdn
-TsawZ2feJqqKMcYYk12I0wEYY4wJTJYgjDHGeGQJwhhjjEeWIIwxxnhkCcIYY4xHliCMMcZ4ZAnC
-GGOMR5YgTFAQkW0iclxEEkRkj4i8LyLls9VpLyKL3HWOiMgsEWmSrU4lERknItvd9TaKyKsiEnGG
-cz8oIn+IyFER2SEi00Wkma9+V2P8xRKECRYKXK2qoUAL4GLg8dM7ReRSYD7wFVATqA+sBX4WkXru
-OqWA74EmwFXuY7UHDgNtPZ1URN4AhgJDgHDgPGAmcPXZ/gIiUuJs32OML4mNpDbBQES2AgNV9Xv3
-9ligqar2dm//CKxR1aHZ3jcXOKCqA0TkbuBZ4FxVPeHFORsCG4BLVPW3XOr8AHyoqu+5t+8A7lbV
-ju7tNFzJZThQAlgAHFXVhzMdYyYQo6rjRKQm8CZwOZAIjFPVN727SsacHbuDMEFHRGoDPYC/3dvl
-cN0JfO6h+gygq/t1Z+Bbb5JDpvo7c0sOZ5D9W1kfoA3QFPgYuPH0DhGpDFwFfCIiAnwDrMJ1F9QZ
-GCYiXTHGByxBmGAyU0QSgB3AfmC0uzwC19/6Xg/v2QtUdb+ukkud3Jxt/dw8r6r/qGqSqv4EqIhc
-5t53A7BUVffjesxVVVX/o6qpqroN+B/QrxBiMCYHSxAmmPRxtxtcAZxPxgf/ESAN17fu7GoCh9yv
-D+dSJzdnWz83u7JtTwf6u1/fDHzkfh0FRIpInPvnCK52lnMKIQZjcrAEYYKJALi/hX8AvOLePg4s
-A/p6eM+NwEL364VAN/cjKW8sAmqLSMsz1DkGZO5NVcNDneyPnD4BbhCRKOAS4At3+U5gi6pGuH/C
-VTXsdDuLMYXNEoQJVuOAriLS3L39GHCHiAwRkYoiEi4izwHtgH+763yI60P4CxFpLC5VRORxEeme
-/QSqugl4G1f7wBUiUkpEyojITSLyiLvaauA6ESnnbtQemFfgqroa113N/3C1iSS4d/0KJIjIIyJS
-VkRKiEgzEWmdnwtkTF4sQZhgkeVbuKoewnUX8ZR7+2egG3A9rnaDrcBFQAdV3eyucwrogqtn0nfA
-P8AvuNoalns8qeow4C1gPK5HWZuAa3A1JgO8BiQD+4D3gWlnijuTT3A1Qn+UXlE1DeiNqxvvVuAA
-MAkIzeUYxhSIdXM1xhjjkd1BGGOM8cgShDHGGI8sQRhjjPHIEoQxxhiPSjodgLdExFrTjTEmH1RV
-8vO+InUHoar2o8ozzzzjeAyB8mPXwq6FXYsz/xREkUoQxhhj/McShDHGGI8sQRRB0dHRTocQMOxa
-ZLBrkcGuReEoMiOpRUSLSqzGGBMoRAQNxEZqEZksIvtFZO0Z6rwhIn+LyGoRaeHLeIwxxnjP14+Y
-3sc1QZpHItIDaKCqjYB7gXd8HI8xxhgv+TRBqOoSXDNc5qYPMNVddzkQJiLVfRmTMcYY7zg9UC4S
-1/z7p+12l+13JhxjjCmiUk/Bzhj4awZoCkn7NrAwNrJAh3Q6QXhqOMm1JXr06NHpr6Ojo62ngjGm
-+Doc60oIW2bD1rnpxTGbIGaz6/Xs2EYFOoXPezGJSF3gG1Vt7mHfO8APqjrdvb0BuEJdC7Rnr2u9
-mIwxxYumwebZsG0eHFwLCdsgLRWOn+Ehi4RA1eZw4UAOnapOtXY35rsXkz/uIATPdwoAXwMPANNF
-pB0Q7yk5GGNMUFOFuFhYNR40FXZ+D0f+9u69599MaolKlDj/OqjbxZUg3KoWMCyfJggR+RiIBqqI
-yA7gGaA0oKo6UVXnikhPEdmEa3H3O30ZjzHGBJx9K+GjNnnXa3wTnNMSal0KFSOhbASUrcz8+ZsY
-OnQeX3xxERdK4fY7soFyxhjjb6oQvwneOy/nvmot4OIhULIc1GoPYfU8HuLAgWOMGDGfjz/+A4A7
-72zBe+/1yVGvIAPlnG6kNsaY4JdyEn5/Aw6vhz+neq7Tfgxc+nSeh1JVpk5dw0MPLSAu7gTlypVk
-zJhohg9vV8hB2x2EMcb4xqF1sPIVWP8BuXbOLFkeGt8I3d4D8e5L/v79R2nU6E0SE0/Rpcu5vPPO
-1TRoEJFr/YLcQViCMMaYwrD/d/hrOmyZ47pT8KRURWg1HCpFwYV3e50UspsyZTUlSgi33tocyeMY
-liCMMcafNM31yGjfCtjw8ZnrntcXWo+CGm3ynRAKwtogjDHG144fgjn9YcfCM9er1R7O7w/1ukN4
-w3yfLjExifffX83QoW3zvEvwFUsQxhiTm+RjrruEmJFw4HfPdVoOg7Bz4cJ7oFS5QjntnDkbue++
-OezcmUDFiqW5666LC+W4Z8sShDHGpKVC4k5YP8WVFPavdE1j4UlkR7jqfxDeqNAfGe3bd5Rhw75l
-xgxXG0arVjVp2bJmoZ7jbFiCMMYUT7t+go2fw6o38q57zsUQVh96TIVSFXwSzh9/7Ofyy6cQH3+S
-8uVL8dxznRg69BJKlnRu4U9LEMaY4kMVZv6fa4K73IQ3gqa3Q+lQ19QVVZr6JbQmTapRr15latSo
-yIQJV1OvXmW/nPdMrBeTMSa4bZoFv70Ku370vL/B/0FUZ2j5oH/j8iAu7gTh4WULtVHaurkaY0x2
-Sf/AW2f4Fn77Wqh2of/iyeSff04SFlbWL+cK2DWpjTHG7zQNfno8Z3Jo9RDcthoeSoOR6khySEhI
-YsiQuZx//nji4k74/fxny9ogjDFFX+op2PotzL4RUpOy7ju/P1ydx2A2P5g1awMPPDCX3bsTKVky
-hJiYbVx3XROnwzojSxDGmKJLFSY3hH+2eN5/22o45yL/xpTNnj2JDB06jy+/jAWgbdtIJk3qTfPm
-1R2NyxuWIIwxRU/sx/DzU54TQ6ProOskKJf7BHb+tHXrEb78MpaKFUvz/PNXcv/9bShRomg83bdG
-amNM4Du2D/74H/w6FpKPeq7zUGqW1dQCycSJv9GjR0Pq1Anz+7mtF5MxJvioQuw0WPMO7Fnquc4l
-T7gmwivr/JiBQGWT9RljgsfJeNg6F+beknNfw2uhRltoOdRnI5rz66eftrNs2S4eeaSD06EUGksQ
-xhjnqcKRjTDrGojbkHP/RfdDh2cDpl0hs/j4kzz66HdMnPg7ItCpUz3atIl0OqxCYQnCGOOcXUtg
-/p2u9ZmzqxTlmim19UP+j8sLqsqXX8YydOg89u49SqlSITz22GVceGHg907yliUIY4z/qLqW4vxu
-EOz9Jed+KQGaCg8eg1Ll/R/fWXjzzV8ZNuxbANq3r8PEib1o1uwch6MqXNZIbYzxvXVTXHcKuYm8
-DK6dDWX838snvw4dOk67dv9j5MhLuffe1oSEOLOoT16sF5MxJvCoQswI+P11z/ujOkOXCa7ZU4uo
-lJQ0R6fj9ob1YjLGBA5V2DYfvuyRc9//fQmNrvV/TAVw8mQKBw4cIyoq591NoCeHgrIEYYwpOFVY
-OxEWDva8/8YfoE60X0MqDDEx2xg06BtCQ8uwfPndRWYEdGGxBGGMKZhVb8H3Qz3vu3Q0XPp0oS/N
-6WtxcSd45JHvmDx5FQBNm1Zj796j1K4d6nBk/mUJwhhz9g6tg+lXwMm4nPuu/hQa31jkksJpX30V
-y+DBczhw4BilS5fgiSc68uijHShTpvh9XBa/39gYk3+xn8Dcmz3vu/kXqHmJf+PxgYMHj3PgwDE6
-doxi4sTenH9+VadDcoz1YjLG5C0tBV4rlbP80mdc8yGV8LCviEpLU2bO3MA115wfsF1Xz4Z1czXG
-+MbRPfDjIxD7Udby67+Fet2cicmcFevmaowpHIc3uBqcj+2Fw+tz7o9oAnf+6f+4CtmJE8mMGbOY
-Ro0iGDiwpdPhBCy7gzDGuOZEmt4x9/2VouC6uVC1mf9i8pGFC7cwePBsNm8+Qnh4WXbsGEHFiqWd
-Dstn7A7CGHN2ju6BdyNdC+xoWs79UV2gxQOusQtBstbCoUPHGTVqAR98sAaACy44h0mTegd1cigo
-n99BiEh3YBwQAkxW1bHZ9tcBPgAqu+s8rqrzPBzH7iCMKQhV2Pw1rJ8Cm2Z6rtNjKjS5JWBXZiuI
-Hj0+4ttvN1GmTAmeeeYKRo1qT6lSJZwOy+cC9g5CREKAt4DOwB5ghYjMUtXME74/CUxX1XdFpAkw
-F6jvy7iMKVaOH4QpTeHEoZz7al7iGrcQGhWUSSGzF17oTGpqGuPH96RRoypOh1Mk+PoRU1vgb1Xd
-DiAinwJ9gMwJIg04PTyxMrDbxzEZUzzsWQZz+kPC9pz76nWHK98o0hPlna0WLWqwYMFtTodRpPg6
-QUQCOzNt78KVNDIbAywQkQeB8kAXH8dkTPDSNPhtHCwemXNfzUvghoVQuqL/4/Kj33/fS1RUGFWr
-BvZ6EkWBr+8pPT33yt6Q0B94X1XrAFcD03wckzHBKWEHvFoiZ3Lo/RmMVNdI5yBODseOnWLUqAW0
-aTOJkSMXOB1OUPD1HcQuICrTdm1cbRGZDQS6AajqLyJSVkSqqmqOB6ajR49Ofx0dHU10dHRhx2tM
-0RT3F7x/ftay9mPgkn9BSPB3Vpw/fxODB89h27Z4QkKEKlXKkZamQTES+mzFxMQQExNTKMfyaS8m
-ESkB/IWrkXov8CvQX1VjM9WZA8xQ1Q/cjdTfqWptD8eyXkzGZKcKf06FbwdklDW9zdUbqRhIS1MG
-DJjJhx+uBVztDJMm9aZ161oORxY4ArYXk6qmisgQYAEZ3VxjRWQMsEJVZwOjgEkiMgJXg/UdvozJ
-mKBx+E+Ykm3g2pVvwsVDnInHASEhQlhYGcqVK8mYMdEMH96uWHRd9RcbSW1MUbP4YVj5cs7ya76G
-Br39H4/DEhKSOHjwGA0aRDgdSkCyyfqMKQ48tTMAtHsSOjzr/3j8rLi2KRRUQRJEcI+MMSZYLB2d
-MzncvNzVO6kYJIdff91Nq1YTWbJkh9OhFCt2B2FMoDp+ECack7O8xRDo/Kb/43FAYmISTz31A2+8
-sRxV6NmzEXPm5LJgkfEoYBupjTH5cPwQTKjmed/Ny6Fm9rGmwWnOnI3cd98cdu5MoEQJ4aGHLmX0
-6GinwypW7A7CmECyaRbMuiZr2Xk3QI9pULKMMzE54NixU5x77hscOHCMVq1qMmlSby6+uKbTYRVJ
-1khtTFF2bD8sHgWx2SYRaHiNaxR0MRjo5snnn//Jzp3/MHToJZQsac2l+WUJwpii6rdxEDMiZ/kt
-v0KNNv6PxwQda4MwpihRhS1zYGa2MQtlwqDvIqjeypm4HHDqVCrvvbeKu+9uaXcJAcgShDH+dCIO
-3vawFsGdf0HEef6Px0HLlu1k0KDZrFt3gKNHTzFqVHunQzLZWIIwxl8+bgd7l2cta/MIdHwRpPgM
-AEtISOJf/1rE22+vQBUaNoygVStrgA5EXiUIESkNRKnqJh/HY0zwST0F47L1QGrcD3p94kw8Dtqx
-4x/at5/M7t2JlCwZwsMPt+eppy6nXLlSTodmPMgzQYjI1cCrQGmgvoi0AJ5R1Wt9HZwxRdrRPa4R
-0H9Mylo+IgVCiueEcnXqhNKoURUiI0OZNKk3zZtXdzokcwZ59mISkd9wTdf9g6pe7C77Q1Uv9EN8
-meOwXkym6JhUHxK2ZS0LbwR3bXQknEBy+PBxKlcuS4kS1ijtD77uxZSsqvGS9RmpfVIbk13qKZh9
-E2yambW8eiu4/CWIutKZuBxy9OgpKlYsnaO8ShVbCrSo8CZBxIrIjUCIiNQHhgG/+DYsY4qQ1GRY
-/h9YNibnvmL4OCkpKYUXXljC+PErWLXqXmrXDnU6JJNP3iSIIcDTuBbz+RKYDzzuy6CMKRJSTsLr
-5clxQy0loP/SYjNnUmY//bSdQYNms2GDa8XgOXM2cu+9rR2OyuSXN20Q16nql3mV+Zq1QZiAsXoC
-rHgpZxtDidLQ40NofKMjYTkpPv4kjz76HRMn/g5A48ZVmDixN5dfXtfhyIxPp9oQkd9VtWW2st9U
-1a/DPS1BGMcd+Rvey2Uw2/BTUKL4dtX844/9tGw5ERF4/PHLePzxjpQta8OsAoFPEoSIdAO6AzcD
-H2XaFQpcpKp+nSjGEoRxlKexDO2egraPQSlrdAWYPPl32rWrTbNmHtawMI7xVYK4GGiJq/3h35l2
-JQLfq+qh/JwwvyxBGEeowv7f4KNM34dajYDoV52LyZiz4OtHTGVV9WS+IitEliCM38WMhN+yJYLq
-reDWlc7EEwDWrTvArFkbeOKJy50OxXjJ1+MgIkXkP0BToOzpQlUtXjOLmeJlWhvYny0R3PgD1Il2
-JBynnTyZwnPP/cjYsT+TkpJG69a16NatodNhGR/zJkFMAZ4DXgZ6AHdiA+VMsFrxMvz4cNayB49C
-qQrOxBMAYmK2MWjQN/z9dxwA993XmnbtajsclfEHr6baUNVWmafXEJGVqurXzs32iMn43LuRrvmT
-Mht2slgt9Znd9Onr6NfvCwCaNq3GxIm96NAhyuGozNnw9SOmJHHNs7FZRAYDu4FK+TmZMQHpxGF4
-u2rWsuvmQv0ezsQTQK6++jwaNYrg1lub8+ijHShTxrquFife3EFcAvwJhAP/AcKAsar6s+/DyxKH
-3UGYwqEKGz6F+QNc3VezeyitWK3PkJdTp1IpXbp4TRcSTPy+JrWI1FbVXfk5YX5ZgjAFlpYKn3eB
-nTGe99fvCdfN8WtIgSI1NY3duxOJigpzOhRTyHz2iElE2gCRwBJVPSQizYBHgSsBa6UygS8tFX55
-DnYshN1Lcu6/7Hm44E6oUMP/sQWINWv2cffd35CQkMSaNYNtBLRJl+tfgoi8AFwPrAGeFJHZwP3A
-WGCwf8IzpgC2zIGvenned/taqObXJU0CzokTyYwZs5iXX15KaqpSu3YoW7YcoWnTak6HZgLEmUZS
-/wm0UtUTIhIB7AQuVNUt/gwwUzz2iMl4RxW+6Abbv8soK1EaOr8N9bpBJbv5Xbx4GwMHfs3mzUcQ
-gSFD2vKf/1xJpUrFt8dWsPLVI6aTqnoCQFXjRGSjU8nBGK9tng0ze2ct6/s9RHVyJp4AdfDgcTZv
-PsIFF5zDpEm9bVyD8ehMdxDxwPenN4FOmbZR1et8Hl3WeOwOwuQuKQHe8tDA+kAclA33fzwBTlWZ
-MWM9113XhFKlrIdSMPPVZH2dz/RGVV2UnxPmlyUIk6vkY/BGxaxlPaZC09uciceYAOL3bq5OsARh
-PDqVCG9mWtKyVgfo95ONYwBSUtIYN+4XSpQQRoy41OlwjEMKkiBCCjuY7ESku4hsEJGNIvJoLnVu
-FJH1IvKHiEzzdUwmSByOzZocGvSB/kssOQC//baHtm0n8fDD3/Gvf33Pvn1HnQ7JFEE+7fAsIiHA
-W0BnYA+wQkRmqeqGTHUa4hpbcamqJohIVc9HMyaT/atgWqaFDpsNgO7vOxZOoDh27BRPP/0D48Yt
-Jy1NiYoKY8KEq6lRo2LebzYmG68ThIiUUdWkszx+W+BvVd3uPsanQB9gQ6Y69wDjVTUBwN8LEZki
-aP/vMC3TireXPQ+XPO5cPAHk/vvnMnXqGkJChBEj2vHvf3eiYsXSTodliqg8E4SItAUm45qDKUpE
-LgLuVtWhXhw/Etf4idN24UoamZ3nPs8SXI+8xqjqfC+ObYqj1OSsyeH/voRG1zoXT4B56qnL+fvv
-w7z+enfatIl0OhxTxHlzB/EG0AuYCaCqa0TE207lnh4GZ29pLgk0BC4HooCfRKTZ6TuKzEaPHp3+
-Ojo6mujoaC/DMEEhYQdMqpux3eYRSw7ZNGwYwc8/34VYO0yxFRMTQ0xMTKEcy5vZXH9V1bYiskpV
-L3aXrVHVi/I8uEg7YLSqdndvPwaoqo7NVGcCsExVp7q3FwKPqupv2Y5lvZiKs9RTMC7TKN8yYTAk
-3rl4HLZpUxxly5akdu3QvCubYs3XvZh2uh8zqYiUEJHhwEYvj78CaCgidUWkNNAP+DpbnZm4Jv/D
-3UDdCLAR2yarnzK1MXR5p9gmh+TkVF58cQkXXjiBwYNnY1+ajC9584jpPlyPmaKA/cBCd1meVDVV
-RIYAC3Alo8mqGisiY4AVqjpbVeeLyFUish5IAUap6pH8/DImCG2aBbOuydju/gE0u925eBy0YsVu
-7rnnG9as2Q9AREQ5Tp1KtUV8jM9484gpQlXj/BTPmeKwR0zFzbJ/w9JnMrY7jYOWw5yLx0GPPvod
-L7+8jLQ0pX79yrz7bi+6dm3gdFimCPD1kqMrROQvYDrwpaom5udExpyVqRfBwbUZ2z0/giY3OxeP
-w8qWLYkIPPJIe555Jpry5Us5HZIpBryaakNE2uNqP/g/YDXwqap+6uPYssdgdxDFwfEDMKF61rJ7
-90DFms7EEyBOnkzhr78OcdFFxXdhI5M/fpuLyb0uxDjgFlX16xSQliCKgV0/wvQrspYNOwElyzoT
-jwNU1bqomkLl015MIlJRRG4RkW+AX4GDQPv8nMwYj5KPw6zrsiaHFg/ASC1WyeGvvw7RqdMHzJ7t
-bSdBY3zLmzaIdcA3wEuq+pOP4zHFyeENMKVJzvIbY6DOFTnLg9SpU6m89NLPPPfcjyQlpXL06Cmu
-vrqR3UkYx3mTIM5V1TSfR2KKj23z4YvuOcvLVoGbf4Hwhv6PySHLlu3knnu+Yf36gwAMGNCCl1/u
-asnBBIQzLRj0iqqOFJGvyDk9hq0oZ87e4T9hSrOc5ef2hj5fQkjx6s+fkpLG+ee/xebNR2jYMIJ3
-3+3FlVfWdzosE2R8taJcW1X9NbeV5WxFOeO1hJ3wZQ84vD5reZtH4PKxnt9TTCxYsJmYmG089dTl
-lCtnXVdN4fNpLyYRGaKqb+VV5muWIIqopWNg2eisZd2nQLM7nIjGmGLH13Mx3eWhbGB+TmaKmfca
-Z00OkR3hgSPFLjmkpSlTp67hxIlkp0Mx5qzk+tBXRG7CNTiuvoh8mWlXJaB4zpRmvJN95lWAoQlQ
-upIz8TgoNvYggwbNZsmSHWzYcIjnn/f4xNaYgHSmVsFfgcNAbWB8pvJEYJUvgzJFWEoSvJ5t7MJD
-acVuneikpBReeGEJzz//E8nJaVSvXoGWLYv3aHBT9JzVSGonWRtEEfD9MFj1RsZ29dZw87Ji1zvp
-yJETtG//Hhs2uFbPveeelowd24Xw8HIOR2aKI59M1icii1X1ChE5QtZuroJr0Z+I/JzQBKnPu8H2
-BRnbUVdCX792dAsY4eHlaNKkKqrKxIm9ufzyunm/yZgAdKZuriGqmiYiHudcUtVUn0aWMx67gwhE
-qvD19bDpq4yywXuhQvGeVC4u7gTly5eibNnidfdkAo+vu7nWA/ao6ikRuQxoDkzztGa0L1mCCFCv
-ZPu7u28/lD/HmVgccOJEso1fMAHN191cZ+JabrQB8D6uJUE/zs/JTBBJPpEzOQzeV2ySQ2pqGm+9
-9StRUeP4669DTodjjE94kyDSVDUZuA54U1VHAJG+DcsEtNfLwRvls5aNSIYK1T3XDzLr1h3gssve
-Z+jQeRw6dJxPP13ndEjG+IQ3D0hTRKQvcBtwenFgu6curpaOgZSTGdtVmsGA4vEBefJkCs899yNj
-x/5MSkoaNWtWZPz4nlx7rYcZaY0JAt4kiLuA+3FN971FROoDn/g2LBOQpraAg2sytovZ+IZ9+47y
-2mu/kJKSxn33teaFFzoTFlZ81qswxY+3S46WBE7PwbxJVVN8GpXnGKyR2knT2sD+lRnbNy2G2pc7
-F49DPvxwDeeeG06HDlFOh2KMV3zdi6kj8CGwG9cYiBrAbar6c35OmF+WIBxw/BDMuMI1TXdmw5Og
-RGlnYjLGnBVf92J6Deipqh1UtT1wNfB6fk5mipCYUTChWs7kMCIl6JPD9u3x/Pvfi7EvJKa486YN
-orSqpn9KqGqsiAT3J0Rx5mkZ0I4vQqsRQZ8YUlPTePPNX3nyye85diyZRo0i6N//QqfDMsYx3iSI
-30XkXVyPmQBuwSbrC06TG0H8pqxl9+yA0DrOxONHq1fv4557vmHlyj0A9O3blE6dbHU3U7x50wZR
-FngQuAxXG8SPuMZDnDzjGwuZtUH4kCq8GwnH9maUXfY8XPK4czH50aJFW+jWbRqpqUrt2qG8/XZP
-evdu7HRYxhQKnzVSi8iFQANgvar+nc/4CoUlCB9JS4HXsg1rGZFcrGZgPXUqlVatJtKpUz3+858r
-qVSpTJ7vMaao8NWa1P/CtXLc70Ab4N+q+l6+oywgSxA+MH8grMv2v3RoIpSu6Ew8Djp5MsUm1jNB
-yVcJYj3QVlWPiUg1YK6qtilAnAViCaIQnTwC47PN1l6vO1w/z5l4/ERV2bMnkcjIUKdDMcZvfNXN
-NUlVjwGo6sE86pqiJHtyuO9A0CeHrVuP0KPHR7Rt+z8SEpKcDseYIuFM99TnZlqLWoAGmdemVtXr
-fBqZKXwLH4A1b2ds1+oA/Zc4F48fpKSk8frrv/D00zEcP55MeHhZ1q07QPv2wd8zy5iCOtMjpjOu
-rq6qfl0uzB4xFcDun+HTy3KWB/lcSqtX72PgwK/5/XdX76z+/S9g3LjunHNOBYcjM8Z/fLLkqL8T
-gPERTcuZHG5fC9WCfwDY4cPH+f33vdStG8aECVfTo0cjp0MypkjxarK+Ap1ApDswDlcbxmRVHZtL
-vRuAGUBrVf3dw367g/DWsf2weBTETsta3nk8tLjfmZgc8sknf9C7d2MqVgzuUeDG5Mank/UVhIiE
-ABuBzsAeYAXQT1U3ZKtXEZiDa52JIZYg8knT4FWPS4hDVGfou9C/8RhjHOfryfpOnyQ/o4faAn+r
-6nb3qnSfAn081HsWGAtY95KCyJ4c6veE29fAQ6lBmxxUlSlTVvOf//zodCjGBJ08RwaJSFtgMhAG
-RInIRcAujXefAAAgAElEQVTdqjrUi+NHAjszbe/ClTQyH78FUFtV54rIw15HbjJ4unMoBqOhN22K
-4957Z/P991spUUK4/vqmnH9+VafDMiZoeHMH8QbQCzgMoKprgE5eHt/TbU36cyIREVzTiY/M4z3G
-E02DWdfmTA7DTwV1ckhOTuXFF5dw4YUT+P77rVSpUo733+9D48ZVnA7NmKDizadIiKpul6zdIVO9
-PP4uIPPSW7VxtUWcVgloBsS4k0UNYJaI/J+ndojRo0env46OjiY6OtrLMIJQUgK8FZazfGTwt9M8
-8cT3/Pe/SwG47bbmvPLKVVSrZl1XjQGIiYkhJiamUI7lzWyuX+BqH3gH15xMQ4EOqto3z4OLlAD+
-wtVIvRf4FeivqrG51P8BeEhVc0wnbo3UmexZBp+0z1p222o45yJn4vGzvXsT6dXrE154oTNXXdXA
-6XCMCWg+GQeRyX24HjNFAfuBhe6yPKlqqogMARaQ0c01VkTGACtUdXb2t2CPmM5sSrOsq7xFdoR+
-xauBtmbNSqxceQ8SxIP8jAkEPh8HUViK/R3E4odh5ctZy7pMgIsGOxOPH+zbd5Tjx5M599xwp0Mx
-psjy6R2EiEwiU8Pyaao6KD8nNGdJ1XXXEJftqdyDx6FUOWdi8jFV5b33VjFq1Hc0a1aNH3+8k5AQ
-u1swxt+8ecSUuQN9WeBasnZdNb5y/ABMqJ61bMB6qNLUmXj84K+/DnHvvbNZvHg7AJUqlSExMYmw
-sLIOR2ZM8XPWj5jco6OXqGr7PCsXomL1iEkVvh0Af07NWh7Edw0Ar766jH/9axFJSalUq1ae11/v
-Tr9+F1hbgzEF4OtG6uzqA9XzrGXyx9Ogt3ZPQ4cxzsTjRyVKCElJqdx5ZwtefvkqIiKCNxkaUxR4
-0831CBltECFAHPCYqs7wcWzZ4wj+O4ije+HdWlnLBu2CSpHOxONnqalpLF++29ZqMKYQ+WyyPvfg
-tTrAbndRmlOf0kGfIKa1gf0rs5YNT4ISwTkLqaraoyNj/MBnk/W5P5Hnqmqq+yeIP6EdsuZdeEWy
-Jofmg1wjooMwOezZk8gNN8xg2rS1TodijMmDN4+YpgGvepr6wp+C8g4iLRVey9YMNDQRSld0Jh4f
-SktTJk36jUcfXcg//yRRr15l/v57KCVL2lLnxviSTxqpRaSkqqYAFwO/ishm4Biukc6qqi3zFa1x
-+flp+OXZjO1+SyCyg3Px+FBs7EEGDZrNkiU7AOjV6zzGj+9pycGYAHemXky/Ai2B//NTLMXHwgdg
-zdsZ2y2GBG1yUFVuv30mK1fuoXr1Crz5Zg9uuKGptT8YUwTk+ohJRFap6sV+jidXQfOIaes8+LJn
-xvY92yE0Kvf6QWD58l1MnryKsWO7EB5uXVeN8Sef9GISkV3Aq7m9UVVz3ecLQZEg9q2Ej9pkbN+z
-A0KtS6cxxnd81YupBFAR15oNnn7M2UhNzpocekwNquSgqnz1VSzx8SedDsUYU0jO1AaxV1X/7bdI
-gpkqjMvUZbXt49D0NufiKWS7diXwwANz+frrv7j33la8804vp0MyxhSCMyUIa0UsLDOiM15XbgAd
-n3cslMKUmprGhAkr+de/FpGYeIrQ0DK0aFHD6bCMMYXkTG0QEaoa5+d4clUk2yBUYWYf2PJNRlmQ
-LAmalJRCp04fsGzZLgCuvfZ83nyzB5GRoQ5HZozJzCfjIAIpORRZr2Zr4nngiDNx+ECZMiVp2rQa
-27bFM358T669tonTIRljCpmtKOcLibtgYrYG6IGbofK5zsTjI//842qQtrUajAlcPpusL5AUmQSR
-mpy1QRqK/GOlpKQUypTJz8zwxhin+WyyPnOWDqzJmhzqRMNDaY6FU1CqyvTp6zj33DdYsWJ33m8w
-xgQVSxCFJTUZPmyRsR3VBW78AYrolBLbt8fTu/cn9Ov3BXv2JDJ58iqnQzLG+Jk9Nygsme8cWg6D
-TuOci6UAUlPTePPNX3nyye85diyZsLAy/Pe/XRk40OZmNKa4sTaIgvpnK/wvW+NzEW5zOHjwGI0b
-v8WRIyfp27cpr7/enZo1beC8MUWVNVI74fc34YcHs5ZVioJB252JpxB99tl6ypYtSe/ejZ0OxRhT
-QJYg/G3rt/Blj6xlF9wF3SY7E48xxuTCejH50/LnsyaHa+e4HikVseRw6NBxnn12MampRbeXlTHG
-t6yR+mz8+BisGJuxfcXLcG7P3OsHIFXlo4/+YMSI+Rw6dJzw8HIMGdLW6bCMMQHIEoS3ljyZNTkM
-WA9VmjoXTz5s3XqE++6bw/z5mwHo1Kke3bo1cDYoY0zAsgThjZhR8NsrGdv3HYDy1ZyLJx9Wr95H
-+/aTOXEihfDwsrz88lXceWcLW/rTGJMra6TOS/IJeKN8xvYd66BqM//HUUCpqWl07Pg+9epV5rXX
-ulG9ekWnQzLG+IH1YvKV7PMq3bICarT2bwyF6PjxZMqXL+V0GMYYP7JeTL4yOdPz+ZLlikxy2Lfv
-qMdySw7GmLNhCSI3xw9B4s6M7WHHnYvFSwcOHOOWW76kadPx7N/vOUkYY4y3LEF4snYSTMjUCD00
-wblYvKCqfPDBapo0Gc/HH//ByZMprFixx+mwjDFFnM97MYlId2AcrmQ0WVXHZts/ArgbSAYOAnep
-6s4cB/I1VVjzDiy6P2v5RfdD6cCdi2jLliMMGvQNixZtBaBLl3N5552radAgwuHIjDFFnU8ThIiE
-AG8BnYE9wAoRmaWqGzJV+x1opaonRWQw8F+gny/j8ij78qBQJBql4+JO8MMP26hSpRyvvdaNW29t
-bl1XjTGFwtd3EG2Bv1V1O4CIfAr0AdIThKouzlT/F+AWH8eU064fs25f+RZc/IDfw8iP1q1rMW3a
-tXTpci7VqlVwOhxjTBDxdYKIBDI/LtqFK2nkZiAwz6cRZbd9IXzeNWO7CE7V3b//hU6HYIwJQr5O
-EJ6edXj8BBaRW4FWwBW5HWz06NHpr6Ojo4mOji5YdKnJWZPDVYE74d6cORtZtmwXzz13pdOhGGMC
-WExMDDExMYVyLJ8OlBORdsBoVe3u3n4MUA8N1V2A14HLVfVwLscq3IFyqlnbHTq+CG0fLbzjF5J9
-+44ybNi3zJixHoClS+/i0kvrOByVMaaoKMhAOV/fQawAGopIXWAvrsbn/pkriMjFwDtAt9ySg0/M
-vzPjdVTngEsOqsp7761i1KjviI8/SfnypXj22U60aRPpdGjGmGLC51NtuLu5vk5GN9cXRWQMsEJV
-Z4vId8AFuBKIANtV9RoPxym8O4jUUzCuTMZ2ALY7vPrqMkaOXABA9+4NmTDhaurVq+xwVMaYosbm
-YjobKUnwetmM7Tv+gKoXFPy4hSw+/iTR0VN49NEO9Ot3gXVdNcbkiyUIbyX9A29l+hYefh7c9VfB
-julDqmqJwRhTIDZZn7cmZmrcbXhNQCSHhIQk/v7bc9OLJQdjjJOKT4JIS4FTiRnbfb5yLha3WbM2
-0LTpeK67bgbJyalOh2OMMVkUnwQx4ZyM1w/EORcHsGdPIjfcMINrrpnO7t2JlC9fioMHA3+2WGNM
-8VI8lhx9NxJOHsnYLhvuWCgffriGoUPn8c8/SVSoUIrnn+/MAw+0oUSJ4pOrjTFFQ/AniB8fg6OZ
-pr5+8Jhzsbj9808SvXqdx/jxPYmKCnM6HGOM8Si4ezEd2QTvNcrYfigVxNlv6qrKDz9so1OnetYI
-bYzxOevmmptXMl2TwfugQvXCDcoYYwKcdXP1RNMyXkde5tfkEB9/ksGDZ/PGG8v9dk5jjClswXsH
-kfnuYWiCX1aFU1W+/DKWoUPnsXfvUcLDy7JjxwgqVizt83Mbl3r16rF9+3anwzDG7+rWrcu2bdty
-lAfyZH3+l3IS3qiYtcwPyWHXrgQeeGAuX3/tGnzXvn0dJk7sZcnBz7Zv305R+dJjTGHyRZtmcN1B
-HD8AE7I9SnooDfzQGNyz50fMm7eJ0NAyvPhiZ+69tzUhIdYI7W/ub0tOh2GM3+X2t293EKd91jnj
-dakKMGiXX5IDwCuvXEWlSmV49dWriIwM9cs5jTHGl4LrDuJ0u0OdaLjxB5/HZAKP3UGY4soXdxDB
-2Yup9SifHXrx4m3s3ZuYd0VjjCnigiNBaFrWXkv1exT6KeLiTnD33V8THf0Bw4Z9W+jHN6a4+fPP
-P2nTpo3TYRQJ33zzDf3798+7YiEr+glC0+DVEhnbJcsX6mhpVWX69HU0aTKeyZNXUbp0CS644BzS
-0uwxhjk79erVo3z58oSGhlKrVi3uvPNOjh/POknj0qVL6dy5M6GhoYSHh9OnTx9iY2Oz1ElMTGT4
-8OHUrVuX0NBQzjvvPB566CHi4pydhPJsPf300zzyyCNOh1Egp06d4q677iIsLIxatWrx2muvnbH+
-1q1b6d27N6GhoZxzzjk89thj6fuio6MpV64coaGhVKpUiSZNmqTv6927N+vXr2fdunU++108KfoJ
-YkanrNvDCm+upbQ05dprp9Ov3xccOHCMjh2jWLNmME8/fYX1UDJnTUSYM2cOCQkJrF69mlWrVvHC
-Cy+k71+2bBndunXj2muvZe/evWzdupXmzZvToUOH9P7tycnJXHnllcTGxrJgwQISEhJYunQpVapU
-4ddff/VZ7KmphTsd/b59+4iJiaFPnz4BEU9+PfPMM2zevJmdO3fy/fff89JLL7FgwQKPdZOTk+na
-tStdunThwIED7Nq1i1tvvTV9v4jw9ttvk5CQQGJiYo4vBv369ePdd9/16e+Tg6oWiR9XqNmkpqi+
-TMZPWlrOOgX08MMLNCzsBZ04caWmphb+8U3h8vh3EiDq1aunixYtSt9+5JFHtFevXunbHTt21CFD
-huR4X48ePfSOO+5QVdVJkyZpjRo19Pjx416fd926ddq1a1eNiIjQGjVq6AsvvKCqqgMGDNCnnnoq
-vV5MTIzWrl07S7xjx47V5s2ba9myZfW5557TG264IcuxH3zwQR02bJiqqv7zzz86cOBArVmzptau
-XVuffPJJTcvl3+TUqVO1a9euWcpefPFFbdCggVaqVEmbNWumX331Vfq+KVOmaIcOHXTEiBEaERGR
-HvfkyZO1SZMmGhERod27d9ft27env2fYsGFap04dDQ0N1datW+tPP/3k9TXzVmRkpC5cuDB9+6mn
-ntL+/ft7rDtx4kS9/PLLcz1WdHS0Tp48Odf9P//8s9avXz/X/bn97bvL8/W5W7TvIPZl+sZ0+xqf
-dGkdPTqa2NgHuOeeVnbXUNS9IoX3U0C7du1i3rx5NGrkmkzyxIkTLF26lBtuuCFH3RtvvJHvvvsO
-gEWLFtG9e3fKlSvn1XmOHj1K165d6dmzJ3v37mXTpk107tw51/rZB1t9+umnzJs3j/j4eG677Tbm
-zZvH0aNHAUhLS+Ozzz7jlltuAeD222+ndOnSbNmyhVWrVvHdd9/xv//9z+N5/vjjDxo3bpylrGHD
-hvz8888kJCTwzDPPcOutt7J///70/cuXL6dhw4YcPHiQJ554gpkzZ/Liiy8yc+ZMDh48SMeOHbM8
-p2/bti1r167lyJEj3HzzzfTt25dTp055jGfs2LGEh4cTERFBeHh4ltcREREe3xMfH8+ePXto3rx5
-etlFF13E+vXrPdb/5ZdfqFu3Lj179qRatWpceeWVOR4ZPf7445xzzjl07NiRxYsXZ9nXpEkTtm/f
-nn79/aFoJ4hP2rv+W7oSVGt+5rp5yG1Ft/LlS1Gzpu9HYpvi4ZprriE0NJSoqCiqV6/O6NGjAYiL
-iyMtLY2aNWvmeE/NmjU5dOgQAIcPH/ZYJzezZ8+mZs2aDB8+nNKlS1OhQoWzahgeNmwYtWrVokyZ
-MkRFRdGyZUtmzpwJuJLV6ePt37+fb7/9ltdee42yZctStWpVhg8fzieffOLxuPHx8VSqlPXf1fXX
-X0/16q6Brn379qVRo0ZZHptFRkZy//33ExISQpkyZZg4cSKPP/445513HiEhITz22GOsXr2anTt3
-AnDzzTdTuXJlQkJCGDFiBElJSfz1l+dlhh999FGOHDlCXFwcR44cyfI6t7ado0ePIiKEhWVM2R8W
-FkZioudejrt27WL69OkMHz6cvXv30rNnT/r06UNKSgoAL730Elu2bGH37t3cc8899O7dm61bt6a/
-v1KlSqgq8fHxHo/vC0U3QRzKlKWbDSjQoRYu3EKTJuNZuHBLwWIygW2kFt5PPs2aNYuEhAQWL17M
-hg0b0j/4w8PDCQkJYe/evTnes3fvXqpWrQpAlSpVPNbJzc6dO2nQoEG+461du3aW7f79+6d/6H/y
-ySfcfPPNAOzYsYPk5GRq1qyZ/s178ODB6b9fduHh4Tk+SKdOncrFF1+c/g1+/fr1Wd5fp06dLPW3
-b9/OsGHDiIiIICIigipVqiAi7N69G4BXXnmFpk2bph8vISEh13jyo2JF15Q+CQkJ6WUJCQk5Et9p
-5cqV47LLLuOqq66iZMmSjBo1isOHD6e3NbRp04YKFSpQqlQpbr/9djp06MDcuXPT35+YmIiIULly
-5UL7HfJSNBNEajJ8cEHG9pVv5Oswhw4dZ8CAmXTt+iGbNx/hrbd818hnDJA+kKljx47ccccdjBw5
-EoDy5ctz6aWX8tlnn+V4z4wZM+jSpQsAXbp0Yf78+Zw4ccKr89WpU4dNmzZ53FehQoUsvag8JZ7s
-j5z69u1LTEwMu3fv5quvvkpPEHXq1KFs2bIcPnw4/Zt3fHw8a9eu9Xju5s2bs3HjxvTtHTt2MGjQ
-IN5+++30b/DNmjXLMvAreyxRUVG8++67xMXFpZ/z6NGjtGvXjiVLlvDSSy/x+eefpx8vNDQ010GU
-L7zwApUqVSI0NDTLz+kyTypXrkzNmjVZs2ZNetmaNWto1qxZrr/z2cyXlH3gW2xsLPXq1UtPTH6R
-38YLf/+QuQEmc8P05jm5NtrkJi0tTT/8cI1WrfqSwmgtU+ZZff75H/XUqZSzPpYJLBShRuqDBw9q
-hQoVdM2aNaqqumTJEq1YsaK++eabmpiYqHFxcfrEE09oeHi4btq0SVVVk5KStG3bttqjRw/dsGGD
-pqWl6aFDh/T555/XefPm5ThnYmKi1qpVS19//XVNSkrSxMREXb58uaq6GrybNGmicXFxunfvXm3X
-rp3WqVMn13hP69Gjh3bt2lVbtmyZpfyaa67RYcOGaUJCgqalpenmzZt18eLFHq/F/v37tWrVqpqU
-lKSqqn/++aeWK1dON27cqKmpqfree+9pyZIl0xttp0yZoh07dsxyjK+++kovuOACXb9+vaqqxsfH
-62effaaqqnPnztXIyEjdt2+fJiUl6ZgxY7RkyZIef5+CeOyxxzQ6OlqPHDmisbGxWrNmTV2wYIHH
-un/99ZdWqFBBFy1apKmpqfrqq69qw4YNNTk5WePj43X+/Pl68uRJTUlJ0WnTpmnFihV148aN6e9/
-/vnn9YEHHsg1ltz+9ilAI7XjH/xeB3r6l09JykgOn16R68U6k6NHkzQy8hWF0dqp0xTduPFQvo5j
-Ak8gJ4j69evn+IC6//77s/QM+vnnnzU6OlorVqyoYWFh2qtXL/3zzz+zvCchIUFHjBihderU0UqV
-KmnDhg115MiRGhcX5/G869ev186dO2t4eLjWrFlTx44dq6qqJ0+e1JtuuklDQ0P1oosu0nHjxmVJ
-EJ7iVVX98MMPNSQkRF955ZUccd13331au3ZtrVy5srZs2VKnT5+e6/W48cYbs+x/8sknNSIiQqtV
-q6YjR47M0qvHU4JQVZ02bZpeeOGFGhYWplFRUTpw4EBVVU1NTdWBAwdqaGio1qpVS//73//m+vsU
-RFJSkt51110aGhqqNWrU0HHjxqXv27Fjh1aqVEl37tyZXvbVV19pw4YNNSwsTDt16pT+//bgwYPa
-pk0bDQ0N1fDwcL300ktzxHrhhRfq2rVrc43FFwmi6M3F9EUP2OYeyVyAmVrnzv2b/fuPMmBAC1v6
-M4jYXExFR2xsLAMGDGD5cltYKy+zZ89m2rRpfPrpp7nW8cVcTEUvQWTuYliAxkITnCxBmOLKJutb
-Oynj9bVz8qx+7NgpXnxxCUlJKT4MyhhjglPRWg9i5X8zXp/b84xV58/fxODBc9i2LZ5Tp1J5+ukr
-fBycMcYEl6KVII787fpv64dzrXLgwDFGjJjPxx//AUCLFjXo2bORP6IzxpigUrQSxGmN+3os3rYt
-nlatJhIXd4Jy5UoyZkw0w4e3o1SpEh7rG2OMyV3RTBDVW3ssrls3jLZtI0lJSeOdd66mQQPPc6gY
-Y4zJW9FLECXK5Nq1VUSYMeMGKlYsbV1Xi6m6deva/3tTLNWtW7fQj+nzBCEi3YFxuHpMTVbVsdn2
-lwamAq2AQ8BNqroj1wN2Gge4psmoWrV8jt2VKpUprNBNEXR63QRjTMH5tJuriIQAbwHdgGZAfxE5
-P1u1gUCcqjbClUheOtMxE8+9k+HDv6V+/dfZuvWIL8IOeDExMU6HEDDsWmSwa5HBrkXh8PU4iLbA
-36q6XVWTgU+B7EtI9QE+cL/+HMh1svo5fzaiWbO3ef315Zw4kUxMzDZfxBzw7I8/g12LDHYtMti1
-KBy+fsQUCezMtL0LV9LwWEdVU0UkXkQiVDXHJOy93rsFSKBVq5pMmtSbiy/2fl58Y4wxZ8fXCcJT
-a2H2seDZ64iHOgCULxfCs8914cEHL6FkyaI1CNwYY4oan87FJCLtgNGq2t29/RiumQXHZqozz11n
-uYiUAPaq6jkejmUT7BhjTD7kdy4mX99BrAAaikhdYC/QD+ifrc43wB3AcqAv8L2nA+X3FzTGGJM/
-Pk0Q7jaFIcACMrq5xorIGGCFqs4GJgMfisjfwGFcScQYY4zDisx038YYY/wr4Fp6RaS7iGwQkY0i
-8qiH/aVF5FMR+VtElolIlBNx+oMX12KEiKwXkdUi8p2I1PF0nGCQ17XIVO8GEUkTkZb+jM+fvLkW
-InKj+2/jDxGZ5u8Y/cWLfyN1ROR7Efnd/e+khxNx+pqITBaR/SLieRFwV5033J+bq0WkhVcHzu9S
-dL74wZWwNgF1gVLAauD8bHXuA952v74J+NTpuB28FlcAZd2vBxfna+GuVxFYDCwFWjodt4N/Fw2B
-34BQ93ZVp+N28Fq8C9zrft0E2Op03D66FpcBLYC1uezvAcxxv74E+MWb4wbaHUShDqwr4vK8Fqq6
-WFVPujd/wTWmJBh583cB8CwwFkjyZ3B+5s21uAcYr6oJAKp6yM8x+os31yINCHW/rgzs9mN8fqOq
-S4AzTS3RB9eURqjqciBMRKrnddxASxCeBtZl/9DLMrAOiBeRYJy21ZtrkdlAYJ5PI3JOntfCfctc
-W1Xn+jMwB3jzd3Ee0FhElojIUhHp5rfo/MubazEGuE1EdgKzgaF+ii3QZL9Wu/HiC2WgzeZaqAPr
-ijhvroWrosituCY7DNZl8854LcQ1fetruLpLn+k9wcCbv4uSuB4zXQ5EAT+JSLPTdxRBxJtr0R94
-X1Vfc4/LmoZrXrjixuvPk8wC7Q5iF64/6NNqA3uy1dkJ1AFwD6wLVdVgnLXPm2uBiHQBHgd6u2+z
-g1Fe16ISrn/0MSKyFWgHzArShmpv/i52AbNUNU1VtwF/AcG4rKI312IgMANAVX8ByopIVf+EF1B2
-4f7cdPP4eZJdoCWI9IF17mnA+wFfZ6tzemAdnGFgXRDI81qIyMXAO8D/qephB2L0lzNeC1VNUNVz
-VPVcVa2Pqz2mt6r+7lC8vuTNv5GZwJUA7g/DRsAWv0bpH95ci+1AFwARaQKUCeI2GSH3O+evgdsh
-fYaLeFXdn9cBA+oRk9rAunReXouXgArAZ+7HLNtV9RrnovYNL69FlrcQpI+YvLkWqjpfRK4SkfVA
-CjAqGO+yvfy7GAVMEpERuBqs78j9iEWXiHwMRANVRGQH8AxQGtfURhNVda6I9BSRTcAx4E6vjuvu
-9mSMMcZkEWiPmIwxxgQISxDGGGM8sgRhjDHGI0sQxhhjPLIEYYwxxiNLEMYYYzyyBGEChoikuqdl
-XuX+b65TubsHR/1RCOf8wT1d9GoR+UlEznrEsYjc657uBBG5Q0RqZNo3UUTOL+Q4l4tIcy/eM0xE
-yhb03Kb4sgRhAskxVW2pqhe7/7sjj/qFNYinv6q2wDXb5ctn+2ZVfVdVT6+5MIBMk6Cp6iBV3VAo
-UWbEOQHv4hwOlC+kc5tiyBKECSQ5Rj+77xR+FJGV7p92Huo0dX+rPr0oTAN3+S2Zyie4R5uf6bw/
-Aqff29n9vjUi8j8RKeUuf1EyFml6yV32jIiMFJHrgdbANPd7y7q/+bcUkcEiMjZTzHeIyOv5jHMZ
-UCvTsd4WkV/FtTjQM+6yoe46P4jIInfZVe7ZXVeKyHQRseRhzsgShAkk5TI9YvrCXbYf6KKqrXFN
-q/Kmh/cNBsapaktcH9C73I91bgLau8vTgFvyOP//AX+ISBngfaCvql6EazGa+0QkHLhGVZu5v8k/
-l+m9qqpfACuBm913QCcz7f8cuC7T9k3A9HzG2R3XfEun/UtV2wIXAdEicoGqvolrSudoVe0sIlWA
-J4DO7mv5GzAyj/OYYi6g5mIyxd5x94dkZqWBt8S13kMqnmclXQY8Ia4lV79U1U0i0hloCaxwfyMv
-iyvZePKRiJwAtuFaL6AxsEVVN7v3fwDcD4wHTojIJGAurvUFPMlxB6Cqh0Rks4i0xbUK2nmqulRE
-HjjLOMvgmn8r85KR/UTkHlz/nmsATYF1ZJ28rZ27/Gf3eUrhum7G5MoShAl0I4B9qtpcXNO7n8he
-QVU/EZFfgF7AHBG5F9cH4weq+oQX57hZVVed3hDXDKiePuRT3R/wnXHNJDyEs1vRcAauu4UNwFen
-T3e2cbofbb0FXC8i9XDdCbRS1QQReR9XkslOgAWqmtfdiTHp7BGTCSSenr2HAXvdr28HSuR4k0h9
-VZwLpr8AAAErSURBVN3qfqzyNdAcWATcICLV3HXCz9ArKvt5NwB1ReRc9/ZtwGL3M/vKqvot8JD7
-PNklkrHEZXZfAtfgelQ23V2WnzifBi4Rkcbucx0FEsW1hGSPTPUTMsXyC9AhU/tMufz02DLFiyUI
-E0g89Up6GxggIqtwLaV5zEOdm0RknbtOM2CqqsYCTwILRGQNrimha3h4b45zqmoSrumQP3e/NxXX
-uhuhwGx32Y+47m6ymwK8c7qROvPxVTUe+BOIUtWV7rKzjtPdtvEKrmm81wKrgVhcq6UtyfSeScA8
-EVnkXgPhTuAT93mW4XqUZkyubLpvY4wxHtkdhDHGGI8sQRhjjPHIEoQxxhiPLEEYY4zxyBKEMcYY
-jyxBGGOM8cgShDHGGI8sQRhjjPHo/wFcAYlqi5UvjQAAAABJRU5ErkJggg==
-"
->
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13489,13 +12625,14 @@ jyxBGGOM8cgShDHGGI8sQRhjjPHo/wFcAYlqi5UvjQAAAABJRU5ErkJggg==
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Feature-Importance">Feature Importance<a class="anchor-link" href="#Feature-Importance">&#182;</a></h2><h3 id="Activity-3:">Activity 3:<a class="anchor-link" href="#Activity-3:">&#182;</a></h3><p><strong>20mins</strong></p>
 <p>To understand what the model is doing, we want to see which features make the model more likely to classify a comment as a certain class. The CountVectorizer provides a list of features (using the <code>get_feature_names()</code> method) and model coefficients can be found in using the <code>coef_</code> method. For this activity, make a sorted list or dictionary of features and their importances (i.e., the corresponding coefficient value). Print the 5 most important features for classifying a comment as each of our class labels, SuicideWatch and depression.</p>
+<p>Note, this is pretty easy since we are using Logistic Regression. Feature importance may require more complicated analysis for other methods.</p>
 
 </div>
 </div>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ANSWER </span>
@@ -13504,6 +12641,9 @@ jyxBGGOM8cgShDHGGI8sQRhjjPHo/wFcAYlqi5UvjQAAAABJRU5ErkJggg==
 <span class="n">dict_feature_importances</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span> <span class="nb">zip</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">coef</span><span class="p">)</span> <span class="p">)</span>
 <span class="n">orddict_feature_importances</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span> 
                                 <span class="nb">sorted</span><span class="p">(</span><span class="n">dict_feature_importances</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="p">)</span>
+                                <span class="c1"># lambda is an anonymous function. in this case, we take the first </span>
+                                <span class="c1"># element of each item of the dictionary as the key to sort by</span>
+        
 
 <span class="n">ls_sorted_features</span>  <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">orddict_feature_importances</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 
@@ -13515,21 +12655,6 @@ jyxBGGOM8cgShDHGGI8sQRhjjPHo/wFcAYlqi5UvjQAAAABJRU5ErkJggg==
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>SuicideWatch:  [&#39;suicide&#39;, &#39;please&#39;, &#39;talked&#39;, &#39;suicidal&#39;, &#39;hospital&#39;]
-depression:  [&#39;depression&#39;, &#39;effects&#39;, &#39;depressed&#39;, &#39;psychiatrist&#39;, &#39;helps&#39;]
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -13546,7 +12671,7 @@ depression:  [&#39;depression&#39;, &#39;effects&#39;, &#39;depressed&#39;, &#39
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># maybe do something with this crazy indexing: this is python not C!</span>
@@ -13566,7 +12691,7 @@ depression:  [&#39;depression&#39;, &#39;effects&#39;, &#39;depressed&#39;, &#39
 </div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># these are the 5 comments the model is most sure of </span>
@@ -13578,203 +12703,6 @@ depression:  [&#39;depression&#39;, &#39;effects&#39;, &#39;depressed&#39;, &#39
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>SuicideWatch:0.009617024344665628
----
-It sounds like you&#39;re exhausted on many levels and are losing hope or have lost hope. I&#39;m so sorry. 
-
-For what it&#39;s worth, it&#39;s striking that you give equal weight in your post to your personal struggles and your existential despair at the state of the world. That&#39;s pretty remarkable - it speaks to your empathy. You are not worthless. I think that you want to help people. You say that you don&#39;t even know why you try - but it sounds like you do know. You care about the world so much that it hurts. Helping people gives life meaning, right? And sometimes jerks may deny that or try to take that from you, but we all have to fight them. 
-
-I know that I can&#39;t imagine the added pain of being trans in a hostile world, though some of this, I get. I&#39;m queer too and not in a good situation right now and it sounds like you&#39;ve got something eating disordered type stuff going on - that certainly makes the world a harder place to live in. There is help out there though. Personally, I found support groups where people help me and I help them and they make my life not just survivable, but meaningful. Those may not be for everyone, but please don&#39;t stop believing that you deserve help. You are worth it and I&#39;ll be thinking about you.
-===
-SuicideWatch:0.022749824384601065
----
-If life were just, heartbreak would kill you on the spot. It hurts so bad and so deep in places only that person could touch. And when the hurt is gone there is a big hole for a long time that can get filled up any number of ways. Some people fill it with anger - anger about a lot of things; their life, their ex, themselves. But anger only makes the hole bigger and deeper. Some people fill it with other things - sometimes good (family, friends, new relationships), sometimes not so good (one night stands, drugs, alcohol). But what really goes in that hole is you. You have to patch yourself back up with bits and pieces you find of yourself through some uncomfortable self-discovery. It takes a long time, and it hurts, but one day, without even realizing it&#39;s working, you&#39;ll look around and think, &#34;I feel whole again.&#34; And then your heart won&#39;t be broken and you&#39;ll have room inside for someone else. Someone who won&#39;t burn holes into your heart, but fill it up to the brim with strong, confident, love. 
-
-I had my heart broken so badly I wanted to die a little over a year ago. I said &#34;fuck it&#34; to the life I thought I was going to lead (but couldn&#39;t because of the break up) and did something absolutely crazy. I sailed across the Indian Ocean. Trust me, nothing makes you dig deeper down into yourself and confront uncomfortable and varying truths like pitting yourself against a fierce ocean. Now obviously not everyone can do what I did. But I encourage you to take this time to dig deep into yourself and do something crazy that you never thought you could do. Travel, even if it&#39;s just outside your city. Learn about yourself, push your body, your mind, your soul hard. You&#39;ll find someone amazing worth loving inside. 
-
-I hope this didn&#39;t seem trite. I really empathize with your pain. Please let me know if you need someone to talk to. -- you can do anything in the world when you have nothing to lose.
-===
-SuicideWatch:0.028515195298273954
----
-The reason why hotlines are the norm is that a lot of friends and family, even if they have all the love in the world, just aren&#39;t emotionally equipped to deal with our thoughts of suicide.  So I think you&#39;re being wise and realistic to put some thought into how you present this to your family.  
-
-I also answer a hotline IRL and one of the things we end up doing quite often is helping people figure out how to break things to their families.  We also always help people work out a &#34;Plan B&#34; for what to do if telling the family doesn&#39;t go well.  So talking to your local or national hotline first might be an option for you if you feel comfortable with that.
-
-Either way, I think we might be able to help you more here in framing the conversation if you could tell us a bit more about yourself and your family, how long you&#39;ve been feeling this way, and what your relationship&#39;s been like up to this point.  
-
-It&#39;s never an easy conversation to have, no matter how well prepared we are, but it sounds like you need to have it soon.  You said that you&#39;ve been really struggling with thoughts of suicide for a couple of weeks - were there any changes in your life or events that precipitated this?   
-
-Hugs. 
-===
-SuicideWatch:0.028971064279539174
----
-Hey OP, just letting you know I&#39;m here, so I&#39;ll just carry over what you posted in your last post over here. I&#39;ll respond to that a little later, please give me a little moment. 
-
-&amp;gt; Original Post:
-This is my little way of venting and hopefully making myself feel better. Sort of my way of telling the whole world how I feel but not necessarily anyone will read it, if that makes sense. Well it does to me. The best way to describe it is that I prefer to have it here on reddit with the possibility of someone reading it than on microsoft word where I know no one will read it. I&#39;m also typing what I feel none of this is planned so if it seems all over the place this is why. Like I said I just wrote this in attempt to make myself feel better. I&#39;m tired and it&#39;s 5:51 am as im writing this so that explains any grammatical errors. Feel free to leave responses. I don&#39;t care. If I&#39;m breaking any rules I&#39;d greatly appreciate a PM mods, so I can edit it or if I have to copy it so I can post it somewhere else. Anyway....
-
-&amp;gt; In short I want to die. That&#39;s it really. I just want to stop living. Not because I&#39;m depressed from sadness, but because I&#39;m tired. I&#39;m only 19 years old and I feel like I&#39;m 80. In high school teachers, counselors, etc. always use to ask my peers and I where we saw ourselves in ten years. I never knew the answer. I still don&#39;t. I can&#39;t picture my life in 10 years, or 5 years, or even next year. I hope I&#39;m dead. Earlier I said I&#39;m not depressed. That&#39;s not entirely true. Let me explain. I don&#39;t want to do anything with my life. The thought of going to college and having a career saddens me. Even the thought of having a simple job saddens me. The thought of interacting with strangers frightens me. The thought of living saddens me. I&#39;m scum. I have the possibility to do anything with my life, and I don&#39;t have a hard life. My parent&#39;s didn&#39;t hit me. They didn&#39;t divorce. I have wonderful brothers and sisters, and yet I still feel this way. If I had the opportunity to not exist and somehow give my position to somebody who has had a hard life and suffered to them I would because at least they&#39;d do something with it. I&#39;d do it in a heartbeat. This is what depresses me. I am the definition of scum. I shouldn&#39;t be depressed, but I am. I don&#39;t feel like I deserve to be depressed but I am. And I hate myself even more because I am. I hold a small grudge towards my parents for bringing me into this world. I often find myself at night wishing they never met. Wishing I was never born. The thought of me not existing brings me such joy. But sadly I exist so the next best thing is death. And I would of killed myself by now but the thought of pain stops me. I&#39;m too scared. Death is the only thing I want in life and once again the only person stopping me is me. I&#39;m my own worst enemy. Sometimes I wonder if that&#39;s why I wanna kill myself. If somehow by committing suicide, I have killed the person who&#39;s made me feel the way I feel. I haven&#39;t told anyone the way I feel. No friends or family. I often joke to my friends about suicide but I&#39;m positive they think I&#39;m joking and have no idea how badly I want to die. This one time my friend casually told me at a party that he was kind of depressed, and he was describing exactly how I felt, and what did I do? I basically told him to shut up because no one wanted to hear that. I don&#39;t know why I told him that. I wonder if it was because he described my feelings and I felt like I couldn&#39;t accept it at the time. I regret it everyday of my life. It&#39;s another reason why I hate myself. My friend didn&#39;t commit suicide, and we&#39;ve hung out since then, but he&#39;s never talked about it again and I haven&#39;t asked him. I&#39;m not even good enough to be his friend. I&#39;ve never felt connected to my family. At least not enough to ever tell them my feelings. I feel like my brothers and sisters were made for each other, if that makes sense. Like when you learn that they&#39;re related you think &#34;yeah, that makes sense&#34; but me, not so much. I&#39;m nothing like them. We don&#39;t like the same things, and our personalities are so different that when we get together, like at a family gathering, I find that I don&#39;t talk to them much. and when we do they generally ask how&#39;s it going and I just say &#34;fine&#34;. I&#39;ve felt so lonely my entire life. Ever since I was a child. I&#39;ve never had a girlfriend and at this point I don&#39;t even want one because I&#39;m worried if I start dating someone and I tell her how I feel that she&#39;ll feel like she now has to stay in the relationship so I don&#39;t commit suicide. I often day dream of hanging out with this chick I had a crush on in one of my high school classes. We both love reggae music and we&#39;d listen to it in class every now and then. I kind of gave signals that I was interested, but she never did anything. When I was attending community college she had the professor I had before me, and we&#39;d talk for a few minutes. The first couple times was just catching up cause we didn&#39;t see each other for a while, and after that it was just me asking what we did in class. Now that I&#39;ve dropped out of college I still think about her. I&#39;ve even had dreams about her where we were just hanging out. I don&#39;t think that&#39;s healthy. I think I love her, but at the same time I just think I feel this way because I feel shitty. But when I dream of her I don&#39;t hurt so bad. But I&#39;m just her friend, and I think I&#39;m ok with that but it still hurts because she&#39;ll never know how I feel, but at the same time I know she doesn&#39;t feel the same. At this point I feel like I&#39;m carrying a heavy weight and it just gets heavier and heavier. But I keep carrying it, and I want to drop it. But somehow I put a smile on my face, not because I&#39;m happy but because the thought of losing this weight makes me laugh and the thought of me killing myself makes me laugh, because I know I&#39;ll carry it forever and I know I won&#39;t ever have the balls to kill myself, so I feel I&#39;ll always feel this way, but who knows. To me death sounds good all the time so maybe when I&#39;m at my breaking point I&#39;ll do it. I have a lot more to say, but at this point I can&#39;t really think of a reason to keep going.
-===
-SuicideWatch:0.029879756139131398
----
-I am sorry that you want to kill yourself. This is not a place to ask for methods, but let me tell you one thing - there is no fail safe method to kill yourself. Anything you would do, there&#39;s no guarantee that you wouldn&#39;t end up in some really fucked up state. Trust me, I researched it a lot in my life.
-
-Can you please tell us what&#39;s going on in your life that you consider suicide? Did something happened lately, or are you in permanent pain from something?
-===
-depression:0.9987981489018872
----
-Some antidepressants do have that side effect, because what you have to realize is the way they work is they &#34;balance&#34; out and change the levels of hormones and neurochemicals in our bodies. Citalopram specifically increases serotonin which surprisingly enough is a neurotransmitter inhibitor that calms and relaxes the brain. Which is possibly one of the reasons. 
-
-My best suggestion for you is to speak with you psychiatrist or whoever is prescribing you the medications, and bring it up. There&#39;s a possibility if the citalopram is working and it keep your depression in check, your psychiatrist might be able to prescribe you a secondary med for days when you expect to have some form of romantic or intimate contact with you and your significant other.
-
-This is what folks with ED do with viagra. They only take it when they need it. Now I&#39;m not saying go get viagra, but there are other drugs specifically NDRIs, where instead of changing serotonin levels they increase dopamine and norepinephrine, which for some people show very little side effects in terms of sexual drive.
-
-I&#39;m not a psychiatrist or a pharmacist but definitely discuss it with whoever is prescribing your medications.
-===
-depression:0.9990681957555436
----
-&amp;gt; Edit: Also, if there is one thing I&#39;ve learned in life it&#39;s no matter how much you ask or scream for help, nobody is going to come. You&#39;re always going to be on your own.
-
-You posted on this subreddit for a reason, and from one depressed to another, I want you to know this post can help you see that you truly aren&#39;t alone :)
-
-Job and money is... tricky. Our culture has esteemed the kind of job we have and the amount of money in our accounts to be the measures of success, and this puts a ton of pressure to adhere to that standard to find self-worth in this cruel life where not everyone starts on the same level. It&#39;s scary, because I don&#39;t have everything figured out, still trying to search for my career, and I have just enough to meek out a living with just enough to save and spend a little to have some fun. And guess what? I&#39;m 27. I have a bachelor&#39;s which amounted to no career, and I&#39;m trying to get back into school for a different bachelor&#39;s with a much better job pool; you&#39;re 21, and not to come off patronizing but there is plenty of time for you to keep searching and find your calling. If money is an issue regarding school, there is FAFSA you can apply for (assuming you&#39;re in the U.S.); you can start building a solid credit score if you haven&#39;t already by opening a credit line and treating it as you would a debit card to spend what you can afford while paying off the debt in full; you can work on getting certified or start community college to knock out general ed for much cheaper than you would at a uni if you haven&#39;t started school yet; you can bite the bullet and work part time somewhere to start your collection of job experience, or even consult a temp agency to get your foot in somewhere. There are options, and as I often say to others on this subreddit *it all begins with small, manageable steps*.
-
-Parties are overrated, especially if it&#39;s the kind of parties you think should be expected of from shows and movies and shit. Parties in general, however, can be pretty fun if you allow yourself to enjoy them :) You don&#39;t always need blowout parties, and if getting access to them is the issue, again... start small. Try Meetup.com. You can search based on your interests and hobbies, and if you don&#39;t have much hobbies to speak of try picking up something simple and small. It&#39;s daunting to meet new people, believe me I know. It took me years to develop extroverted habits, and even then I&#39;m still an introvert at heart and need to recluse from social things to recharge my batteries. It&#39;s disheartening to put yourself out there and deal with rejection, but when it comes to social aspects in life it&#39;s what it takes, and the more you expose yourself to it the less daunting it will seem because you give yourself the opportunities to learn from what did and didn&#39;t work, and this most definitely applies to the dating world... which leads to:
-
-Your health, shape, whatever label that goes on it. Check out /r/fitness, get situated with the FAQs, and ask away if you have questions. It&#39;s a very helpful subreddit, and I refined my workout routines as a result of consulting there often. The thing with fitness is, it&#39;s difficult. It&#39;s really tough to get started, and it&#39;s a whole new battle to maintain it. **However**, once you start, it only gets better from there. It&#39;s so easy to sit down and look back to think &#34;If I only started __ years ago, I&#39;d be so much more fit now...&#34;, but with fitness your best time to start is NOW. It doesn&#39;t even have to start at the gym if money is an issue, because weight loss comes from the kitchen. If you&#39;re drinking 10 cans of soda a week, cut it down to 8 a week; then 6; then 4; then 2; then ween yourself from it and replace it with the occasional 100% juice. If you&#39;re eating fast food 3 meals a day, cut it down to 2, then 1, all the while making a trip or two to the market and avoid the aisles; slowly replace a meal or snack with something you can simply whip up in the kitchen. Even just grilling chicken and stir frying your veggies is a big step up from ordering your usual from the take out joint.
-
-Gym-wise, I recommend Planet Fitness: it&#39;s $10 a month to attend the gym you sign up at (or $20/mo. to gain access to any PF in the country) There&#39;s a lot of circlejerk hatred for PF, especially in /r/Fitness because of the general lack of access to squat racks or deadlift stations and weights that cap out at like 60-75 pounds, but if you&#39;re just starting out you don&#39;t need all that super heavy equipment (and most of the people crying about PF aren&#39;t olympic lifters either, so they&#39;re just joining in on the hate). Should you start going to the gym, don&#39;t make the wild expectation that you&#39;re going to go every day every morning if it&#39;s not your routine yet; start small. Try every two days, every other day, and once you get the hang of it you should add more gym days. I&#39;m currently 205lbs at 6&#39;3&#34;, maybe at about 16-17% body fat. Not bad, but considering I used to be 250+lbs and struggled with eating right and maintaining good exercising and eating habits over the past 10+ years until now, it&#39;s a milestone for me. It doesn&#39;t have to take as long for you to get where you want to be, but it all starts with you.
-
-A healthy body image is important to building your confidence in many aspects, but figuring out who you are and allowing yourself to embrace all that is actually good, no matter how small, is where it should begin. You can look like Adonis himself and still have poor self-image, so know that looks aren&#39;t as important as you being confident with who you are, even with faults. When you find the things you know you can work on, whether it&#39;s eating habits or even something more abstract like having a hard time engaging people in conversation, it&#39;s a lot easier to break down the issues into smaller, realistic quest lines to complete. Before you know it, you&#39;ll have completed a full arc for you to gain XP on the next one.
-
-Notice the trend here? It&#39;s *all about small steps*.
-
-My biggest tip to you is to work on yourself with manageable goals, and give yourself time to let it all manifest into something greater than what you originally started with. You working on yourself will steadily give you the confidence and capacity to love yourself more, and until you love yourself you won&#39;t get yourself into a fulfilling position of someone else loving you back.
-
-You can do this.
-===
-depression:0.999280948891097
----
-As the other commenter said, it works differently for everyone.
-
-That being said, it is a perfectly good med. AFAIK research hasn&#39;t shown it to be any better or any worse than other antidepressants. I own quite a few psychopharmacology books and one of them says that virtually all antidepressants have a 68% response rate (in other words, 2 out of 3 people who take it will respond in some way). I also recall reading about something called &#34;the rule of thirds&#34;: this refers to how in clinical studies for a particular antidepressant, the pattern tends to be that 1/3 of patients will go into partial remission (i.e., they are almost completely better but have residual symptoms), 1/3 will go into full remission, and 1/3 will not show any response.
-
-Celexa (citalopram) is a very commonly used antidepressant. It&#39;s an SSRI (selective serotonin reuptake inhibitor), which is a safe and pretty effective class of meds. SSRIs are commonly used because they don&#39;t cause side effects as much or as severely as other types of antidepressants like tricyclics (TCAs) or monoamine oxidase inhibitors (MAOIs).
-
-If you&#39;d like to read more about Celexa, I would recommend looking at this site: http://cdn.neiglobal.com/content/pg/live/citalopram.pdf
-
-That site has the same info that is in the book my doctor uses for prescribing info (it&#39;s called Stahl&#39;s Essential Psychopharmacology: The Prescriber&#39;s Guide). It explains what it&#39;s used for, how it works, notable side effects, how it causes side effects, what to do about side effects, best augmenting agents, dosing, best/worse candidates for taking this med, etc.
-
-Good luck!
-===
-depression:0.9993763862311915
----
-This has not been said here, and I feel like it really needs to be.  Most anti-depressants will not make you less depressed. Period.  Finding one that works is difficult.  Some of the positive effects can be placebo or just your life circumstances changing.  They take 6-8 weeks to work with each medication.  It is normal to go through 2 or 3 before finding one that works for you and doesn&#39;t have nasty side effects.  From the first appointment until you find something you like might be 5-6 months.  
-
-I feel like you have this idea in your head that by getting anti-depressants your depression will go away, but that&#39;s not really how it works at all.  That being said, find a decent therapist or psychiatrist.  Sadly, in my experience, good ones are expensive.  
-
-Finally, your parents sound like they have no idea how anti-depressants actually work or what they do.  Do some of your own research.  The things that make you feel nothing are maybe anti-psychotics or like xanax (I don&#39;t actually know as much about those drug categories) and they are different from an anti-depressant.  
-===
-SuicideWatch:0.999719597566411
----
-##Looking for help?
-
-Mid twenties paedophile here.
-
-There **are** ethical options:
-- - -
-
-##Therapy &amp;amp; Social Support
-
-[Various therapies](http://en.wikipedia.org/wiki/Sex_offender#Therapies) have been shown to reduce (often drastically) the instance of re-offense for sex offenders and (in my opinion) there is no reason or evidence to suggest it would be any different for those with difficult/perilous attractions, paedophilic or otherwise who haven&#39;t committed a crime.
-
-There are support groups for innocent paedophiles seeking to avoid dangerous or criminal behaviour, some being run by other self-titled &#34;[Virtuous Pedophiles](http://en.wikipedia.org/wiki/Virtuous_Pedophiles)&#34; and others by community outreach type groups like &#34;[Circles of Support and Accountability](http://en.wikipedia.org/wiki/Circles_of_Support_and_Accountability)&#34; and &#34;[B4U-ACT](http://www.b4u-act.org)&#34;.
-
-&#34;[Stop It Now](http://www.stopitnow.org)&#34; is a good resource for survivors and reporting crimes in a general sense but also has [a page](http://www.stopitnow.org/treatment-resources-adults-risk-abuse-and-who-have-abused-0) dedicated specifically to helping us find help.
-
-On Reddit there&#39;s /r/pedtalk, /r/pedohelp , /r/pedophilia and the generic abuse prevention sub /r/abuseinterrupted that I&#39;ve found or been referred to so far.
-
-In addition to such support, actual psychological treatment in the form of [behaviour modification](https://en.wikipedia.org/wiki/Behavior_modification) (whether through [operant conditioning](http://en.wikipedia.org/wiki/Operant_conditioning) or [respondent conditioning](http://en.wikipedia.org/wiki/Respondent_conditioning) including the ethically controversial [aversion therapy](http://en.wikipedia.org/wiki/Aversion_therapy)) has some substantial positive effect.
-- - -
-
-##Pharmaceutical Aid
-
-There is also [chemical castration](http://en.wikipedia.org/wiki/Chemical_castration) which attempts to reduce risk by lessening or eliminating sex drive entirely with varied (though often positive) results.
-
-Additionally, several other prescription medications (such as anti-depressants for example) list reduced or eliminated libido as a side effect (some without the more distressing side effects of standard chemical castration drugs) the use of which could allow someone to seek medication without &#34;outing&#34; themselves under the guise of someone suffering from something like depression, which is so common as to draw little or no attention, and has the side benefit of reducing the depression that often accompanies low libido and the social isolation associated with having a sexual identity that is incompatible with ethical sexual expression.
-
-I&#39;m not certain which work on women but men at least should (very cautiously) research:
-
-**Antacids** (famotidine, ranitidine) can cause erectile dysfunction.
-
-**Anti-anxiety drugs** (alprazolam, clonazepam, lorazepam, diazepam) may result in lower libido, delayed ejaculation, and erectile dysfunction.
-
-**Antidepressants** (selective serotonin reuptake inhibitors [SSRIs], serotonin-norepinephrine reuptake inhibitor [SNRIs], monoamine oxidase inhibitors [MAOIs], tricyclic antidepressants [TCAs]) can lower libido and cause erectile dysfunction, delayed ejaculation, and sometimes painful ejaculation.
-
-**Antifungal drugs** (ketoconazole) can lower libido and cause erectile dysfunction.
-
-**Antipsychotics** (haloperidol, risperidone, fluphenazine, quetiapine, olanzapine, ziprasidone, clozapine) can result in lower libido, erectile dysfunction, and difficulty ejaculating.
-
-**Blood pressure medication** (beta-blockers, antiarrhythmic drugs, diuretics) can cause low libido, erectile dysfunction, and delayed ejaculation.
-
-**Cholesterol-lowering drugs** (statins, fibrates) can cause sexual side effects like low libido, and erectile dysfunction since cholesterol is needed to produce testosterone.
-
-**Chemotherapy drugs** can cause low libido and ejaculatory problems.
-
-**Prostate drugs** (finasteride, prazosin, tamsulosin) can cause erectile dysfunction. Terazosin may result in priapism. Anti-androgen drugs used to treat prostate cancer can also cause side effects because they are made to lower testosterone.
-- - -
-##Other Info
-
-**Additional Sources:** [I&#39;m a Paedophile. Over ten years since my release without hurting anyone](http://www.reddit.com/r/IAmA/comments/1kpw5g/iama_paedophile_who_has_been_inactive_since_my/).
-
-**Other things I&#39;ve found personally helpful in understanding and regulating my own behaviour in no particular order.**
-
-[Cognitive Biases](https://en.wikipedia.org/wiki/List_of_cognitive_biases) are what our minds do to protect our opinions from being challenged.
-
-[Logical Fallacies](https://en.wikipedia.org/wiki/List_of_logical_fallacies) are the failures of reasoning that we use intentionally or accidentally to prop up ill-thought-out positions.
-
-[YouAreNotSoSmart](http://youarenotsosmart.com/) is a site that has articles on some of each group above.
-
-[Mental Disorder.](https://en.wikipedia.org/wiki/Mental_illness) Focus less on these as directly indicative of a mental disorder and more on the potential for someone&#39;s brain/mind to just fail to function in some fashion. Understanding this can give you the will to recognize when yours might do the same even if you don&#39;t have some specific illness.
-
-[Maslow&#39;s Hierarchy of needs](https://en.wikipedia.org/wiki/Maslows_hierarchy_of_needs) is a good framework from which to build understanding of your own needs and to strive for their responsible fulfillment and to help others do the same for themselves.
-
-[Mindfulness Meditation](http://marc.ucla.edu/) is a particular type of meditation that eschews the metaphysical bullshit in favor of common, secular practices and scientifically studied and evidenced medical and psychological benefits.
-
-[Here](http://marc.ucla.edu/body.cfm?id=22) are some links to guided mindfulness meditation sessions from the study of it at UCLA.
-
-[TheraminTrees](https://www.youtube.com/user/TheraminTrees) is a YouTube channel that makes some pretty interesting videos about thought, faith, ethics and such. I should warn you it is from a quite secular viewpoint which may be unsettling to you if you are religious.
-
-[QualiaSoup](https://www.youtube.com/user/QualiaSoup) is quite similar and works frequently with TheraminTrees.
-
-QualiaSoup&#39;s [video on a logical basis for morality](https://www.youtube.com/watch?v=T7xt5LtgsxQ&amp;amp;list=SP0EFCB22DFCD4F2E7) is quite helpful in divorcing the notion of morality from your own personal feelings as is [Sam Harris&#39; TED talk on the subject](https://www.youtube.com/watch?v=Hj9oB4zpHww).
-
-I&#39;d also recommend Sam&#39;s video on [free will](https://www.youtube.com/watch?v=pCofmZlC72g) as it outlines some pretty interesting points.
-
-[Phil Hellenes](https://www.youtube.com/user/philhellenes) has some food for thought/secular inspirational videos and is well worth checking out.
-
-[This](http://youtu.be/0qDtHdloK44) is a poem titled &#34;Shake The Dust&#34; written and performed by &#34;Anis Mojgani&#34; at the 2010 &#34;Heavy and Light&#34; concert/poetry slam hosted by the suicide/self-harm prevention advocacy group &#34;To Write Love On Her Arms&#34; that I&#39;ve found particularly empowering when I&#39;m struggling.
-- - -
-
-Once again, I derive a lot of my positions from very secular sources (because they&#39;re equally available to anyone regardless of belief system) so if you&#39;re religious they might put you off a bit.
-
-Just remember: You&#39;re not alone, you&#39;re not evil and you&#39;re not doomed.
-
-We&#39;re all here for you so talk to us.
-===
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -13806,7 +12734,7 @@ $$\textrm{cos}({\bf x},{\bf y}) = \frac{{\bf x} \bullet {\bf y}}{||\bf x|| \; ||
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sentences</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;The girl went to the store&#39;</span><span class="p">,</span> 
@@ -13832,201 +12760,167 @@ $$\textrm{cos}({\bf x},{\bf y}) = \frac{{\bf x} \bullet {\bf y}}{||\bf x|| \; ||
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Euclidean Distance
- [[ 0.    2.83  5.66]
- [ 2.83  0.    2.83]
- [ 5.66  2.83  0.  ]]
-
-Cosine Distance
- [[ 0.  0.  0.]
- [ 0.  0.  0.]
- [ 0.  0. -0.]]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_comments</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">bag_of_words</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span> <span class="n">processed_corpus</span><span class="p">[</span><span class="mi">0</span><span class="p">:(</span><span class="n">num_comments</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span> <span class="p">)</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># define count vectorizer for clustering </span>
+<span class="c1">#MIN_DF = 0.001</span>
+<span class="c1">#MAX_DF = 0.8</span>
+<span class="n">vectorizer_clust</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">analyzer</span><span class="o">=</span><span class="n">ANALYZER</span><span class="p">,</span>
+                            <span class="n">tokenizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="c1"># alternatively tokenize_and_stem but it will be slower </span>
+                            <span class="n">ngram_range</span><span class="o">=</span><span class="n">NGRAM_RANGE</span><span class="p">,</span>
+                            <span class="n">stop_words</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">),</span>
+                            <span class="n">strip_accents</span><span class="o">=</span><span class="n">STRIP_ACCENTS</span><span class="p">,</span>
+                            <span class="n">min_df</span> <span class="o">=</span> <span class="n">MIN_DF</span><span class="p">,</span>
+                            <span class="n">max_df</span> <span class="o">=</span> <span class="n">MAX_DF</span><span class="p">)</span>
+
+<span class="n">num_comments</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">bag_of_words_clust</span> <span class="o">=</span> <span class="n">vectorizer_clust</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span> <span class="n">processed_corpus</span><span class="p">[</span><span class="mi">0</span><span class="p">:(</span><span class="n">num_comments</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span> <span class="p">)</span> 
+<span class="n">processed_corpus_clust</span> <span class="o">=</span> <span class="n">processed_corpus</span><span class="p">[</span><span class="mi">0</span><span class="p">:(</span><span class="n">num_comments</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+<span class="n">corpus_clust</span> <span class="o">=</span> <span class="n">corpus</span><span class="p">[</span><span class="mi">0</span><span class="p">:(</span><span class="n">num_comments</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># #del corpus_clust[396]</span>
+<span class="c1"># def delete_row_csr(mat, i):</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     Function to remove a row from a scipy.sparse.csr_matrix. </span>
+<span class="c1">#     Taken from </span>
+<span class="c1">#     http://stackoverflow.com/questions/13077527/is-there-a-numpy-delete-equivalent-for-sparse-matrices</span>
+    
+<span class="c1">#     params: </span>
+<span class="c1">#         scipy.sparse.csr_matrix mat</span>
+<span class="c1">#         int i: row to delete </span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     if not isinstance(mat, scipy.sparse.csr_matrix):</span>
+<span class="c1">#         raise ValueError(&quot;works only for CSR format -- use .tocsr() first&quot;)</span>
+<span class="c1">#     n = mat.indptr[i+1] - mat.indptr[i]</span>
+<span class="c1">#     if n &gt; 0:</span>
+<span class="c1">#         mat.data[mat.indptr[i]:-n] = mat.data[mat.indptr[i+1]:]</span>
+<span class="c1">#         mat.data = mat.data[:-n]</span>
+<span class="c1">#         mat.indices[mat.indptr[i]:-n] = mat.indices[mat.indptr[i+1]:]</span>
+<span class="c1">#         mat.indices = mat.indices[:-n]</span>
+<span class="c1">#     mat.indptr[i:-1] = mat.indptr[i+1:]</span>
+<span class="c1">#     mat.indptr[i:] -= n</span>
+<span class="c1">#     mat.indptr = mat.indptr[:-1]</span>
+<span class="c1">#     mat._shape = (mat._shape[0]-1, mat._shape[1])</span>
+    
+<span class="c1"># corpus_clust = np.delete(corpus_clust, 396)</span>
+<span class="c1"># processed_corpus_clust = np.delete(corpus_clust, 396)</span>
+<span class="c1"># delete_row_csr(bag_of_words_clust, 396)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Agglomerative-Clustering">Agglomerative Clustering<a class="anchor-link" href="#Agglomerative-Clustering">&#182;</a></h2><p>The idea behind agglomerative clustering is to cluster nearby data points together in a bottom up fashion. Suppose we have $n$ data points $\{x_1, ..., x_N\}$. First, we pre-compute the similarity between all data points using our choice of distance metric (affinity in sci-kit learn). We start with a collection of clusters $C$ that contains $N$ singleton clusters (cluster $c_i = {x_i}$). We repeat the following process until we have $K$ clusters:</p>
+<ol>
+<li>Find the closest pair of clusters ( $\min_{i,j} D(c_i, c_j)$ ). $D$ depends on the similarity values between each element of each cluster.     </li>
+<li>Add a new cluster $c_{i+j}$ to collection $C$ such that $c_{i+j}= c_i \cup c_j$.    </li>
+<li>Remove clusters $c_i$ and $c_j$ from $C$.    </li>
+</ol>
+<p>The distance $D$ is defined between clusters. The following distances are supported in sci-kit learn:</p>
+<ul>
+<li>The <em>ward distance</em> minimizes the variance of the clusters being merged. I.e., it computes the sum of squares error. </li>
+<li>The <em>average</em> distance uses the average of the distances of each observation of the two sets.</li>
+<li>The <em>complete or maximum</em> distance uses the maximum distances between all observations of the two sets.</li>
+</ul>
+<p>* Material is from this <a href="https://www.youtube.com/watch?v=XJ3194AmH40">tutorial</a>.</p>
+
+</div>
+</div>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#cluster = AgglomerativeClustering(n_clusters = 10, affinity=&quot;cosine&quot;, linkage =&quot;average&quot;)</span>
-<span class="c1">#cluster.fit(bag_of_words.toarray())</span>
-<span class="c1">#labels = cluster.labels__</span>
-
-<span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-
-<span class="c1"># calculate cosine similarity and fit clustering algorithm</span>
-<span class="n">cosine_sim</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">bag_of_words</span><span class="p">,</span> <span class="n">Y</span><span class="o">=</span><span class="kc">None</span> <span class="p">)</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="n">spectral_clustering</span><span class="p">(</span><span class="n">affinity</span><span class="o">=</span><span class="n">cosine_sim</span><span class="p">,</span> <span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Time Elapsed: </span><span class="si">{0:.2f}</span><span class="s1">s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-        <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">-</span><span class="n">start_time</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cluster</span> <span class="o">=</span> <span class="n">AgglomerativeClustering</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">affinity</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">,</span> <span class="n">linkage</span> <span class="o">=</span><span class="s2">&quot;average&quot;</span><span class="p">)</span>
+<span class="n">cluster</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">bag_of_words_clust</span><span class="o">.</span><span class="n">toarray</span><span class="p">())</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">labels_</span>
 
 <span class="n">label_counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">label_counter</span><span class="p">)</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/sklearn/manifold/spectral_embedding_.py:217: UserWarning: Graph is not fully connected, spectral embedding may not work as expected.
-  warnings.warn(&#34;Graph is not fully connected, spectral embedding&#34;
-</pre>
-</div>
-</div>
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Time Elapsed: 0.35s
-Counter({1: 542, 3: 167, 0: 147, 2: 143})
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
 </div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Activity-4:-Cosine-Deception">Activity 4: Cosine Deception<a class="anchor-link" href="#Activity-4:-Cosine-Deception">&#182;</a></h3><p><strong>20 mins</strong></p>
+<p>Use the code above to find clusters in the data using <a href="http://scikit-learn.org/stable/modules/generated/sklearn.cluster.AgglomerativeClustering.html">Agglomerative Clusting</a>. Examine the comments that are assigned to each cluster using the function <code>examine_comment_labels</code> defined below. Notice that the comments in Group 0 are all short comments. Wasn't the point of using cosine distance to prevent short comments from being similar?</p>
+<p>See if you can figure out why these comments are being grouped together. What are some ways to fix this error?</p>
+<p><strong>Hint</strong>: look at the comments after converting them into bags of words.</p>
+
+</div>
+</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># examine the comments that fall in each group</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">examine_comment_labels</span><span class="p">(</span><span class="n">num_comments_to_view</span><span class="p">,</span> <span class="n">label_counter</span><span class="p">,</span> <span class="n">corpus_clust</span><span class="p">,</span> <span class="n">num_comments</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function that prints comments and their cluster labels. The function can print</span>
+<span class="sd">    the raw comments, processed comments, or bag of words. </span>
+<span class="sd">    </span>
+<span class="sd">    params: </span>
+<span class="sd">        int num_comments_to_view: the number of comments to view for </span>
+<span class="sd">            each group</span>
+<span class="sd">        Counter label_counter: contains the cluster labels for each item </span>
+<span class="sd">            in the dataset</span>
+<span class="sd">        numpy.ndarray or scipy.sparse.csr.csr_matrix corpus: the corpus </span>
+<span class="sd">            processed corpus, or bag of words representation of our data </span>
+<span class="sd">        int num_comments: number of comments contained in corpus</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">label_counter</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">-------Group</span><span class="si">{}</span><span class="s2">-------</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_comments</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">count</span> <span class="o">&lt;</span> <span class="n">num_comments_to_view</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Comment </span><span class="si">{0}</span><span class="s2">: </span><span class="si">{1}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">corpus_clust</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+                <span class="c1">#print(&quot;Comment {0}: {1}\n&quot;.format(i, processed_corpus[i]))</span>
+                <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+                
+<span class="c1"># examine the comments that fall in each group</span>
 <span class="c1"># what defines each group?</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">label_counter</span><span class="p">)</span>
 <span class="n">num_comments_to_view</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">label_counter</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">-------Group</span><span class="si">{}</span><span class="s2">-------</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_comments</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">count</span> <span class="o">&lt;</span> <span class="n">num_comments_to_view</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Comment </span><span class="si">{0}</span><span class="s2">: </span><span class="si">{1}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">corpus</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
-            <span class="c1">#print(&quot;Comment {0}: {1}\n&quot;.format(i, processed_corpus[i]))</span>
-            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
-    
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;prohibition&#39;</span> <span class="ow">in</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">))</span>
+<span class="n">examine_comment_labels</span><span class="p">(</span><span class="n">num_comments_to_view</span><span class="p">,</span> <span class="n">label_counter</span><span class="p">,</span> <span class="n">corpus_clust</span><span class="p">,</span> <span class="n">num_comments</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
--------Group0-------
-
-
-Comment 2: Hey, do you know what it is that makes you feel such hatred towards these things? Does the violence make your thoughts go in an unwanted direction? And when you say these things make them bad people, do you mean you think your friends are bad people for enjoying the shows/games, or that the people who make them are bad? It sounds like it could easily be a depression thing tbh.
-
-Comment 8: As someone a bit older, I can say this with some authority - pretty much everyone is attractive to some chunk of people.  One thing that happens in school is that people are afraid to appear different, so if they have tastes that lie outside the mainstream, they may very well be afraid to express them. I knew a couple guys who were into bigger girls, but were way too insecure to express it in high school. Not everyone - I&#39;m not even sure most people - find the sort of default media-created concept of what is attractive to actually be attractive.  
-
-It sucks that you&#39;re on the wrong end of that sort of thing right now, but it will change with time.  And hell, if you&#39;re still in school, your body hasn&#39;t even finished developing.  You might look far more like how you want to look in a few years.
-
-Comment 9: Hey there.
-
-I understand a lot of what you&#39;re saying. There is some bad advice on this subreddit that could be easily solved by going to the sidebar or directly to this post: http://www.reddit.com/r/SWResources/comments/igh87/concerned_but_dont_know_what_to_say_here_are_some/ .
-
-A lot of the people coming here are well intentioned but reddit tends to favor those with loud voices and angry messages so those often rub off onto others. 
-
-While I can&#39;t really point you in a good direction for the defaults, you can find some very kind and supportive subreddits deep down in this website. One of my personal favorites at the moment is /r/TheChurchOfRogers which is based on kindness to others as if they were our neighbors (based on the show Mr. Roger&#39;s Neighborhood. Maybe browsing there can give you these better and safer feelings.
-
-Reddit is unfortunately a site taken over by the opinions of about 4000 people. If you ever look at the controversial tab of a subreddit or even scrolling far enough down, you&#39;ll find those hidden treasures of good comments. I hope you will find those same kinds of good comments under this post as well.
-
-Never be afraid to reply OP. I&#39;ll be expecting that orange envelope. 
-
-Comment 15: I&#39;m sure you&#39;re a very pretty young girl.  Please don&#39;t let the tauntings of small-minded people scar you.
-Just endure for a little while longer.  These things improve greatly in a few years.
-
-
--------Group1-------
-
-
-Comment 0: Systems of living have been built around us to make us miserable.  Idk where you are but if you can.  Go shooting.   Trust me on this. Something about shooting guns helps with that feeling.  
-
-Comment 1: Just logged back onto my alt. Thank you. That means a lot to me, I know I&#39;m late and all but ... thanks.
-
-Comment 3: Right there with you. National merit scholar now failing classes. Gpa from 3.7 to 2.5. Depression is a bitch. You just have to find what works for you study wise. For me, empty classrooms help. Space and isolation. You have to be strict about setting study days. It&#39;s incredibly difficult and I&#39;m nowhere near succeeding, but it&#39;s given me some improvement.  Do it for yourself, not your family. 
-
-Comment 10: I&#39;m in the exact same boat... Everyday I wake up with such a depressive mindset. I have absolutely no drive and I have no reason to get up in the mornings. I have no friends, no job and I only attend college 3 times a week. 
-
-Sometimes I have a sudden spurdge of happiness. Usually when I&#39;m in a good mood I have my drive back, I want to do things. I want to make sure that I grasp onto my future and make a name for myself before its too late. I come up with all these plans on how I&#39;m going to do this then booom depression hits me before I execute anything then it&#39;s back to being a depressive cu*t again. 
-
-
-
-It&#39;s so hard to actually have drive when you have nothing to motivate you. I have 0 irk friends. My days consist of talking to people online who really have no real impact on my real life. 
-I just can&#39;t handle it. My life right now is going nowhere, every day gets worse and worse, my grandparents who are basically my parents. They mean they world to me and it&#39;s so sad when I see them I know the time is getting closer and closer, their health is going down hill every day and it puts tears in my eyes. I&#39;m typing this with tears running all over me. 
-This post has gone out of hand. This is my feelings talking. I&#39;m sorry if I&#39;ve missed the objective of this post. I just needed somewhere to throw my emotions 
-
-Thank you I wish all the best for you xxx
-
-
--------Group2-------
-
-
-Comment 7: We aren&#39;t friends. We don&#39;t dislike each other we just keep it professional. I could easily be replaced and life would go on so I guess i don&#39;t see why it would be a bad thing.
-
-Comment 24: If you fail out of college are you saying that would cause your gf to leave?
-
-Comment 42: please read my edit i may have written this a bit hastily, but i assure you i would never try to harm anyone, with my words i know how badly they can hurt.
-
-Comment 45: What all is involved in getting the license? I&#39;ve thought about it. But I Dont think I would want to do it every day though maybe once or twice a week
-
-
--------Group3-------
-
-
-Comment 4: I was a generally sad child. But I don&#39;t feel like my problems stemmed from that. Years ago I decided that I wanted to join the army. It sounded like a good idea. Wrong. I&#39;m not sure what it was that first triggered my major depression episodes, but it happened. I started falling apart. I had a rough experience. The army shuns the weak, both mental and physical. I&#39;m strong but was still developing mentally at 18, still learning the world and who I was. Uncontrollable actions, such as fits of depression and anger made my life hell. The others picked up on it. I felt like they would rather leave me behind then help my up. I was right. I have one very vivid memory that I remember every day. I was laying in my bed (separated from the other beds in the middle of the room), with my two &#34;guards&#34; standing watch. Yeah, I had to have at least two people within arms reach of me at all times, even while sleeping. It got that bad. One of them decided he didn&#39;t have time for this. All I did was look at him and sigh. He took my pillow from under my head and tried to suffocate me. And I just laid there. Not moving. I didn&#39;t care. It didn&#39;t last long as the other people in the room (47 people) stepped in. After the event the drill sergeant walked in, unaware of the events that had transpired moments before. He walked up to me as I was laying in bed again. He bent over me and asked my how I was. I said that I was fine and he left. It has taken me a very long time to understand how I felt about this. Turns out I was angry at myself for failing something that I set out to do. I felt like garbage for so long. It took me 5 years to admit to myself that my self directed anger and loathing ment nothing. The past is the past. There is nothing that can be done about it. But my future, my happiness needs not be influenced by past failures. I was angry at myself, and I finally learned why. And I finally forgave myself.
-
-Comment 5: Ah. Well, sometimes just him listening can be enough. Just so long as he doesn&#39;t tell you to snap out of it or anything like that. Maybe you can also research support groups in your area. Try and find as many resources as you can.
-
-Comment 6: Hello friend, I struggle with the hatred as well, it seems like second nature to just scream abuse at myself in my head. I don&#39;t know for sure how to stop it from happening but maybe making a point to yourself to notice whenever you feel yourself spiralling downward and see what sort of thing sets you off could be a start? Wishing you the best of lovely times.
-
-Comment 12: Okay so you already know that you don&#39;t want to be in this rut anymore. Seems like you are currently stuck in this vicious cycle. What if you could take small steps towards getting back out there? I&#39;m not saying completely quit smoking but what if you set little goals each day(every couple of days) and only allow yourself to smoke up after you complete the task? It&#39;s obvious that you care and that&#39;s huge! Also do you have any close friends that could help you with keeping on track...not like hovering over you but just like checking in? Sorry if this is intrusive-I&#39;m new on redditðŸ˜„
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div></section></section><section><section>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -14063,6 +12957,7 @@ Comment 12: Okay so you already know that you don&#39;t want to be in this rut a
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Example-Topics">Example Topics<a class="anchor-link" href="#Example-Topics">&#182;</a></h2><p><img src="figs/example_topics.png" style="width:85%; height:85%"/></p>
+<p>* These topics were extracted from a <em>supervised</em> topic model. In this case, the topics correspond to each subreddit.</p>
 
 </div>
 </div>
@@ -14078,7 +12973,7 @@ Comment 12: Okay so you already know that you don&#39;t want to be in this rut a
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
@@ -14091,24 +12986,10 @@ Comment 12: Okay so you already know that you don&#39;t want to be in this rut a
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Loading takes 4.961112s
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get rid of punctuation and set to lowercase  </span>
@@ -14127,44 +13008,17 @@ Comment 12: Okay so you already know that you don&#39;t want to be in this rut a
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Processing took 50.990886926651s
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">subreddit_id_all</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">subreddit_id_all</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># print subreddits and number of topics </span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">subreddit_id_all</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">subreddit_id_all</span><span class="p">))</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Counter({&#39;depression&#39;: 12079, &#39;offmychest&#39;: 10661, &#39;stopdrinking&#39;: 6958, &#39;SuicideWatch&#39;: 6098, &#39;ADHD&#39;: 5674, &#39;GetMotivated&#39;: 4799, &#39;Anxiety&#39;: 4466, &#39;Meditation&#39;: 3608, &#39;stopsmoking&#39;: 1867, &#39;leaves&#39;: 1629, &#39;BPD&#39;: 1618, &#39;BipolarReddit&#39;: 1515, &#39;OpiatesRecovery&#39;: 1391, &#39;socialanxiety&#39;: 1221, &#39;StopGaming&#39;: 946, &#39;schizophrenia&#39;: 898, &#39;mentalhealth&#39;: 572, &#39;ptsd&#39;: 566, &#39;MMFB&#39;: 483, &#39;alcoholism&#39;: 378, &#39;rapecounseling&#39;: 283, &#39;BipolarSOs&#39;: 272, &#39;AlAnon&#39;: 267, &#39;ZenHabits&#39;: 237, &#39;alcoholicsanonymous&#39;: 219, &#39;getting_over_it&#39;: 208, &#39;EatingDisorders&#39;: 203, &#39;Anger&#39;: 165, &#39;selfhelp&#39;: 150, &#39;StopSelfHarm&#39;: 136, &#39;dpdr&#39;: 105, &#39;survivorsofabuse&#39;: 96, &#39;helpmecope&#39;: 45, &#39;AtheistTwelveSteppers&#39;: 29, &#39;problemgambling&#39;: 17, &#39;buddhistrecovery&#39;: 12, &#39;MaladaptiveDreaming&#39;: 9, &#39;psychoticreddit&#39;: 8, &#39;PanicAttack&#39;: 8, &#39;secularsobriety&#39;: 6, &#39;secondary_survivors&#39;: 5, &#39;SMARTRecovery&#39;: 5, &#39;PanicParty&#39;: 4, &#39;hardshipmates&#39;: 4, &#39;afterthesilence&#39;: 3, &#39;feelgood&#39;: 2, &#39;jessiesparents&#39;: 1, &#39;Existential_crisis&#39;: 1}) 69927
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -14174,14 +13028,14 @@ Comment 12: Okay so you already know that you don&#39;t want to be in this rut a
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Fit-a-Topic-Model">Fit a Topic Model<a class="anchor-link" href="#Fit-a-Topic-Model">&#182;</a></h2><p>To create our topics we will use Latent Dirichlet Allocation (LDA, i.e., the standard topic model). Both <a href="http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.LatentDirichletAllocation.html">scikit learn</a> and <a href="https://radimrehurek.com/gensim/">gensim</a> provide software for fitting LDA. Both methods use <a href="https://www.cs.princeton.edu/~blei/papers/HoffmanBleiBach2010b.pdf">online variational inference</a> to fit the model, but alternative methods such as <a href="https://people.cs.umass.edu/~wallach/courses/s11/cmpsci791ss/readings/steyvers06probabilistic.pdf">Gibbs sampling</a> are also popular.</p>
+<h2 id="Fit-a-Topic-Model">Fit a Topic Model<a class="anchor-link" href="#Fit-a-Topic-Model">&#182;</a></h2><p>To create our topics we will use Latent Dirichlet Allocation (LDA, i.e., the standard topic model). Both <a href="http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.LatentDirichletAllocation.html">scikit learn</a> and <a href="https://radimrehurek.com/gensim/">gensim</a> provide software for fitting LDA. Both modules use <a href="https://www.cs.princeton.edu/~blei/papers/HoffmanBleiBach2010b.pdf">online variational inference</a> to fit the model, but methods such as <a href="https://people.cs.umass.edu/~wallach/courses/s11/cmpsci791ss/readings/steyvers06probabilistic.pdf">Gibbs sampling</a> are also popular.</p>
 
 </div>
 </div>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Options</span>
@@ -14199,34 +13053,20 @@ Comment 12: Okay so you already know that you don&#39;t want to be in this rut a
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Processing took 259.7540240287781s
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Display-the-top-ten-words-for-each-topics">Display the top ten words for each topics<a class="anchor-link" href="#Display-the-top-ten-words-for-each-topics">&#182;</a></h2><p>Qualitatively examining the topic output is the most common method for assessing fit of a topic model. Ideally, most topics will be interpretable. Topic interpretability tends to increase with the number of documents used during fitting.</p>
+<h2 id="Display-the-top-ten-words-for-each-topics">Display the top ten words for each topics<a class="anchor-link" href="#Display-the-top-ten-words-for-each-topics">&#182;</a></h2><p>Qualitatively examining the topic output is the most common method for assessing fit of a topic model. Ideally, most topics will be interpretable. Topic interpretability tends to increase with the number of documents used during fitting. Since this topic model is unsupervised, topic names (in this case integers $1,...,T$) are arbitrary.</p>
 
 </div>
 </div>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ls_keywords</span> <span class="o">=</span> <span class="p">[]</span>
@@ -14239,69 +13079,6 @@ Comment 12: Okay so you already know that you don&#39;t want to be in this rut a
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>0 get, know, better, want, alone, never, everything, get better, ever, things
-1 love, best, sorry, wish, hate, world, hear, deserve, brother, hard
-2 amp, org, group, human, wiki, system, interesting, society, blame, choose
-3 back, go, talk, need, telling, emotions, want, meet, give, ok
-4 automatically, please, tags, automatically please, required, include, image, concerns, article, removed
-5 many, care, others, people, family, reading, came, perhaps, many people, weird
-6 great, work, home, nice, mother, wife, father, house, terms, given
-7 stay, support, book, tried, gave, decision, honest, problem, losing, successful
-8 get, go, time, done, something, like, want, things, work, going
-9 thank, feels, like, eat, much, really, op, healthy, god, personally
-10 people, think, lot, really, also, read, actually, hard, yeah, good
-11 thinking, guy, true, kids, guys, course, related, staying, action, point
-12 time, first, months, year, last, week, day, days, social, two
-13 good, feel, better, feeling, luck, good luck, depressed, bad, hope, continue
-14 gt, side, symptoms, effects, long, drug, term, hold, side effects, cause
-15 told, weight, old, girl, issue, reality, kind, age, girlfriend, truth
-16 thanks, aa, meetings, sharing, went, realized, totally, alone, days, night
-17 anxiety, therapy, helps, helped, sometimes, also, works, panic, anxious, seen
-18 mind, meditation, thoughts, practice, focus, minutes, breath, fall, moment, notice
-19 parents, living, stress, called, die, difference, constantly, horrible, leave, knowing
-20 anyone, heart, words, matter, else, choice, response, helping, nobody, hand
-21 job, new, money, saw, jobs, fault, miss, reasons, sitting, would
-22 https, watch, listen, music, experiences, medical, com, kill, interested, youtube
-23 life, shit, man, live, fucking, state, oh, three, hell, shitty
-24 people, life, things, like, one, think, person, way, change, make
-25 let, every, day, though, even, go, away, even though, every day, know
-26 fact, non, child, children, treat, respect, peace, fully, likely, understanding
-27 know, want, help, talk, tell, someone, would, say, people, right
-28 school, control, high, free, college, treatment, pm, class, high school, kid
-29 like, understand, think, advice, try, really, know, maybe, might, trying
-30 years, time, felt, got, like, really, long, never, ago, made
-31 ask, fun, lots, asking, questions, hopefully, give, looks, community, contact
-32 day, quit, today, smoking, one, days, smoke, addiction, time, weed
-33 therapist, normal, body, attention, usually, pay, process, scared, speak, beginning
-34 adhd, sleep, exercise, food, eating, energy, water, tend, add, position
-35 feel, like, feel like, night, worry, morning, sex, dose, drive, wake
-36 http, com, www, http www, reddit, message, reddit com, www reddit, please, comments
-37 struggle, degree, text, discussion, got, still, story, one, fact, never
-38 using, plan, answer, early, willing, common, really want, pressure, generally, turned
-39 mental, health, meeting, helpful, disorder, stuff, mental health, goes, illness, exactly
-40 worked, lose, lead, ideas, buy, ability, career, options, given, coming
-41 relationship, worth, would, either, women, open, consider, make, relationships, something
-42 friends, us, issues, cut, ones, pass, number, mom, unfortunately, despite
-43 drinking, drink, sober, alcohol, stop, drugs, sobriety, hang, drunk, desire
-44 depression, help, doctor, medication, seems, see, also, psychiatrist, taking, able
-45 much, pretty, pain, life, would, know, still, knew, family, gone
-46 make, get, work, try, need, best, help, time, take, keep
-47 like, sounds, something, sounds like, honestly, makes, games, play, check, spend
-48 brain, use, thought, one, used, whole, another, part, thing, mg
-49 someone, else, im, dont, someone else, mine, comment, experienced, view, mention
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -14318,12 +13095,20 @@ Comment 12: Okay so you already know that you don&#39;t want to be in this rut a
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_comments</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="k">for</span> <span class="n">comment_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_comments</span><span class="p">):</span>
     <span class="n">topic_id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">doctopic</span><span class="p">[</span><span class="n">comment_id</span><span class="p">])[::</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="n">comment_color</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">comment</span> <span class="o">=</span> <span class="n">corpus_all</span><span class="p">[</span><span class="n">comment_id</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">comment</span><span class="p">:</span> 
+        <span class="k">if</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">top_features</span><span class="p">:</span>
+            <span class="n">comment_color</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\x1b</span><span class="s1">[31m&#39;</span> <span class="o">+</span> <span class="n">word</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\x1b</span><span class="s1">[0m&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">comment_color</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;comment_id:&#39;</span><span class="p">,</span>
           <span class="n">comment_id</span><span class="p">,</span>
           <span class="n">subreddit_id_all</span><span class="p">[</span><span class="n">comment_id</span><span class="p">],</span>
@@ -14332,54 +13117,11 @@ Comment 12: Okay so you already know that you don&#39;t want to be in this rut a
           <span class="s1">&#39;keywords:&#39;</span><span class="p">,</span>
            <span class="n">ls_keywords</span><span class="p">[</span><span class="n">topic_id</span><span class="p">])</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">corpus_all</span><span class="p">[</span><span class="n">comment_id</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">comment_color</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;===&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>comment_id: 0 offmychest topic_id: 21 keywords: job, new, money, saw, jobs, fault, miss, reasons, sitting, would
----
-It&#39;s not your fault don&#39;t think that. Hey if this helps it does then if it doesn&#39;t well. At least I can talk about it.
-
-I shot my dog. I had him for 10 years. I can home from partying and it was New Years so I was going to shoot off my .40 so...
-
-Well I was loading it outside and I shot it off accidentally. Right into my dog. Me having about 5-7 tequila shots into me though if I go to sleep I would wake up and he would be okay. Well if I called a vet when I shot him I could have saved him. Or at least from his pain. So I woke up saw a dead dog in my yardâ€¦ i cried for hours. That old dog still had a few good years in him. 
-
-That was my fault and you sitting on a little tiny mouse is more understandable than a man discharging a firearm into a shitzu. Don&#39;t feel to bad. 
-===
-comment_id: 1 offmychest topic_id: 10 keywords: people, think, lot, really, also, read, actually, hard, yeah, good
----
-You do have a valid point--I&#39;ve always been a bit of a behind the scenes person. While I&#39;m super bubbly and extraverted IRL, I&#39;m not too big on bringing much attention to myself. I don&#39;t even have a Facebook because I just found it so weird over the years. 
-
-Perhaps I kinda inadvertently set a standard without realizing it, and reading this made me reflect. I reached out to some people today after reading this last night and thinking things through. Some people are still jerks--but that&#39;s just who they are and I know to just stay away from them. Others did care. Again, my family and my boyfriend&#39;s (he&#39;s coming with) don&#39;t really, and that cuts real deep, but what are ya gonna do?
-
-I do agree with the other commenter though as well. I think it&#39;s one thing to suggest something, as in &#34;Hey maybe we should do this small thing Saturday for my birthday&#34;, but in my experience, I&#39;ve known way too many people who, when they suggest such things, are very over the top and it just always came to me as tacky, especially (to me) if they haven&#39;t really achieved anything.
-===
-comment_id: 2 depression topic_id: 47 keywords: like, sounds, something, sounds like, honestly, makes, games, play, check, spend
----
-Hey, do you know what it is that makes you feel such hatred towards these things? Does the violence make your thoughts go in an unwanted direction? And when you say these things make them bad people, do you mean you think your friends are bad people for enjoying the shows/games, or that the people who make them are bad? It sounds like it could easily be a depression thing tbh.
-===
-comment_id: 3 depression topic_id: 46 keywords: make, get, work, try, need, best, help, time, take, keep
----
-Right there with you. National merit scholar now failing classes. Gpa from 3.7 to 2.5. Depression is a bitch. You just have to find what works for you study wise. For me, empty classrooms help. Space and isolation. You have to be strict about setting study days. It&#39;s incredibly difficult and I&#39;m nowhere near succeeding, but it&#39;s given me some improvement.  Do it for yourself, not your family. 
-===
-comment_id: 4 ADHD topic_id: 8 keywords: get, go, time, done, something, like, want, things, work, going
----
-I cannot put into words how much I love programming. So many avenues to go down, so many ways to innovate, and the very real possibility of changing the world just by doing it a lot. I work at a web development company and do independent game design in my off time, and rarely feel burnt out. If I could add an extra day to the week to program, I would do it twice.
-===
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
