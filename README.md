@@ -1,5 +1,7 @@
 # Introduction to Natural Language Processing  
 
+**Friday March 2, 2017**
+
 Natural language processing (NLP) refers to the methods and technologies used to allow computers to process, understand, and perform tasks using human language. 
 Common NLP tasks include sentiment analysis, part-of-speech tagging, named entity recognition, machine translation, document classification, clustering, and topic extraction.
 This course will introduce fundamental concepts in NLP including word and document representation, text processing, document classification, document similarity, and clustering, and dimensionality reduction. 
