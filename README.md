@@ -104,10 +104,4 @@ To unzip the data, run ```gunzip RC_2015-05.json.gz```
 
 If you would like to see the presentation in slide form, rather than an ipython notebook, you can run the following commands: 
 
-```python -m SimpleHTTPServer```
-
-or 
-
-```python3 -m http.server```
-
-then open the url ```http://localhost:8000/IntroNLP.slides.html#/``` in your browser 
+```jupyter nbconvert --to slides IntroNLP.ipynb --post serve```
